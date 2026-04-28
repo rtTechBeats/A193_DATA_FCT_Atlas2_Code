@@ -1,0 +1,25 @@
+- technology: LED
+  coverage: LED_WHITE
+  testParameters: '*'
+  inputs:
+    PP_VSYS_I_No_Load_LED: find.output("LED", "PP_VSYS_I", "", "PP_VSYS_I_No_Load_LED")
+  outputs:
+    VBAT_I_LED_WHITE_ON:
+      lookup:
+      - LED_LED_WHITE
+      - 1
+    White_E:
+      lookup:
+      - LED_LED_WHITE
+      - 2
+  conditions: {}
+  sequence:
+    actions:
+    - LED_LED_WHITE:
+        filename: LED/LED_WHITE.csv
+        args:
+        - lookup:
+          - inputs
+          - PP_VSYS_I_No_Load_LED
+        plugins: '*'
+    type: sequential

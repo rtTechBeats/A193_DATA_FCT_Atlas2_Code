@@ -1,0 +1,12 @@
+- technology: OQC
+  coverage: CCS_OQC
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - OQC_CCS_OQC:
+        filename: OQC/CCS_OQC.csv
+        plugins: '*'
+    type: sequential

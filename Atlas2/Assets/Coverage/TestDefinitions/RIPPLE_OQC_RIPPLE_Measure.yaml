@@ -1,0 +1,12 @@
+- technology: RIPPLE_OQC
+  coverage: RIPPLE_Measure
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - RIPPLE_OQC_RIPPLE_Measure:
+        filename: RIPPLE_OQC/RIPPLE_Measure.csv
+        plugins: '*'
+    type: sequential

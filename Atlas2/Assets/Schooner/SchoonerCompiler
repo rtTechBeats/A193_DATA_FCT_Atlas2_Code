@@ -1,0 +1,288 @@
+#!/bin/sh
+
+# SCHOONER_COMPILER_DEBUG is an environment variable
+# expected to be defined outside of the script.
+debug=${SCHOONER_COMPILER_DEBUG:-"NO"}
+
+if [[ ${debug} == 'YES' ]]; then
+    set -x
+fi
+
+# save raw args for checking and error reporting later
+fullCompilerCommand="$0 $@"
+
+# get clean absolute path of SchoonerCompiler; resolves ~ and ../
+realPath="$(cd -- "$(dirname -- "$0")"; pwd)/$(basename -- "$0")"
+
+# 1. check env
+# 2. collect args
+# 3. compile
+
+## env:
+## 1) mink
+###  set DYLD_FRAMEWORK_PATH
+###  use BUILD_OUTPUT_PATH/BUILD_DEPS_PATH
+###  user: no user-supplied-atlas2 is allowed
+## 2) on station or developer mac
+###  use ~/Library/Atlas2 as primary
+###  user: no user-supplied-atlas2 is allowed
+## 3) other
+### expect primary Atlas2 folder from args and optional secondary atlas2 folder
+
+
+## globals
+
+## AtlasBinaryFolder
+##/usr/local/bin/AtlasGroupProcess or BUILD_DEPS_PATH/usr/local/bin/AtlasGroupProcess
+AtlasGroupProcessLocal="/usr/local/bin/AtlasGroupProcess"
+AtlasGroupProcessMinkDeps="${BUILD_DEPS_PATH}/${AtlasGroupProcessLocal}"
+## Output path: output to the following path in primary Atlas2 folder
+CompilerPlistPath="Assets/Coverage/SchoonerCompilerArgs.plist"
+# default to local installed Atlas; inMink will override it
+AtlasGroupProcess="${AtlasGroupProcessLocal}"
+
+## error code
+ERROR_INVALID_MINK_ENV=-1
+ERROR_EXTRA_ARG_COMPILING_IN_MINK=-2
+ERROR_EXTRA_ARG_COMPILING_IN_HOME_LIBRARY_ATLAS2=-3
+ERROR_PRIMARY_ATLAS2_FOLDER_NOT_FOUND=-4
+ERROR_MULTIPLE_PRIMARY_ATLAS2=-5
+ERROR_UNRECOGNIZED_OPTION=-6
+
+
+## functions
+debugPrint() {
+    if [[ ${debug} == "YES" ]]; then
+        echo "Debug: $@"
+    fi
+}
+
+usage() {
+    echo 'Usage: '
+    echo '    In mink_build/mink_test:'
+    echo '        ${BUILD_DEPS_PATH}/USER_HOME/Library/Atlas2/Assets/Schooner/SchoonerCompiler [-S]'
+    echo '    In ~/Library/Atlas2:'
+    echo '        ~/Library/Atlas2/Assets/Schooner/SchoonerCompiler [-S]'
+    echo '    Others:'
+    echo '        PATH_TO_SCHOONER_COMPILER [-a primary_Atlas2_folder [-s secondary_Atlas2_folder, ...]] [-S]'
+    echo '    Primary Atlas2 folder: the Atlas2 folder with Schooner coverage tables, test definitions and Modules to output compiled coverage to'
+    echo '    Secondary Atlas2: the Atlas2 folder with shared test definitions/shared actions/shared station plists'
+    echo '    -S: skip action presence check; used when compilation happen before action files are available'
+    echo '    -N: skip sequence flowchart markdown generation; use it if sequence flowchart is not used or fails somehow.'
+    echo 'Check https://frogger.apple.com/modules/XF.Schooner/Schooner documentation for detailed compiler usage'
+}
+
+# Shark: why using getopts instead of getopt:
+# seems getopts can handle space inside args, like SchoonerCompiler -a "a b",
+# by recogizing them as 1 arg, while in my DOE getopt recognize it as 2 args.
+# locally verified that the following command works:
+#   SchoonerCompiler -a "a b" -s "c d" -s "e f"
+getOptions() {
+    local OPTIND opt
+    # create an empty array for secondary atlas2 folder
+    secondaryAtlas2Arg=()
+    while getopts "a:s:SN" opt; do
+        case $opt in
+            a )
+                debugPrint "get a primary atlas2 $OPTARG"
+                if [[ ! -z "${primaryAtlas2Arg}" ]]; then
+                    echo 'Multiple primary Atlas2 folder received; expecting only 1'
+                    exit ${ERROR_MULTIPLE_PRIMARY_ATLAS2}
+                fi
+                # primary atlas2 folder from command line argument
+                # remove heading and trailing spaces, just in case.
+                primaryAtlas2Arg="$(echo "${OPTARG}" | xargs)"
+                ;;
+            s )
+                debugPrint 'get a secondary atlas2' $OPTARG
+                # secondary atlas2 folder from command line arguments
+                # append because there can be multiple ones
+                secondaryAtlas2Arg+=("${OPTARG}")
+                ;;
+            S )
+                debugPrint 'Request to skip action presence check'
+                skipActionPresenceCheck='--skip-action-presence-check'
+                ;;
+            N )
+                debugPrint 'Request to turn off sequence flowchart markdown generation'
+                skipMarkdownGeneration='--skip-markdown-generation'
+                ;;
+            * )
+                echo "Unrecognized option $OPTARG at position $OPTIND"
+                usage
+                exit ${ERROR_UNRECOGNIZED_OPTION}
+                ;;
+        esac
+    done
+}
+
+initializeCompilerPlist() {
+    local file=$1
+    # per man page, plutil is available since macos 10.2
+    # ideall we can use the following line to create an empty plist
+    # but later it is found that macOS 10.15 and 11.0 does not support `plutil -create`
+    # while macOS 12.0 support this
+    #  plutil -create xml1 "${file}"
+    # so, use echo to create an empty json dict, and convert it into plist
+    # to make it work in macOS 10.15+
+    # TODO: if schooner is to support macOS 12.0+ someday, switch to `plutil -create` here.
+    echo "{}" > "${file}" || exit $?
+    plutil -convert xml1 "${file}" || exit $?
+    # macOS 10.15 and 11.0 `plutil -insert` does not support -array and -dictionary. So
+    # 2. use -json to insert table and array
+    plutil -insert GroupArgs -json [] "${file}" || exit $?
+    plutil -insert GroupArgs.0 -json {} "${file}" || exit $?
+}
+
+addPlistEntry() {
+    local file="$1"
+    local key="$2"
+    local type="$3"
+    local value="$4"
+    if [[ ${type} == 'array' ]]; then
+        # macOS 10.15 and 11.0 `plutil -insert` does not support -array and -dictionary. So
+        # use -json to insert table and array
+        plutil -insert GroupArgs.0.${key} -json "[${value}]" "${file}" || exit $?
+    else
+        # per man page, plutil is available since macos 10.2
+        plutil -insert GroupArgs.0.${key} -${type} "${value}" "${file}" || exit $?
+    fi
+}
+
+
+# actually run compiler
+run() {
+    local primary="${1}"
+    local secondary=("${@:2}")
+    local ret
+    if [[ -z "${primary}" ]]; then
+        echo 'No primary Atlas2 folder found. Schooner compiler needs at least 1 Atlas2 folder to compile. Exiting with -1.'
+        exit ${ERROR_PRIMARY_ATLAS2_FOLDER_NOT_FOUND}
+    fi
+
+    local plistPath="${primary}/${CompilerPlistPath}"
+    debugPrint "Generating compiler coreless plist to ${plistPath}"
+    initializeCompilerPlist "${plistPath}"
+    debugPrint "Setting primary Atlas2 folder: ${primary}"
+    addPlistEntry "${plistPath}" PrimaryAtlas2 string "${primary}"
+
+    if [[ ${#secondary[@]} -gt 0 ]]; then
+        addPlistEntry "${plistPath}" SecondaryAtlas2 array
+        for s in "${secondary[@]}"; do
+            debugPrint "Adding secondary Atlas2 folder: ${s}"
+            addPlistEntry "${plistPath}" SecondaryAtlas2.0 string "${s}"
+        done
+    fi
+
+    if [[ -n ${skipActionPresenceCheck} ]]; then
+        addPlistEntry "${plistPath}" SkipActionPresenceCheck bool YES
+    fi
+
+    if [[ -n ${skipMarkdownGeneration} ]]; then
+        addPlistEntry "${plistPath}" SkipSequenceFlowchartMarkdownGeneration bool YES
+    fi
+
+    echo 'Running Schooner compiler'
+    # . : Atlas2/Assets/Schooner
+    # ..: Atlas2/Assets
+    # ../../:Atlas2/
+    local entry
+    entry=$(dirname "${realPath}")
+    entry="${entry}/../../Modules/Schooner/Compiler/BuildSchoonerSequence.lua"
+    mkdir -p "${primary}/Modules/coverage"
+
+    "${AtlasGroupProcess}" coreless "${entry}" "${plistPath}"
+    ret=$?
+
+    debugPrint "compiler ret: "${ret}
+    exit ${ret}
+}
+
+
+inMink() {
+    # if BUILD_OUT_USER_HOME_PATH and BUILD_DEPS_PATH exist
+    # we are running in mink_build
+    # if BUILD_OUT_USER_HOME_ROOT and BUILD_DEPS_PATH exist
+    # we are running in mink_test
+    if [[ -n ${BUILD_DEPS_PATH} ]]; then
+        debugPrint 'in mink'
+        export DYLD_FRAMEWORK_PATH=${BUILD_DEPS_PATH}/AppleInternal/Library/Frameworks
+        AtlasGroupProcess=${AtlasGroupProcessMinkDeps}
+        #Atlas2MinkBuildDeps=(-s "${BUILD_DEPS_PATH}/USER_HOME/Library/Atlas2")
+        Atlas2MinkBuildDeps=("${BUILD_DEPS_PATH}/USER_HOME/Library/Atlas2")
+
+        # ensure user does not provide additional arguments
+        if [[ -n ${primaryAtlas2Arg} || ${#secondaryAtlas2Arg[@]} -gt 0 ]]; then
+            echo 'Unexpected extra Atlas2 folder arguments when running in mink: '"${fullCompilerCommand}"
+            exit ${ERROR_EXTRA_ARG_COMPILING_IN_MINK}
+        fi
+
+        # check if in mink_build or mink_test, and use different envs:
+        #  BUILD_OUT_USER_HOME_PATH/BUILD_OUT_USER_HOME_ROOT
+        if [[ -n ${BUILD_OUT_USER_HOME_PATH} ]]; then
+            debugPrint 'in mink_build'
+            export ATLAS_FS_ROOT=${BUILD_DEPS_PATH}
+            minkBuildOutput="${BUILD_OUT_USER_HOME_PATH}/Library/Atlas2"
+        else
+            if [[ -n ${BUILD_OUT_USER_HOME_ROOT} ]]; then
+                debugPrint 'in mink_test'
+                export ATLAS_FS_ROOT=${BUILD_OUT_ROOT}
+                minkBuildOutput="${BUILD_OUT_USER_HOME_ROOT}/Library/Atlas2"
+            else
+                echo 'Error: neither BUILD_OUT_USER_HOME_PATH nor BUILD_OUT_USER_HOME_ROOT is found but BUILD_DEPS_PATH exists; are we in an correct mink environment? If mink version < 2.5.6, please update mink to latest by `mink update` and retry.'
+                exit ${ERROR_INVALID_MINK_ENV}
+            fi
+        fi
+        run "${minkBuildOutput}" "${Atlas2MinkBuildDeps[@]}"
+    else
+        debugPrint 'not in mink'
+    fi
+}
+
+
+# when compiler is in ~/Library/Atlas2/
+# compile use local installed Atlas, and use ~/Library/Atlas2 as Atlas2 folder.
+inHomeLibraryAtlas2Folder() {
+    # check if compiler is in ~/Library/Atlas2.
+    expectedRootPath="/Users/$(whoami)/Library/Atlas2/Assets/Schooner/SchoonerCompiler"
+    debugPrint "realPath:     $realPath"
+    debugPrint "expectedPath: $expectedRootPath"
+    if [[ ${realPath} = ${expectedRootPath} ]]; then
+        debugPrint 'in ~/Library/Atlas2'
+        if [[ -n "${primaryAtlas2Arg}" || ${#secondaryAtlas2Arg[@]} -gt 0 ]]; then
+            echo 'Unexpected extra compiler argument when running in ~/Library/Atlas2: '"${fullCompilerCommand}"
+            echo 'Schooner compiler is supposed to compile ~/Library/Atlas2 ' \
+                 'but confused by additional Atlas2 folder(s) from command line arguments.'
+            exit ${ERROR_EXTRA_ARG_COMPILING_IN_HOME_LIBRARY_ATLAS2}
+        fi
+
+        run "/Users/$(whoami)/Library/Atlas2/"
+    else
+        debugPrint 'not in ~/Library/Atlas2'
+    fi
+}
+
+# not in mink or in ~/Library/Atlas2; expecting atlas2 folder(s) from command line like
+# ./SchoonerCompiler -a atlas2 [-s anotherAtlas2] [-S]
+other() {
+    debugPrint 'Not in mink, and not in ~/Library/Atlas2; expecting Atlas2 folder(s) from command line args'
+    debugPrint "primary: ${primaryAtlas2Arg}"
+    debugPrint "secondary: ${secondaryAtlas2Arg}"
+    if [[ -z "${primaryAtlas2Arg}" ]]; then
+        echo 'No primary Atlas2 folder is provided; Schooner compiler existing with -1'
+        exit ${ERROR_PRIMARY_ATLAS2_FOLDER_NOT_FOUND}
+    fi
+    run "${primaryAtlas2Arg}" "${secondaryAtlas2Arg[@]}"
+}
+
+
+# main entrance
+main() {
+    debugPrint "Full compiler command: ${fullCompilerCommand}"
+    getOptions "${@}"
+    inMink
+    inHomeLibraryAtlas2Folder
+    other
+}
+
+main "${@}"

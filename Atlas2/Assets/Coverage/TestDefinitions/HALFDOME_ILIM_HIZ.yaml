@@ -1,0 +1,12 @@
+- technology: HALFDOME
+  coverage: ILIM_HIZ
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_ILIM_HIZ:
+        filename: HALFDOME/ILIM_HIZ.csv
+        plugins: '*'
+    type: sequential

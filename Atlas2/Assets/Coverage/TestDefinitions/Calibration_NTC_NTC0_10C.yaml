@@ -1,0 +1,32 @@
+- technology: Calibration_NTC
+  coverage: NTC0_10C
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    DUT_NTC0:
+      lookup:
+      - Calibration_NTC_NTC0_10C
+      - 1
+    Fixture_NTC0:
+      lookup:
+      - Calibration_NTC_NTC0_10C
+      - 2
+    NTC0_VOLT:
+      lookup:
+      - Calibration_NTC_NTC0_10C
+      - 3
+    PP1V83:
+      lookup:
+      - Calibration_NTC_NTC0_10C
+      - 4
+    Tmp_Offset_NTC0:
+      lookup:
+      - Calibration_NTC_NTC0_10C
+      - 5
+  conditions: {}
+  sequence:
+    actions:
+    - Calibration_NTC_NTC0_10C:
+        filename: Calibration_NTC/NTC0_10C.csv
+        plugins: '*'
+    type: sequential

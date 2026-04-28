@@ -1,0 +1,16 @@
+- technology: HALFDOME
+  coverage: WTD_PET
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    WTD_FLG_Path:
+      lookup:
+      - HALFDOME_WTD_PET
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_WTD_PET:
+        filename: HALFDOME/WTD_PET.csv
+        plugins: '*'
+    type: sequential

@@ -1,0 +1,16 @@
+- technology: System_Info
+  coverage: PP_VSYS_8V
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    MLBSN:
+      lookup:
+      - System_Info_PP_VSYS_8V
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - System_Info_PP_VSYS_8V:
+        filename: System_Info/PP_VSYS_8V.csv
+        plugins: '*'
+    type: sequential

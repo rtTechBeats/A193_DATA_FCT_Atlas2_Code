@@ -1,0 +1,12 @@
+- technology: DUMMY_NTC_OQC
+  coverage: DUMMY_NTC_Measure
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - DUMMY_NTC_OQC_DUMMY_NTC_Measure:
+        filename: DUMMY_NTC_OQC/DUMMY_NTC_Measure.csv
+        plugins: '*'
+    type: sequential

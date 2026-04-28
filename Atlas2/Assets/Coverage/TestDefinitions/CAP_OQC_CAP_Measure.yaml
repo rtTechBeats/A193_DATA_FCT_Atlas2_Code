@@ -1,0 +1,12 @@
+- technology: CAP_OQC
+  coverage: CAP_Measure
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - CAP_OQC_CAP_Measure:
+        filename: CAP_OQC/CAP_Measure.csv
+        plugins: '*'
+    type: sequential

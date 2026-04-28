@@ -1,0 +1,4 @@
+Name,When,Generator,Validator,Notes
+Mode,,,"IN(""Audit"",""Production"")",
+vendorID,Test,,"IN(""_INIT_"",""0x01:INVT"")",
+TEST_MODE,Test,,"IN(""_INIT_"",""Production"",""Audit"")",

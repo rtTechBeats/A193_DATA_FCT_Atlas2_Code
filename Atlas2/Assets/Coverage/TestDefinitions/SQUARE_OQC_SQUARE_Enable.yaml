@@ -1,0 +1,12 @@
+- technology: SQUARE_OQC
+  coverage: SQUARE_Enable
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - SQUARE_OQC_SQUARE_Enable:
+        filename: SQUARE_OQC/SQUARE_Enable.csv
+        plugins: '*'
+    type: sequential

@@ -1,0 +1,12 @@
+- technology: ELOAD_OQC
+  coverage: ELOAD_INPUT7
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - ELOAD_OQC_ELOAD_INPUT7:
+        filename: ELOAD_OQC/ELOAD_INPUT7.csv
+        plugins: '*'
+    type: sequential

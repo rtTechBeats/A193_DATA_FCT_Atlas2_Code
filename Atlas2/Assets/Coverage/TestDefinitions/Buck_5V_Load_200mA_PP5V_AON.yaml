@@ -1,0 +1,33 @@
+- technology: Buck_5V
+  coverage: Load_200mA_PP5V_AON
+  testParameters: '*'
+  inputs:
+    PP_VSYS_I_No_Load: find.output("Buck_5V", "No_Load", "", "PP_VSYS_I_No_Load")
+  outputs:
+    Buck_5V_Output_Current:
+      lookup:
+      - Buck_5V_Load_200mA_PP5V_AON
+      - 1
+    PP5V_AON_V_Load_200mA:
+      lookup:
+      - Buck_5V_Load_200mA_PP5V_AON
+      - 2
+    VSYS_I_Load_200mA:
+      lookup:
+      - Buck_5V_Load_200mA_PP5V_AON
+      - 3
+    VSYS_V_Load_200mA:
+      lookup:
+      - Buck_5V_Load_200mA_PP5V_AON
+      - 4
+  conditions: {}
+  sequence:
+    actions:
+    - Buck_5V_Load_200mA_PP5V_AON:
+        filename: Buck_5V/Load_200mA_PP5V_AON.csv
+        args:
+        - lookup:
+          - inputs
+          - PP_VSYS_I_No_Load
+        plugins: '*'
+    type: sequential

@@ -1,0 +1,28 @@
+- technology: Buzzer
+  coverage: SINE_2P7K_Test
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    PATH:
+      lookup:
+      - Buzzer_SINE_2P7K_Test
+      - 1
+    VBAT_I_SPKEAR_OFF:
+      lookup:
+      - Buzzer_SINE_2P7K_Test
+      - 2
+    VBAT_I_SPKEAR_ON:
+      lookup:
+      - Buzzer_SINE_2P7K_Test
+      - 3
+    retTable:
+      lookup:
+      - Buzzer_SINE_2P7K_Test
+      - 4
+  conditions: {}
+  sequence:
+    actions:
+    - Buzzer_SINE_2P7K_Test:
+        filename: Buzzer/SINE_2P7K_Test.csv
+        plugins: '*'
+    type: sequential

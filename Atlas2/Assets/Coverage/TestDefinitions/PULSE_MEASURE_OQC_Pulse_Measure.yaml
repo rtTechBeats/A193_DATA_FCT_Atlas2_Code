@@ -1,0 +1,12 @@
+- technology: PULSE_MEASURE_OQC
+  coverage: Pulse_Measure
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - PULSE_MEASURE_OQC_Pulse_Measure:
+        filename: PULSE_MEASURE_OQC/Pulse_Measure.csv
+        plugins: '*'
+    type: sequential

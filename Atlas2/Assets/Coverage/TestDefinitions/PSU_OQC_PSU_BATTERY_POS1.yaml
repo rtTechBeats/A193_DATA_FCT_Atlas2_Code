@@ -1,0 +1,12 @@
+- technology: PSU_OQC
+  coverage: PSU_BATTERY_POS1
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - PSU_OQC_PSU_BATTERY_POS1:
+        filename: PSU_OQC/PSU_BATTERY_POS1.csv
+        plugins: '*'
+    type: sequential

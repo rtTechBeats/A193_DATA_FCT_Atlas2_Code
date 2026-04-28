@@ -1,0 +1,16 @@
+- technology: Buck_1V8
+  coverage: No_Load_1V8
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    PP_VSYS_I_No_Load_1V8:
+      lookup:
+      - Buck_1V8_No_Load_1V8
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - Buck_1V8_No_Load_1V8:
+        filename: Buck_1V8/No_Load_1V8.csv
+        plugins: '*'
+    type: sequential

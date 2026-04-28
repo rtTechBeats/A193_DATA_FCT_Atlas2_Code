@@ -1,0 +1,20 @@
+- technology: I2C_Device_Scan
+  coverage: I2C_Scan
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    ACCEL_Data:
+      lookup:
+      - I2C_Device_Scan_I2C_Scan
+      - 1
+    diags_output:
+      lookup:
+      - I2C_Device_Scan_I2C_Scan
+      - 2
+  conditions: {}
+  sequence:
+    actions:
+    - I2C_Device_Scan_I2C_Scan:
+        filename: I2C_Device_Scan/I2C_Scan.csv
+        plugins: '*'
+    type: sequential

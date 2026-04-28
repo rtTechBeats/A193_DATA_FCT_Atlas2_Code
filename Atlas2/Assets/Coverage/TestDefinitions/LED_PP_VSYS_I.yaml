@@ -1,0 +1,16 @@
+- technology: LED
+  coverage: PP_VSYS_I
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    PP_VSYS_I_No_Load_LED:
+      lookup:
+      - LED_PP_VSYS_I
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - LED_PP_VSYS_I:
+        filename: LED/PP_VSYS_I.csv
+        plugins: '*'
+    type: sequential

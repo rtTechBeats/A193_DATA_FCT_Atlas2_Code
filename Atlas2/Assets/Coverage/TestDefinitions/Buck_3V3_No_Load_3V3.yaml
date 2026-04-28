@@ -1,0 +1,16 @@
+- technology: Buck_3V3
+  coverage: No_Load_3V3
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    PP_VSYS_I_No_Load_3V3:
+      lookup:
+      - Buck_3V3_No_Load_3V3
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - Buck_3V3_No_Load_3V3:
+        filename: Buck_3V3/No_Load_3V3.csv
+        plugins: '*'
+    type: sequential

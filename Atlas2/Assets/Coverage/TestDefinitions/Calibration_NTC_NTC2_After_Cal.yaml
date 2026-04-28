@@ -1,0 +1,33 @@
+- technology: Calibration_NTC
+  coverage: NTC2_After_Cal
+  testParameters: '*'
+  inputs:
+    DUT_NTC2: find.output("Calibration_NTC", "NTC2_45C", "", "DUT_NTC2")
+    Fixture_NTC2: find.output("Calibration_NTC", "NTC2_45C", "", "Fixture_NTC2")
+  outputs:
+    Tmp_Offset_NTC2:
+      lookup:
+      - Calibration_NTC_NTC2_After_Cal
+      - 1
+    Tmp_Offset_NTC2_Hex:
+      lookup:
+      - Calibration_NTC_NTC2_After_Cal
+      - 2
+    Tmp_Offset_NTC2_Read:
+      lookup:
+      - Calibration_NTC_NTC2_After_Cal
+      - 3
+  conditions: {}
+  sequence:
+    actions:
+    - Calibration_NTC_NTC2_After_Cal:
+        filename: Calibration_NTC/NTC2_After_Cal.csv
+        args:
+        - lookup:
+          - inputs
+          - DUT_NTC2
+        - lookup:
+          - inputs
+          - Fixture_NTC2
+        plugins: '*'
+    type: sequential

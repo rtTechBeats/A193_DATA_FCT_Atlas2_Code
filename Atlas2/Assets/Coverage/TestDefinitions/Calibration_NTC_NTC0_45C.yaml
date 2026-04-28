@@ -1,0 +1,28 @@
+- technology: Calibration_NTC
+  coverage: NTC0_45C
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    DUT_NTC0:
+      lookup:
+      - Calibration_NTC_NTC0_45C
+      - 1
+    Fixture_NTC0:
+      lookup:
+      - Calibration_NTC_NTC0_45C
+      - 2
+    NTC0_VOLT:
+      lookup:
+      - Calibration_NTC_NTC0_45C
+      - 3
+    PP1V83:
+      lookup:
+      - Calibration_NTC_NTC0_45C
+      - 4
+  conditions: {}
+  sequence:
+    actions:
+    - Calibration_NTC_NTC0_45C:
+        filename: Calibration_NTC/NTC0_45C.csv
+        plugins: '*'
+    type: sequential

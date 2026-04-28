@@ -1,0 +1,12 @@
+- technology: POWER_OFF
+  coverage: Leakage
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - POWER_OFF_Leakage:
+        filename: POWER_OFF/Leakage.csv
+        plugins: '*'
+    type: sequential

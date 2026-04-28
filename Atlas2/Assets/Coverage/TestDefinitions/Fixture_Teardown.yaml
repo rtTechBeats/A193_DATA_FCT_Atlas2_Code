@@ -1,0 +1,18 @@
+- technology: Fixture
+  coverage: Teardown
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - data:
+        dataQuery: true
+    - Fixture_Teardown:
+        filename: Fixture/Teardown.csv
+        args:
+        - lookup:
+          - data
+          - overallResult
+        plugins: '*'
+    type: sequential

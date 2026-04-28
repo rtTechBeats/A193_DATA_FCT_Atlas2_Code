@@ -1,0 +1,12 @@
+- technology: NRF_GPIO
+  coverage: OUTPUT_Check
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - NRF_GPIO_OUTPUT_Check:
+        filename: NRF_GPIO/OUTPUT_Check.csv
+        plugins: '*'
+    type: sequential

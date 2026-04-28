@@ -1,0 +1,16 @@
+- technology: HALFDOME
+  coverage: BTN_RST
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    PDC_File:
+      lookup:
+      - HALFDOME_BTN_RST
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_BTN_RST:
+        filename: HALFDOME/BTN_RST.csv
+        plugins: '*'
+    type: sequential

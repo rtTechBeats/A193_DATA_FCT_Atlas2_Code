@@ -1,0 +1,12 @@
+- technology: MOS_OQC
+  coverage: MOS_Measure
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - MOS_OQC_MOS_Measure:
+        filename: MOS_OQC/MOS_Measure.csv
+        plugins: '*'
+    type: sequential

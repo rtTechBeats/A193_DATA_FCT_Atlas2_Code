@@ -1,0 +1,16 @@
+- technology: System_Info
+  coverage: SYS_Info
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    MLBSN:
+      lookup:
+      - System_Info_SYS_Info
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - System_Info_SYS_Info:
+        filename: System_Info/SYS_Info.csv
+        plugins: '*'
+    type: sequential

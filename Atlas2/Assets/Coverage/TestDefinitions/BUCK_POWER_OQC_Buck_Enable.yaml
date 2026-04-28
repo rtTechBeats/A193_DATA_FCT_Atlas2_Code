@@ -1,0 +1,12 @@
+- technology: BUCK_POWER_OQC
+  coverage: Buck_Enable
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - BUCK_POWER_OQC_Buck_Enable:
+        filename: BUCK_POWER_OQC/Buck_Enable.csv
+        plugins: '*'
+    type: sequential

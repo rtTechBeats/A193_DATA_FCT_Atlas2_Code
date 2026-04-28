@@ -1,0 +1,48 @@
+- technology: LED
+  coverage: PP_VSYS_I_LED
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    Blue_E:
+      lookup:
+      - LED_PP_VSYS_I_LED
+      - 1
+    Green_E:
+      lookup:
+      - LED_PP_VSYS_I_LED
+      - 2
+    PP_VSYS_I_No_Load_LED:
+      lookup:
+      - LED_PP_VSYS_I_LED
+      - 3
+    Red_E:
+      lookup:
+      - LED_PP_VSYS_I_LED
+      - 4
+    VBAT_I_LED_BLUE_ON:
+      lookup:
+      - LED_PP_VSYS_I_LED
+      - 5
+    VBAT_I_LED_GREEN_ON:
+      lookup:
+      - LED_PP_VSYS_I_LED
+      - 6
+    VBAT_I_LED_RED_ON:
+      lookup:
+      - LED_PP_VSYS_I_LED
+      - 7
+    VBAT_I_LED_WHITE_ON:
+      lookup:
+      - LED_PP_VSYS_I_LED
+      - 8
+    White_E:
+      lookup:
+      - LED_PP_VSYS_I_LED
+      - 9
+  conditions: {}
+  sequence:
+    actions:
+    - LED_PP_VSYS_I_LED:
+        filename: LED/PP_VSYS_I_LED.csv
+        plugins: '*'
+    type: sequential

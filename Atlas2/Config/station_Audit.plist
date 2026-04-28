@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StationVersion</key>
+	<string>Atlas2</string>
+	<key>GroupConfig</key>
+	<dict>
+		<key>GroupArgs</key>
+		<array>
+			<string>VendorMode</string>
+			<string>Audit</string>
+		</array>
+		<key>Instances</key>
+		<integer>1</integer>
+		<key>SlotConfig</key>
+		<array>
+			<string>slot1</string>
+			<string>slot2</string>
+			<string>slot3</string>
+			<string>slot4</string>
+		</array>
+	</dict>
+	<key>ConsoleConfig</key>
+	<dict>
+		<key>AtlasUI</key>
+		<dict>
+			<key>RowColor</key>
+			<integer>1</integer>
+			<key>InteractiveViewPlugin</key>
+			<string>Assets/MultiplexInteractiveView.bundle</string>
+			<key>StationInfoViewPlugin</key>
+			<string>TesecoStationInfo.bundle</string>
+			<key>StatusViewPlugin</key>
+			<string>StatusCollectionU.bundle</string>
+		</dict>
+	</dict>
+	<key>InteractiveResourceName</key>
+	<string>SMTInteractiveUI</string>
+	<key>Sequence</key>
+	<string>group.lua</string>
+	<key>DetectionSequence</key>
+	<string>detect.lua</string>
+	<key>Audit</key>
+	<true/>
+</dict>
+</plist>

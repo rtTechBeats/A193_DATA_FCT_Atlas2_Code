@@ -1,0 +1,12 @@
+- technology: System_Info
+  coverage: SYS_POWER
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - System_Info_SYS_POWER:
+        filename: System_Info/SYS_POWER.csv
+        plugins: '*'
+    type: sequential

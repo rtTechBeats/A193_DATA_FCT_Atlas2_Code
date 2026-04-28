@@ -1,0 +1,12 @@
+- technology: SCOPE_OQC
+  coverage: SCOPE_Measure
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - SCOPE_OQC_SCOPE_Measure:
+        filename: SCOPE_OQC/SCOPE_Measure.csv
+        plugins: '*'
+    type: sequential

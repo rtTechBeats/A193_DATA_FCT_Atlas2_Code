@@ -1,0 +1,9 @@
+Function,Inputs,Outputs,Retry,RetryHandler,OnError,SubSubTest,Conditions,ReturnOnFail,Notes
+SetVariables,"""""",PP_VSYS_I_No_Load_LED,,,,,,,
+Common>measureCurrentByPSU,"{module=""battery""}",PP_VSYS_I_No_Load_LED,,,,,,,
+,+{count=2},,,,,,,,
+,+{max_range=10},,,,,,,,
+,+{disUart=1},,,,,,,,
+,+{timeout=3.0},,,,,,,,
+,"+{subsubtest=""PP_VSYS_I_LED_OFF""}",,,,,,,,
+Returns,PP_VSYS_I_No_Load_LED,,,,,,,,

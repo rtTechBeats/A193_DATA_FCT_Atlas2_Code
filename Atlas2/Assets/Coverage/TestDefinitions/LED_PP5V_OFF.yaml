@@ -1,0 +1,12 @@
+- technology: LED
+  coverage: PP5V_OFF
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - LED_PP5V_OFF:
+        filename: LED/PP5V_OFF.csv
+        plugins: '*'
+    type: sequential

@@ -1,0 +1,12 @@
+- technology: MATRIX_Y4_MUX_OQC
+  coverage: MATRIX_Y4_MUX_Measure
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - MATRIX_Y4_MUX_OQC_MATRIX_Y4_MUX_Measure:
+        filename: MATRIX_Y4_MUX_OQC/MATRIX_Y4_MUX_Measure.csv
+        plugins: '*'
+    type: sequential

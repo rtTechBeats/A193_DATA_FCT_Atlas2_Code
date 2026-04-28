@@ -1,0 +1,32 @@
+- technology: Fixture
+  coverage: HardwareCheck
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    FIXTUREID:
+      lookup:
+      - Fixture_HardwareCheck
+      - 1
+    MIXFWPACKAGE:
+      lookup:
+      - Fixture_HardwareCheck
+      - 2
+    SLOTID:
+      lookup:
+      - Fixture_HardwareCheck
+      - 3
+    StationName:
+      lookup:
+      - Fixture_HardwareCheck
+      - 4
+    VENDORID:
+      lookup:
+      - Fixture_HardwareCheck
+      - 5
+  conditions: {}
+  sequence:
+    actions:
+    - Fixture_HardwareCheck:
+        filename: Fixture/HardwareCheck.csv
+        plugins: '*'
+    type: sequential

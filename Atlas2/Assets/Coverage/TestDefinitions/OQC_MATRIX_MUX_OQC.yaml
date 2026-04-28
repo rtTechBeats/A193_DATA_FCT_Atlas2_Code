@@ -1,0 +1,12 @@
+- technology: OQC
+  coverage: MATRIX_MUX_OQC
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - OQC_MATRIX_MUX_OQC:
+        filename: OQC/MATRIX_MUX_OQC.csv
+        plugins: '*'
+    type: sequential

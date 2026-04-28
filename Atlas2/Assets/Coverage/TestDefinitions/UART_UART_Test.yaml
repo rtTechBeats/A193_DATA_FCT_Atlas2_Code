@@ -1,0 +1,16 @@
+- technology: UART
+  coverage: UART_Test
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    diags_output:
+      lookup:
+      - UART_UART_Test
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - UART_UART_Test:
+        filename: UART/UART_Test.csv
+        plugins: '*'
+    type: sequential

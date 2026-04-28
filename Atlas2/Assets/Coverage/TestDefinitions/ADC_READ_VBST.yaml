@@ -1,0 +1,12 @@
+- technology: ADC_READ
+  coverage: VBST
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - ADC_READ_VBST:
+        filename: ADC_READ/VBST.csv
+        plugins: '*'
+    type: sequential

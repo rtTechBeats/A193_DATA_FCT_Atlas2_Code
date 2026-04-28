@@ -1,0 +1,12 @@
+- technology: HALFDOME
+  coverage: CONDET
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_CONDET:
+        filename: HALFDOME/CONDET.csv
+        plugins: '*'
+    type: sequential

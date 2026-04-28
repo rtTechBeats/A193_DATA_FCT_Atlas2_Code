@@ -1,0 +1,37 @@
+- technology: Buck_1V8
+  coverage: Load_200mA_1V8
+  testParameters: '*'
+  inputs:
+    PP_VSYS_I_No_Load_1V8: find.output("Buck_1V8", "No_Load_1V8", "", "PP_VSYS_I_No_Load_1V8")
+  outputs:
+    Buck_1V8_Input_Current_Load_200mA:
+      lookup:
+      - Buck_1V8_Load_200mA_1V8
+      - 1
+    Buck_1V8_Output_Current:
+      lookup:
+      - Buck_1V8_Load_200mA_1V8
+      - 2
+    PP1V8_AON_V_Load_200mA:
+      lookup:
+      - Buck_1V8_Load_200mA_1V8
+      - 3
+    VSYS_I_Load_200mA_1V8:
+      lookup:
+      - Buck_1V8_Load_200mA_1V8
+      - 4
+    VSYS_V_Load_200mA_1V8:
+      lookup:
+      - Buck_1V8_Load_200mA_1V8
+      - 5
+  conditions: {}
+  sequence:
+    actions:
+    - Buck_1V8_Load_200mA_1V8:
+        filename: Buck_1V8/Load_200mA_1V8.csv
+        args:
+        - lookup:
+          - inputs
+          - PP_VSYS_I_No_Load_1V8
+        plugins: '*'
+    type: sequential

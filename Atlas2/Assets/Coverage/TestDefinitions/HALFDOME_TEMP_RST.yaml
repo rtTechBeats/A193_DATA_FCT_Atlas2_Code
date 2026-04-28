@@ -1,0 +1,12 @@
+- technology: HALFDOME
+  coverage: TEMP_RST
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_TEMP_RST:
+        filename: HALFDOME/TEMP_RST.csv
+        plugins: '*'
+    type: sequential

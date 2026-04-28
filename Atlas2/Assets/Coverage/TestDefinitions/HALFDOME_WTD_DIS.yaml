@@ -1,0 +1,12 @@
+- technology: HALFDOME
+  coverage: WTD_DIS
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_WTD_DIS:
+        filename: HALFDOME/WTD_DIS.csv
+        plugins: '*'
+    type: sequential

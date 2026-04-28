@@ -1,0 +1,16 @@
+- technology: HALFDOME
+  coverage: EXIT_SHIP
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    BMU_Data_Path:
+      lookup:
+      - HALFDOME_EXIT_SHIP
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_EXIT_SHIP:
+        filename: HALFDOME/EXIT_SHIP.csv
+        plugins: '*'
+    type: sequential

@@ -1,0 +1,12 @@
+- technology: HALFDOME
+  coverage: BUTTON
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_BUTTON:
+        filename: HALFDOME/BUTTON.csv
+        plugins: '*'
+    type: sequential

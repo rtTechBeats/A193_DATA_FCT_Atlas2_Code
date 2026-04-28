@@ -1,0 +1,25 @@
+- technology: LED
+  coverage: LED_GREEN
+  testParameters: '*'
+  inputs:
+    PP_VSYS_I_No_Load_LED: find.output("LED", "PP_VSYS_I", "", "PP_VSYS_I_No_Load_LED")
+  outputs:
+    Green_E:
+      lookup:
+      - LED_LED_GREEN
+      - 1
+    VBAT_I_LED_GREEN_ON:
+      lookup:
+      - LED_LED_GREEN
+      - 2
+  conditions: {}
+  sequence:
+    actions:
+    - LED_LED_GREEN:
+        filename: LED/LED_GREEN.csv
+        args:
+        - lookup:
+          - inputs
+          - PP_VSYS_I_No_Load_LED
+        plugins: '*'
+    type: sequential

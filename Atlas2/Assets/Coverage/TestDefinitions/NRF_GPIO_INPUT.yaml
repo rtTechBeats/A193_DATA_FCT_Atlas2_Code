@@ -1,0 +1,12 @@
+- technology: NRF_GPIO
+  coverage: INPUT
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - NRF_GPIO_INPUT:
+        filename: NRF_GPIO/INPUT.csv
+        plugins: '*'
+    type: sequential

@@ -1,0 +1,12 @@
+- technology: HALFDOME
+  coverage: FW_RST
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_FW_RST:
+        filename: HALFDOME/FW_RST.csv
+        plugins: '*'
+    type: sequential

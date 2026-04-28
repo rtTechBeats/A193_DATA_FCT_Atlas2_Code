@@ -1,0 +1,16 @@
+- technology: HALFDOME
+  coverage: BTN_RST_EXIT_SHIP
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    PDC_File:
+      lookup:
+      - HALFDOME_BTN_RST_EXIT_SHIP
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - HALFDOME_BTN_RST_EXIT_SHIP:
+        filename: HALFDOME/BTN_RST_EXIT_SHIP.csv
+        plugins: '*'
+    type: sequential

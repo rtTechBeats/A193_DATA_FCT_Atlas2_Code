@@ -1,0 +1,12 @@
+- technology: POWER_OFF
+  coverage: Resistance
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - POWER_OFF_Resistance:
+        filename: POWER_OFF/Resistance.csv
+        plugins: '*'
+    type: sequential

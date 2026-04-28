@@ -1,0 +1,12 @@
+- technology: System_Info
+  coverage: NRF_NTC
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - System_Info_NRF_NTC:
+        filename: System_Info/NRF_NTC.csv
+        plugins: '*'
+    type: sequential

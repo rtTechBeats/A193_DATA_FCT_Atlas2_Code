@@ -1,0 +1,12 @@
+- technology: ADC_READ
+  coverage: VBUS
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - ADC_READ_VBUS:
+        filename: ADC_READ/VBUS.csv
+        plugins: '*'
+    type: sequential

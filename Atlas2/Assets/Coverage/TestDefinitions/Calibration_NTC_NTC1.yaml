@@ -1,0 +1,40 @@
+- technology: Calibration_NTC
+  coverage: NTC1
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    DUT_NTC1:
+      lookup:
+      - Calibration_NTC_NTC1
+      - 1
+    Fixture_NTC1:
+      lookup:
+      - Calibration_NTC_NTC1
+      - 2
+    NTC1_VOLT:
+      lookup:
+      - Calibration_NTC_NTC1
+      - 3
+    PP1V83:
+      lookup:
+      - Calibration_NTC_NTC1
+      - 4
+    Tmp_Offset_NTC1:
+      lookup:
+      - Calibration_NTC_NTC1
+      - 5
+    Tmp_Offset_NTC1_Hex:
+      lookup:
+      - Calibration_NTC_NTC1
+      - 6
+    Tmp_Offset_NTC1_Read:
+      lookup:
+      - Calibration_NTC_NTC1
+      - 7
+  conditions: {}
+  sequence:
+    actions:
+    - Calibration_NTC_NTC1:
+        filename: Calibration_NTC/NTC1.csv
+        plugins: '*'
+    type: sequential

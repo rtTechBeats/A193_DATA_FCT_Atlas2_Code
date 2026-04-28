@@ -1,0 +1,16 @@
+- technology: Buck_5V
+  coverage: No_Load_5V
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    PP_VSYS_I_No_Load:
+      lookup:
+      - Buck_5V_No_Load_5V
+      - 1
+  conditions: {}
+  sequence:
+    actions:
+    - Buck_5V_No_Load_5V:
+        filename: Buck_5V/No_Load_5V.csv
+        plugins: '*'
+    type: sequential

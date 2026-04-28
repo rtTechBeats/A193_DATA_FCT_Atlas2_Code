@@ -1,0 +1,12 @@
+- technology: FREQ_OQC
+  coverage: Freq_Measure
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - FREQ_OQC_Freq_Measure:
+        filename: FREQ_OQC/Freq_Measure.csv
+        plugins: '*'
+    type: sequential

@@ -1,0 +1,28 @@
+- technology: SPKEAR
+  coverage: SINE_1K_Test
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    PATH:
+      lookup:
+      - SPKEAR_SINE_1K_Test
+      - 1
+    VBAT_I_SPKEAR_OFF:
+      lookup:
+      - SPKEAR_SINE_1K_Test
+      - 2
+    VBAT_I_SPKEAR_ON:
+      lookup:
+      - SPKEAR_SINE_1K_Test
+      - 3
+    retTable:
+      lookup:
+      - SPKEAR_SINE_1K_Test
+      - 4
+  conditions: {}
+  sequence:
+    actions:
+    - SPKEAR_SINE_1K_Test:
+        filename: SPKEAR/SINE_1K_Test.csv
+        plugins: '*'
+    type: sequential

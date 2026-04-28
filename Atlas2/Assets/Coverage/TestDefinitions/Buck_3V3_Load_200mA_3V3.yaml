@@ -1,0 +1,37 @@
+- technology: Buck_3V3
+  coverage: Load_200mA_3V3
+  testParameters: '*'
+  inputs:
+    PP_VSYS_I_No_Load_3V3: find.output("Buck_3V3", "No_Load_3V3", "", "PP_VSYS_I_No_Load_3V3")
+  outputs:
+    Buck_3V3_Input_Current_Load_200mA_3V3:
+      lookup:
+      - Buck_3V3_Load_200mA_3V3
+      - 1
+    Buck_3V3_Output_Current_3V3:
+      lookup:
+      - Buck_3V3_Load_200mA_3V3
+      - 2
+    PP3V3_AON_V_Load_200mA_3V3:
+      lookup:
+      - Buck_3V3_Load_200mA_3V3
+      - 3
+    VSYS_I_Load_200mA_3V3:
+      lookup:
+      - Buck_3V3_Load_200mA_3V3
+      - 4
+    VSYS_V_Load_200mA_3V3:
+      lookup:
+      - Buck_3V3_Load_200mA_3V3
+      - 5
+  conditions: {}
+  sequence:
+    actions:
+    - Buck_3V3_Load_200mA_3V3:
+        filename: Buck_3V3/Load_200mA_3V3.csv
+        args:
+        - lookup:
+          - inputs
+          - PP_VSYS_I_No_Load_3V3
+        plugins: '*'
+    type: sequential

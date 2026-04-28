@@ -1,0 +1,12 @@
+- technology: PSU_OQC
+  coverage: PSU_VBUS_POS3
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - PSU_OQC_PSU_VBUS_POS3:
+        filename: PSU_OQC/PSU_VBUS_POS3.csv
+        plugins: '*'
+    type: sequential

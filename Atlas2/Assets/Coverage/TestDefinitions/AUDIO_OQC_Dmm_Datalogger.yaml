@@ -1,0 +1,20 @@
+- technology: AUDIO_OQC
+  coverage: Dmm_Datalogger
+  testParameters: '*'
+  inputs: {}
+  outputs:
+    PATH:
+      lookup:
+      - AUDIO_OQC_Dmm_Datalogger
+      - 1
+    retTable:
+      lookup:
+      - AUDIO_OQC_Dmm_Datalogger
+      - 2
+  conditions: {}
+  sequence:
+    actions:
+    - AUDIO_OQC_Dmm_Datalogger:
+        filename: AUDIO_OQC/Dmm_Datalogger.csv
+        plugins: '*'
+    type: sequential

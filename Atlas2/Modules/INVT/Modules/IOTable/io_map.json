@@ -1,0 +1,4888 @@
+{
+     "USB_RESET": {
+          "CONNECT":    [[0, 1]], 
+          "DISCONNECT": [[0, 0]]
+     }, 
+     "BASE_VBUS_OVP_RESET": {
+          "CONNECT":    [[1, 1]], 
+          "DISCONNECT": [[1, 0]]
+     }, 
+     "DMM_CH12_N": {
+          "CONNECT":    [[2, 1]], 
+          "DISCONNECT": [[2, 0]]
+     }, 
+     "PSU_2A_RESET": {
+          "CONNECT":    [[3, 1]], 
+          "DISCONNECT": [[3, 0]]
+     }, 
+     "VCHG_POWER_SLE@PSU_VCHG_TO_VBUS_CONN": {
+          "CONNECT":    [[4, 0], [5, 1], [8, 0], [240, 1], [248, 0], [249, 0], [6, 0], [7, 0], [241, 1]], 
+          "DISCONNECT": [[4, 0], [5, 0], [8, 0], [240, 0], [248, 0], [249, 0], [6, 0], [7, 0], [241, 0]]
+     }, 
+     "VCHG_POWER_SLE@PSU_2A_TO_VBUS_CONN": {
+          "CONNECT":    [[4, 1], [5, 1], [8, 0], [240, 0], [248, 0], [249, 0], [6, 0], [7, 0], [241, 0]], 
+          "DISCONNECT": [[4, 0], [5, 0], [8, 0], [240, 0], [248, 0], [249, 0], [6, 0], [7, 0], [241, 0]]
+     }, 
+     "VCHG_POWER_SLE@PSU_VBAT_NORMAL_TO_VBUS_CONN": {
+          "CONNECT":    [[4, 0], [5, 1], [8, 0], [240, 0], [248, 1], [249, 0], [6, 0], [7, 0], [241, 0]], 
+          "DISCONNECT": [[4, 0], [5, 0], [8, 0], [240, 0], [248, 0], [249, 0], [6, 0], [7, 0], [241, 0]]
+     }, 
+     "VCHG_POWER_SLE@PSU_VBAT_RVP_TO_VBUS_CONN": {
+          "CONNECT":    [[4, 0], [5, 1], [8, 0], [240, 0], [248, 1], [249, 1], [6, 0], [7, 0], [241, 0]], 
+          "DISCONNECT": [[4, 0], [5, 0], [8, 0], [240, 0], [248, 0], [249, 0], [6, 0], [7, 0], [241, 0]]
+     }, 
+     "POWER_TO_PP_VBUS_RVP": {
+          "CONNECT": [
+               ["BAT_NEG_TO_SYS_GND", "CONNECT"],
+               ["PP_VBAT_CON_TO_SYS_GND", "CONNECT"] ,
+               ["VCHG_POWER_SLE@PSU_VBAT_RVP_TO_VBUS_CONN", "CONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BAT_NEG_TO_SYS_GND", "DISCONNECT"],
+               ["PP_VBAT_CON_TO_SYS_GND", "DISCONNECT"],
+               ["PULL_DOWN_499R_TO_COMM_PORT", "DISCONNECT"]           
+          ]
+     },
+     "DISCHARGE_TO_PP_VBUS_OUT": {
+          "CONNECT": [
+               ["PP_VBUS_OUT_B_TO_VIN_DMM_N", "CONNECT"],
+               ["PULL_DOWN_499R_TO_VIN_DMM_N", "CONNECT"] 
+          ],
+          "DISCONNECT": [
+               ["PP_VBUS_OUT_B_TO_VIN_DMM_N", "DISCONNECT"],
+               ["PULL_DOWN_499R_TO_COMM_PORT", "DISCONNECT"]           
+          ]
+     },
+     "DISCHARGE_TO_PP_VBUS_CONN": {
+          "CONNECT": [
+               ["PP_VBUS_CONN_TO_VIN_DMM_N", "CONNECT"],
+               ["PULL_DOWN_499R_TO_VIN_DMM_N", "CONNECT"] 
+          ],
+          "DISCONNECT": [
+               ["PP_VBUS_CONN_TO_VIN_DMM_N", "DISCONNECT"],
+               ["PULL_DOWN_499R_TO_COMM_PORT", "DISCONNECT"]           
+          ]
+     },
+     "VCHG_POWER_SLE@PSU_VCHG_TO_VBUS_HB": {
+          "CONNECT":    [[4, 0], [5, 1], [8, 1], [240, 1], [248, 0], [249, 0], [6, 0], [7, 1], [241, 1]], 
+          "DISCONNECT": [[4, 0], [5, 0], [8, 0], [240, 0], [248, 0], [249, 0], [6, 0], [7, 0], [241, 0]]
+     }, 
+     "VCHG_POWER_SLE@PSU_2A_TO_VBUS_HB": {
+          "CONNECT":    [[4, 1], [5, 1], [8, 1], [240, 0], [248, 0], [249, 0]], 
+          "DISCONNECT": [[4, 0], [5, 0], [8, 0], [240, 0], [248, 0], [249, 0]]
+     }, 
+     "VCHG_POWER_SNS_SLE@PSU_VCHG_SNS_TO_VBUS_CONN_SNS": {
+          "CONNECT":    [[6, 0], [7, 0], [241, 1]], 
+          "DISCONNECT": [[6, 0], [7, 0], [241, 0]]
+     }, 
+     "VCHG_POWER_SNS_SLE@PSU_2A_SNS_TO_VBUS_CONN_SNS": {
+          "CONNECT":    [[6, 1], [7, 0], [241, 0]], 
+          "DISCONNECT": [[6, 0], [7, 0], [241, 0]]
+     }, 
+     "VCHG_POWER_SNS_SLE@PSU_VCHG_SNS_TO_VBUS_HB_SNS": {
+          "CONNECT":    [[6, 0], [7, 1], [241, 1]], 
+          "DISCONNECT": [[6, 0], [7, 0], [241, 0]]
+     }, 
+     "VCHG_POWER_SNS_SLE@PSU_2A_SNS_TO_VBUS_HB_SNS": {
+          "CONNECT":    [[6, 1], [7, 1], [241, 0]], 
+          "DISCONNECT": [[6, 0], [7, 0], [241, 0]]
+     }, 
+     "PSU_BATT_PATH@TO_PP_VBAT": {
+          "CONNECT":    [[242, 1], [243, 0], [244, 0], [245, 0], [246, 0], [247, 1], [238, 0], [239, 0]], 
+          "DISCONNECT": [[242, 0], [243, 0], [244, 0], [245, 0], [246, 0], [247, 0], [238, 0], [239, 0]]
+     }, 
+     "PSU_BATT_PATH@TO_PP_VBAT_10OHM": {
+          "CONNECT":    [[242, 1], [243, 0], [244, 1], [245, 0], [246, 0], [247, 1], [238, 0], [239, 0]], 
+          "DISCONNECT": [[242, 0], [243, 0], [244, 0], [245, 0], [246, 0], [247, 0], [238, 0], [239, 0]]
+     }, 
+     "PSU_BATT_PATH@CURR_GND_TO_PACK_NEG": {
+          "CONNECT":    [[242, 0], [243, 1], [244, 0], [245, 0], [246, 1], [247, 0], [238, 0], [239, 1]], 
+          "DISCONNECT": [[242, 0], [243, 0], [244, 0], [245, 0], [246, 0], [247, 0], [238, 0], [239, 0]]
+     }, 
+     "PSU_BATT_PATH@CURR_PACK_NEG_TO_GND": {
+          "CONNECT":    [[242, 0], [243, 1], [244, 0], [245, 1], [246, 1], [247, 0], [238, 1], [239, 1]], 
+          "DISCONNECT": [[242, 0], [243, 0], [244, 0], [245, 0], [246, 0], [247, 0], [238, 0], [239, 0]]
+     }, 
+     "DMM_VIN1_SEL@TO_BATT_10OHM_VOL": {
+          "CONNECT":    [[250, 1], [251, 0], [252, 0]], 
+          "DISCONNECT": [[250, 0], [251, 0], [252, 0]]
+     }, 
+     "DMM_VIN1_SEL@TO_ADG2128": {
+          "CONNECT":    [[250, 1], [251, 1], [252, 0]], 
+          "DISCONNECT": [[250, 0], [251, 0], [252, 0]]
+     }, 
+     "DMM_VIN1_SEL@TO_CCSCVS_2_CURR_MEAS": {
+          "CONNECT":    [[250, 1], [251, 0], [252, 1]], 
+          "DISCONNECT": [[250, 0], [251, 0], [252, 0]]
+     }, 
+     "DMM_VIN1_SEL@TO_CCSCVS_2_VOL_MEAS": {
+          "CONNECT":    [[250, 1], [251, 1], [252, 1]], 
+          "DISCONNECT": [[250, 0], [251, 0], [252, 0]]
+     }, 
+     "DMM_VIN2_SEL@TO_CCSCVS_1_OUTPUT": {
+          "CONNECT":    [[253, 1], [254, 0], [255, 0], [18, 0]], 
+          "DISCONNECT": [[253, 0], [254, 0], [255, 0], [18, 0]]
+     }, 
+     "DMM_VIN2_SEL@TO_SMALL_LOAD_CURRENT_MEASURE": {
+          "CONNECT":    [[253, 1], [254, 1], [255, 0], [18, 1]], 
+          "DISCONNECT": [[253, 0], [254, 0], [255, 0], [18, 0]]
+     }, 
+     "DMM_VIN2_SEL@TO_ADG2128": {
+          "CONNECT":    [[253, 1], [254, 1], [255, 0], [18, 0]], 
+          "DISCONNECT": [[253, 0], [254, 0], [255, 0], [18, 0]]
+     }, 
+     "DMM_VIN2_SEL@TO_CCSCVS_1_CURR_MEAS": {
+          "CONNECT":    [[253, 1], [254, 0], [255, 1], [18, 0]], 
+          "DISCONNECT": [[253, 0], [254, 0], [255, 0], [18, 0]]
+     }, 
+     "DMM_VIN2_SEL@TO_CCSCVS_1_VOL_MEAS": {
+          "CONNECT":    [[253, 1], [254, 1], [255, 1], [18, 0]], 
+          "DISCONNECT": [[253, 0], [254, 0], [255, 0], [18, 0]]
+     }, 
+     "CCSCVS_0_OUTPUT_RANGE_SEL@100OHM_RANGE_0P5MA_TO_10MA": {
+          "CONNECT":    [[227, 0], [228, 0]], 
+          "DISCONNECT": [[227, 0], [228, 0]]
+     }, 
+     "CCSCVS_0_OUTPUT_RANGE_SEL@1KOHM_RANGE_0P2MA_TO_2P5MA": {
+          "CONNECT":    [[227, 1], [228, 0]], 
+          "DISCONNECT": [[227, 0], [228, 0]]
+     }, 
+     "CCSCVS_0_OUTPUT_RANGE_SEL@10KOHM_RANGE_2P5UA_TO_250UA": {
+          "CONNECT":    [[227, 0], [228, 1]], 
+          "DISCONNECT": [[227, 0], [228, 0]]
+     }, 
+     "CCSCVS_0_OUTPUT_RANGE_SEL@1MOHM_RANGE_0P25UA_TO_2P5UA": {
+          "CONNECT":    [[227, 1], [228, 1]], 
+          "DISCONNECT": [[227, 0], [228, 0]]
+     }, 
+     "CCSCVS_0_OUTPUT_DIRE@OUTPUT": {
+          "CONNECT":    [[225, 0]], 
+          "DISCONNECT": [[225, 0]]
+     }, 
+     "CCSCVS_0_OUTPUT_DIRE@SINK": {
+          "CONNECT":    [[225, 1]], 
+          "DISCONNECT": [[225, 0]]
+     }, 
+     "CCSCVS_0_CURR_SAMPLING@10KOHM": {
+          "CONNECT":    [[234, 0]], 
+          "DISCONNECT": [[234, 0]]
+     }, 
+     "CCSCVS_0_CURR_SAMPLING@99OHM": {
+          "CONNECT":    [[234, 1]], 
+          "DISCONNECT": [[234, 0]]
+     }, 
+     "CCSCVS_1_OUTPUT_RANGE_SEL@100OHM_RANGE_0P5MA_TO_10MA": {
+          "CONNECT":    [[232, 0], [233, 0]], 
+          "DISCONNECT": [[232, 0], [233, 0]]
+     }, 
+     "CCSCVS_1_OUTPUT_RANGE_SEL@1KOHM_RANGE_0P2MA_TO_2P5MA": {
+          "CONNECT":    [[232, 1], [233, 0]], 
+          "DISCONNECT": [[232, 0], [233, 0]]
+     }, 
+     "CCSCVS_1_OUTPUT_RANGE_SEL@10KOHM_RANGE_2P5UA_TO_250UA": {
+          "CONNECT":    [[232, 0], [233, 1]], 
+          "DISCONNECT": [[232, 0], [233, 0]]
+     }, 
+     "CCSCVS_1_OUTPUT_RANGE_SEL@1MOHM_RANGE_0P25UA_TO_2P5UA": {
+          "CONNECT":    [[232, 1], [233, 1]], 
+          "DISCONNECT": [[232, 0], [233, 0]]
+     }, 
+     "CCSCVS_1_OUTPUT_DIRE@OUTPUT": {
+          "CONNECT":    [[226, 0]], 
+          "DISCONNECT": [[226, 0]]
+     }, 
+     "CCSCVS_1_OUTPUT_DIRE@SINK": {
+          "CONNECT":    [[226, 1]], 
+          "DISCONNECT": [[226, 0]]
+     }, 
+     "CCSCVS_1_CURR_SAMPLING@10KOHM": {
+          "CONNECT":    [[235, 0]], 
+          "DISCONNECT": [[235, 0]]
+     }, 
+     "CCSCVS_1_CURR_SAMPLING@475OHM": {
+          "CONNECT":    [[235, 1]], 
+          "DISCONNECT": [[235, 0]]
+     }, 
+     "CCSCVS_PULL_DOWN": {
+          "CONNECT":    [[231, 1]], 
+          "DISCONNECT": [[231, 0]]
+     }, 
+     "ELOAD_RESET": {
+          "CONNECT":    [[9, 1]], 
+          "DISCONNECT": [[9, 0]]
+     }, 
+     "ELOAD_CH1_SLE@ELOAD_CH1_TO_VBUS_HB": {
+          "CONNECT":    [[10, 1], [14, 1], [15, 1], [16, 1], [98, 0]], 
+          "DISCONNECT": [[10, 0], [14, 0], [15, 0], [16, 0], [98, 0]]
+     }, 
+     "ELOAD_CH1_SLE@VBUS_HBB_TO_SOCKET": {
+          "CONNECT":    [[10, 0], [14, 0], [15, 0], [16, 0], [98, 1]], 
+          "DISCONNECT": [[10, 0], [14, 0], [15, 0], [16, 0], [98, 0]]
+     }, 
+     "ELOAD_CH2_SLE@ELAOD_CH2_TO_PP_PMID_CHG": {
+          "CONNECT":    [[11, 1], [12, 1], [13, 1], [17, 1]], 
+          "DISCONNECT": [[11, 0], [12, 0], [13, 0], [17, 1]]
+     }, 
+     "ELOAD_CH2_SLE@SMALL_LOAD_TO_PP_PMID_CHG": {
+          "CONNECT":    [[11, 0], [12, 0], [13, 0], [17, 0]], 
+          "DISCONNECT": [[11, 0], [12, 0], [13, 0], [17, 1]]
+     }, 
+     "MIC_SLE@PDM_TO_VOX_MIC": {
+          "CONNECT":    [[19, 0], [99, 1], [100, 1], [101, 0], [102, 0], [103, 0], [104, 0], [105, 0], [108, 0]], 
+          "DISCONNECT": [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [108, 1]]
+     }, 
+     "MIC_SLE@PDM_TO_FF1_FB": {
+          "CONNECT":    [[19, 0], [99, 0], [100, 0], [101, 1], [102, 1], [103, 0], [104, 0], [105, 0], [108, 0]], 
+          "DISCONNECT": [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [108, 1]]
+     }, 
+     "MIC_SLE@PDM_TO_FF2_FF3": {
+          "CONNECT":    [[19, 0], [99, 0], [100, 0], [101, 0], [102, 0], [103, 0], [104, 1], [105, 1], [108, 0]], 
+          "DISCONNECT": [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [108, 1]]
+     }, 
+     "MIC_SLE@DCR_TO_PDM_VOX_MIC_CLK": {
+          "CONNECT":    [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 0], [104, 0], [105, 0], [108, 0]], 
+          "DISCONNECT": [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [108, 1]]
+     }, 
+     "MIC_SLE@DCR_TO_PDM_VOX_MIC_DAT": {
+          "CONNECT":    [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 0], [104, 0], [105, 0], [108, 0]], 
+          "DISCONNECT": [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [108, 1]]
+     }, 
+     "MIC_SLE@DCR_TO_PDM_CLK_FF1_FB": {
+          "CONNECT":    [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 0], [104, 0], [105, 0], [108, 0]], 
+          "DISCONNECT": [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [108, 1]]
+     }, 
+     "MIC_SLE@DCR_TO_PDM_DAT_FF1_FB": {
+          "CONNECT":    [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 0], [104, 0], [105, 0], [108, 0]], 
+          "DISCONNECT": [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [108, 1]]
+     }, 
+     "MIC_SLE@DCR_TO_PDM_DAT_FF2_FF3": {
+          "CONNECT":    [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 0], [104, 0], [105, 0], [108, 0]], 
+          "DISCONNECT": [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [108, 1]]
+     }, 
+     "MIC_SLE@DCR_TO_PDM_CLK_FF2_FF3": {
+          "CONNECT":    [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 0], [104, 0], [105, 0], [108, 0]], 
+          "DISCONNECT": [[19, 1], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [108, 1]]
+     }, 
+     "I2C_ENABLE@XAVIER_I2C_TO_DUT_I2C": {
+          "CONNECT":    [[20, 0], [106, 1], [107, 1], [108, 0]], 
+          "DISCONNECT": [[20, 1], [106, 0], [107, 0], [108, 1]]
+     }, 
+     "I2C_ENABLE@DCR_I2C_SCL": {
+          "CONNECT":    [[20, 1], [106, 0], [107, 0], [108, 0]], 
+          "DISCONNECT": [[20, 1], [106, 0], [107, 0], [108, 1]]
+     }, 
+     "I2C_ENABLE@DCR_I2C_SDA": {
+          "CONNECT":    [[20, 1], [106, 0], [107, 0], [108, 0]], 
+          "DISCONNECT": [[20, 1], [106, 0], [107, 0], [108, 1]]
+     }, 
+     "UART1_ENABLE@MAC_TO_UART1": {
+          "CONNECT":    [[21, 0], [114, 1], [115, 1], [118, 0]], 
+          "DISCONNECT": [[21, 1], [114, 0], [115, 0], [118, 0]]
+     }, 
+     "UART1_ENABLE@DCR_UART1_RX": {
+          "CONNECT":    [[21, 1], [114, 0], [115, 0], [118, 0]], 
+          "DISCONNECT": [[21, 1], [114, 0], [115, 0], [118, 1]]
+     }, 
+     "UART1_ENABLE@DCR_UART1_TX": {
+          "CONNECT":    [[21, 1], [114, 0], [115, 0], [118, 0]], 
+          "DISCONNECT": [[21, 1], [114, 0], [115, 0], [118, 1]]
+     }, 
+     "USB_ENABLE@MAC_TO_USB": {
+          "CONNECT":    [[116, 1], [117, 1], [118, 0]], 
+          "DISCONNECT": [[116, 0], [117, 0], [118, 0]]
+     }, 
+     "USB_ENABLE@DCR_USB_P": {
+          "CONNECT":    [[116, 0], [117, 0], [118, 0]], 
+          "DISCONNECT": [[116, 0], [117, 0], [118, 1]]
+     }, 
+     "USB_ENABLE@DCR_USB_N": {
+          "CONNECT":    [[116, 0], [117, 0], [118, 0]], 
+          "DISCONNECT": [[116, 0], [117, 0], [118, 1]]
+     }, 
+     "UART0_SLE@MAC_NORMAL_TO_UART0": {
+          "CONNECT":    [[22, 0], [23, 0], [24, 0], [109, 1], [110, 1], [112, 0], [113, 0]], 
+          "DISCONNECT": [[22, 1], [23, 0], [24, 0], [109, 0], [110, 0], [112, 0], [113, 1]]
+     }, 
+     "UART0_SLE@MAC_SINGLE_TO_UART0": {
+          "CONNECT":    [[22, 0], [23, 1], [24, 1], [109, 1], [110, 1], [112, 0], [113, 0]], 
+          "DISCONNECT": [[22, 1], [23, 0], [24, 0], [109, 0], [110, 0], [112, 0], [113, 1]]
+     }, 
+     "UART0_SLE@SURIMI_MFB_STATUS_L_CLK": {
+          "CONNECT":    [[22, 0], [23, 0], [24, 0], [109, 1], [110, 1], [112, 1], [113, 0]], 
+          "DISCONNECT": [[22, 1], [23, 0], [24, 0], [109, 0], [110, 0], [112, 0], [113, 1]]
+     },
+     "BTN_MFB_L_To_GND": {
+          "CONNECT": [
+               ["UART0_SLE@DCR_SURIMI_MFB_STATUS_L", "CONNECT"],
+               ["DCR_BTN_MFB_L_B_TO_SYS_GND", "CONNECT"] 
+          ],
+          "DISCONNECT": [
+               ["UART0_SLE@DCR_SURIMI_MFB_STATUS_L", "DISCONNECT"],
+               ["DCR_BTN_MFB_L_B_TO_SYS_GND", "DISCONNECT"]           
+          ]
+     },
+     "BTN_PWR_To_PP_VSYS": {
+          "CONNECT": [
+               ["PP_VSYS_B_TO_COMM_PORT", "CONNECT"],
+               ["BTN_PWR_B_TO_COMM_PORT", "CONNECT"] 
+          ],
+          "DISCONNECT": [
+               ["PP_VSYS_B_TO_COMM_PORT", "DISCONNECT"],
+               ["BTN_PWR_B_TO_COMM_PORT", "DISCONNECT"]           
+          ]
+     },
+     "UART0_SLE@DCR_SURIMI_MFB_STATUS_L": {
+          "CONNECT":    [[22, 0], [23, 0], [24, 0], [109, 0], [110, 0], [112, 0], [113, 0]], 
+          "DISCONNECT": [[22, 1], [23, 0], [24, 0], [109, 0], [110, 0], [112, 0], [113, 1]]
+     }, 
+     "UART0_SLE@DCR_UART0_RX": {
+          "CONNECT":    [[22, 1], [23, 0], [24, 0], [109, 0], [110, 0], [112, 0], [113, 0]], 
+          "DISCONNECT": [[22, 1], [23, 0], [24, 0], [109, 0], [110, 0], [112, 0], [113, 1]]
+     }, 
+     "UART0_SLE@DCR_UART0_TX": {
+          "CONNECT":    [[22, 1], [23, 0], [24, 0], [109, 0], [110, 0], [112, 0], [113, 0]], 
+          "DISCONNECT": [[22, 1], [23, 0], [24, 0], [109, 0], [110, 0], [112, 0], [113, 1]]
+     }, 
+     "UART0_RX_TO_HBCOMMS": {
+          "CONNECT":    [[124, 1]], 
+          "DISCONNECT": [[124, 0]]
+     }, 
+     "COMM_PORT12_SLE@COMM_PORT12_TO_CCSCVS_1_2": {
+          "CONNECT":    [[25, 0]], 
+          "DISCONNECT": [[25, 0]]
+     }, 
+     "COMM_PORT12_SLE@COMM_PORT12_TO_PULSE_1_2": {
+          "CONNECT":    [[25, 1]], 
+          "DISCONNECT": [[25, 0]]
+     }, 
+     "CLK_H_MEASURE@COMM_PORT3_TO_PULSE_3": {
+          "CONNECT":    [[26, 1], [29, 0], [30, 0], [31, 0]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_H_MEASURE@PDM_CLK_MEASURE": {
+          "CONNECT":    [[26, 0], [29, 0], [30, 0], [31, 1]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_H_MEASURE@AMP_CLK_MEASURE": {
+          "CONNECT":    [[26, 0], [29, 0], [30, 1], [31, 0]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_H_MEASURE@COMM_PORT3_CLK_MEASURE": {
+          "CONNECT":    [[26, 0], [29, 0], [30, 1], [31, 1]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_H_MEASURE@26M_CLK_MEASURE": {
+          "CONNECT":    [[26, 0], [29, 1], [30, 0], [31, 0]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_L_MEASURE@COMM_PORT3_TO_PULSE_3": {
+          "CONNECT":    [[26, 1], [29, 0], [30, 0], [31, 0]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_L_MEASURE@PDM_CLK_MEASURE": {
+          "CONNECT":    [[26, 0], [29, 0], [30, 0], [31, 1]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_L_MEASURE@AMP_OUT_CLK_MEASURE": {
+          "CONNECT":    [[26, 0], [29, 0], [30, 1], [31, 0]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_L_MEASURE@COMM_PORT3_CLK_MEASURE": {
+          "CONNECT":    [[26, 0], [29, 0], [30, 1], [31, 1]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_L_MEASURE@26M_CLK_MEASURE": {
+          "CONNECT":    [[26, 0], [29, 1], [30, 0], [31, 0]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "CLK_L_MEASURE@SMA_26M_CLK_MEASURE": {
+          "CONNECT":    [[26, 0], [29, 0], [30, 0], [31, 0]], 
+          "DISCONNECT": [[26, 0], [29, 0], [30, 0], [31, 0]]
+     }, 
+     "WAVE_MODULE_MEASURE_SEL@ANALOG_AMP_OUT_TO_STARLORD": {
+          "CONNECT":    [[27, 0], [28, 0], [29, 0], [30, 0],[122,0]], 
+          "DISCONNECT": [[27, 0], [28, 0], [29, 0], [30, 0],[122,0]]
+     }, 
+     "WAVE_MODULE_MEASURE_SEL@ANALOG_AMP_OUT_TO_ESP32": {
+          "CONNECT":    [[27, 1], [28, 0], [29, 1], [30, 1]], 
+          "DISCONNECT": [[27, 0], [28, 0], [29, 0], [30, 0]]
+     }, 
+     "WAVE_MODULE_MEASURE_SEL@HPOUT_TO_STARLORD": {
+          "CONNECT":    [[27, 0], [28, 1], [29, 1], [30, 1],[122,1]], 
+          "DISCONNECT": [[27, 0], [28, 0], [29, 0], [30, 0],[122,0]]
+     }, 
+     "WAVE_MODULE_MEASURE_SEL@HPOUT_TO_ESP32": {
+          "CONNECT":    [[27, 1], [28, 1], [29, 1], [30, 1]], 
+          "DISCONNECT": [[27, 0], [28, 0], [29, 0], [30, 0]]
+     }, 
+     "COMM_PORT3_STATE_RESET": {
+          "CONNECT":    [[32, 1]], 
+          "DISCONNECT": [[32, 0]]
+     }, 
+     "CAL_SLE@VBATT_VOLTAGE_CAL": {
+          "CONNECT":    [[33, 1], [34, 1], [35, 0], [36, 0], [37, 0], [38, 0], [39, 0]], 
+          "DISCONNECT": [[33, 0], [34, 0], [35, 0], [36, 0], [37, 0], [38, 0], [39, 0]]
+     }, 
+     "CAL_SLE@VBATT_CURRENT_CAL": {
+          "CONNECT":    [[33, 1], [34, 1], [35, 0], [36, 0], [37, 0], [38, 1], [39, 1]], 
+          "DISCONNECT": [[33, 0], [34, 0], [35, 0], [36, 0], [37, 0], [38, 0], [39, 0]]
+     }, 
+     "CAL_SLE@VBUS_VOLTAGE_CAL": {
+          "CONNECT":    [[33, 0], [34, 0], [35, 1], [36, 1], [37, 0], [38, 0], [39, 0]], 
+          "DISCONNECT": [[33, 0], [34, 0], [35, 0], [36, 0], [37, 0], [38, 0], [39, 0]]
+     }, 
+     "CAL_SLE@VBUS_CURRENT_CAL": {
+          "CONNECT":    [[33, 0], [34, 0], [35, 1], [36, 1], [37, 0], [38, 1], [39, 1]], 
+          "DISCONNECT": [[33, 0], [34, 0], [35, 0], [36, 0], [37, 0], [38, 0], [39, 0]]
+     }, 
+     "CAL_SLE@DMM_CCS_CVS__VOLTAGE_CAL": {
+          "CONNECT":    [[33, 0], [34, 0], [35, 0], [36, 0], [37, 1], [38, 0], [39, 0]], 
+          "DISCONNECT": [[33, 0], [34, 0], [35, 0], [36, 0], [37, 0], [38, 0], [39, 0]]
+     }, 
+     "CAL_SLE@CCS_CVS_CURRENT_CAL": {
+          "CONNECT":    [[33, 0], [34, 0], [35, 0], [36, 0], [37, 1], [38, 1], [39, 1]], 
+          "DISCONNECT": [[33, 0], [34, 0], [35, 0], [36, 0], [37, 0], [38, 0], [39, 0]]
+     }, 
+     "NTC_SLE@CHG_BAT_TS_PULLDOWN_4K": {
+          "CONNECT":    [[80, 1], [81, 0], [82, 0], [83, 0]], 
+          "DISCONNECT": [[80, 0], [81, 0], [82, 0], [83, 0]]
+     }, 
+     "NTC_SLE@CHG_BAT_TS_PULLDOWN_10K": {
+          "CONNECT":    [[80, 0], [81, 1], [82, 0], [83, 0]], 
+          "DISCONNECT": [[80, 0], [81, 0], [82, 0], [83, 0]]
+     }, 
+     "NTC_SLE@CHG_BAT_TS_PULLDOWN_30K": {
+          "CONNECT":    [[80, 0], [81, 0], [82, 1], [83, 0]], 
+          "DISCONNECT": [[80, 0], [81, 0], [82, 0], [83, 0]]
+     }, 
+     "NTC_SLE@CHG_BAT_TS_TO_DCR": {
+          "CONNECT":    [[80, 0], [81, 0], [82, 0], [83, 1]], 
+          "DISCONNECT": [[80, 0], [81, 0], [82, 0], [83, 0]]
+     }, 
+     "CC1_SLE@CC1_PULLUP_22K": {
+          "CONNECT":    [[84, 1], [85, 0], [86, 0], [87, 0]], 
+          "DISCONNECT": [[84, 0], [85, 0], [86, 0], [87, 0]]
+     }, 
+     "CC1_SLE@CC1_PULLUP_10K": {
+          "CONNECT":    [[84, 0], [85, 1], [86, 0], [87, 0]], 
+          "DISCONNECT": [[84, 0], [85, 0], [86, 0], [87, 0]]
+     }, 
+     "CC1_SLE@CC1_PULLUP_56K": {
+          "CONNECT":    [[84, 0], [85, 0], [86, 1], [87, 0]], 
+          "DISCONNECT": [[84, 0], [85, 0], [86, 0], [87, 0]]
+     }, 
+     "CC1_SLE@CC1_PULLUP_5K1": {
+          "CONNECT":    [[84, 0], [85, 0], [86, 0], [87, 1]], 
+          "DISCONNECT": [[84, 0], [85, 0], [86, 0], [87, 0]]
+     }, 
+     "CC2_SLE@CC2_PULLUP_22K": {
+          "CONNECT":    [[88, 1], [89, 0], [90, 0], [91, 0]], 
+          "DISCONNECT": [[88, 0], [89, 0], [90, 0], [91, 0]]
+     }, 
+     "CC2_SLE@CC2_PULLUP_10K": {
+          "CONNECT":    [[88, 0], [89, 1], [90, 0], [91, 0]], 
+          "DISCONNECT": [[88, 0], [89, 0], [90, 0], [91, 0]]
+     }, 
+     "CC2_SLE@CC2_PULLUP_56K": {
+          "CONNECT":    [[88, 0], [89, 0], [90, 1], [91, 0]], 
+          "DISCONNECT": [[88, 0], [89, 0], [90, 0], [91, 0]]
+     }, 
+     "CC2_SLE@CC2_PULLUP_5K1": {
+          "CONNECT":    [[88, 0], [89, 0], [90, 0], [91, 1]], 
+          "DISCONNECT": [[88, 0], [89, 0], [90, 0], [91, 0]]
+     }, 
+     "LED_SLE@TP_PP_LP5811_BOOST_TO_DCR": {
+          "CONNECT":    [[92, 0], [93, 1], [94, 0], [95, 0], [96, 0]], 
+          "DISCONNECT": [[92, 0], [93, 0], [94, 0], [95, 0], [96, 1]]
+     }, 
+     "LED_SLE@TP_LED_LP5811_WHITE_TO_DCR": {
+          "CONNECT":    [[92, 0], [93, 0], [94, 0], [95, 0], [96, 0]], 
+          "DISCONNECT": [[92, 0], [93, 0], [94, 0], [95, 0], [96, 1]]
+     }, 
+     "LED_SLE@TP_LED_LP5811_WHITE_TO_LIGHT": {
+          "CONNECT":    [[92, 1], [93, 0], [94, 1], [95, 0], [96, 0]], 
+          "DISCONNECT": [[92, 0], [93, 0], [94, 0], [95, 0], [96, 1]]
+     }, 
+     "LED_SLE@TP_LED_LP5811_RED_TO_DCR": {
+          "CONNECT":    [[92, 0], [93, 0], [94, 0], [95, 0], [96, 0]], 
+          "DISCONNECT": [[92, 0], [93, 0], [94, 0], [95, 0], [96, 1]]
+     }, 
+     "LED_SLE@TP_LED_LP5811_RED_TO_LIGHT": {
+          "CONNECT":    [[92, 1], [93, 0], [94, 0], [95, 1], [96, 0]], 
+          "DISCONNECT": [[92, 0], [93, 0], [94, 0], [95, 0], [96, 1]]
+     }, 
+     "FIXTURE_GND_DUT_GND": {
+          "CONNECT":    [[97, 1]], 
+          "DISCONNECT": [[97, 0]]
+     }, 
+     "FSOURCE_D_TO_1V8": {
+          "CONNECT":    [[119, 1]], 
+          "DISCONNECT": [[119, 0]]
+     }, 
+     "HPOUT_ENABLE@HPOUT_MEASURE": {
+          "CONNECT":    [[122, 1]], 
+          "DISCONNECT": [[122, 0]]
+     }, 
+     "HPOUT_ENABLE@HPOUT_TO_DCR": {
+          "CONNECT":    [[122, 0]], 
+          "DISCONNECT": [[122, 0]]
+     }, 
+     "ANALOG_AMP_OUT_SLE@ANALOG_AMP_OUT_NOLOAD": {
+          "CONNECT":    [[120, 0], [121, 0], [123, 0]], 
+          "DISCONNECT": [[120, 0], [121, 0], [123, 0]]
+     }, 
+     "ANALOG_AMP_OUT_SLE@ANALOG_AMP_OUT_LOAD32R": {
+          "CONNECT":    [[120, 1], [121, 1], [123, 0]], 
+          "DISCONNECT": [[120, 0], [121, 0], [123, 0]]
+     }, 
+     "ANALOG_AMP_OUT_SLE@ANALOG_AMP_OUTTO_DCR": {
+          "CONNECT":    [[120, 0], [121, 0], [123, 1]], 
+          "DISCONNECT": [[120, 0], [121, 0], [123, 0]]
+     }, 
+     "SIB_VBUS_OVP_RESET": {
+          "CONNECT":    [[230, 1]], 
+          "DISCONNECT": [[230, 0]]
+     }, 
+     "SIB_VBAT_OVP_RESET": {
+          "CONNECT":    [[229, 1]], 
+          "DISCONNECT": [[229, 0]]
+     }, 
+     "PSU_RESET": {
+          "CONNECT":    [[237, 1]], 
+          "DISCONNECT": [[237, 0]]
+     }, 
+     "DMM_RESET": {
+          "CONNECT":    [[236, 1]], 
+          "DISCONNECT": [[236, 0]]
+     }, 
+     "PDM_OQC_TEST@TO_VOX_MIC": {
+          "CONNECT":    [[99, 1], [119, 0]], 
+          "DISCONNECT": [[99, 0], [119, 0]]
+     }, 
+     "PDM_OQC_TEST@TO_FF1_FB_MIC": {
+          "CONNECT":    [[99, 0], [119, 0]], 
+          "DISCONNECT": [[99, 0], [119, 0]]
+     }, 
+     "PDM_OQC_TEST@TO_FF2_FF3_MIC": {
+          "CONNECT":    [[99, 0], [119, 1]], 
+          "DISCONNECT": [[99, 0], [119, 0]]
+     }, 
+     "PSU_OQC_CAL@TO_VBAT_VOLTAGE": {
+          "CONNECT":    [[125, 1], [126, 0], [127, 0], [111, 0], [93, 0]], 
+          "DISCONNECT": [[125, 0], [126, 0], [127, 0], [111, 0], [93, 0]]
+     }, 
+     "PSU_OQC_CAL@TO_VBAT_CUURENT": {
+          "CONNECT":    [[125, 1], [126, 0], [127, 0], [111, 1], [93, 1]], 
+          "DISCONNECT": [[125, 0], [126, 0], [127, 0], [111, 0], [93, 0]]
+     }, 
+     "PSU_OQC_CAL@TO_VCHG_VOLTAGE": {
+          "CONNECT":    [[125, 0], [126, 1], [127, 0], [111, 0], [93, 0]], 
+          "DISCONNECT": [[125, 0], [126, 0], [127, 0], [111, 0], [93, 0]]
+     }, 
+     "PSU_OQC_CAL@TO_VCHG_CUURENT": {
+          "CONNECT":    [[125, 0], [126, 1], [127, 0], [111, 1], [93, 1]], 
+          "DISCONNECT": [[125, 0], [126, 0], [127, 0], [111, 0], [93, 0]]
+     }, 
+     "PSU_OQC_CAL@TO_DMM_CVSCCS_VOLTAGE": {
+          "CONNECT":    [[125, 0], [126, 0], [127, 1], [111, 0], [93, 0]], 
+          "DISCONNECT": [[125, 0], [126, 0], [127, 0], [111, 0], [93, 0]]
+     }, 
+     "PSU_OQC_CAL@TO_DMM_CVSCCS_CUURENT": {
+          "CONNECT":    [[125, 0], [126, 0], [127, 1], [111, 1], [93, 1]], 
+          "DISCONNECT": [[125, 0], [126, 0], [127, 0], [111, 0], [93, 0]]
+     }, 
+     "LEAKAGE_INIT": {
+          "CONNECT":    [[80, 0], [81, 0], [82, 0], [83, 1], [84, 0], [85, 0], [86, 0], [87, 0], [88, 0], [89, 0], [90, 0], [91, 0], [92, 0], [93, 0], [94, 0], [95, 0], [96, 0], [97, 0], [98, 0], [99, 0], [100, 0], [101, 0], [102, 0], [103, 0], [104, 0], [105, 0], [106, 0], [107, 0], [108, 0], [109, 0], [110, 0], [112, 0], [113, 0], [114, 0], [115, 0], [116, 0], [117, 0], [118, 0], [119, 0], [120, 0], [121, 1], [122, 0], [123, 1], [124, 0], [2, 1], [25, 0], [18, 0]], 
+          "DISCONNECT": [[80, 0], [81, 0], [82, 0], [83, 0], [84, 0], [85, 0], [86, 0], [87, 0], [88, 0], [89, 0], [90, 0], [91, 0], [92, 0], [93, 0], [94, 0], [95, 0], [96, 1], [97, 0], [98, 0], [99, 0], [100, 0], [101, 0], [102, 0], [103, 1], [104, 0], [105, 0], [106, 0], [107, 0], [108, 1], [109, 0], [110, 0], [112, 0], [113, 1], [114, 0], [115, 0], [116, 0], [117, 0], [118, 1], [119, 0], [120, 0], [121, 0], [122, 0], [123, 0], [124, 0], [2, 0], [25, 0], [18, 0]]
+     }, 
+     "PP_VBUS_CONN_TO_CCSCVS_CH1": {
+          "CONNECT":    [[0, 0, 1]], 
+          "DISCONNECT": [[0, 0, 0]]
+     }, 
+     "PP_VBUS_CONN_TO_CCSCVS_CH2": {
+          "CONNECT":    [[0, 1, 1]], 
+          "DISCONNECT": [[0, 1, 0]]
+     }, 
+     "PP_VBUS_CONN_TO_COMM_PORT": {
+          "CONNECT":    [[0, 2, 1]], 
+          "DISCONNECT": [[0, 2, 0]]
+     }, 
+     "PP_VBUS_CONN_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[0, 3, 1]], 
+          "DISCONNECT": [[0, 3, 0]]
+     }, 
+     "PP_VBUS_CONN_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[0, 4, 1]], 
+          "DISCONNECT": [[0, 4, 0]]
+     }, 
+     "PP_VBUS_CONN_TO_VIN_DMM_N": {
+          "CONNECT":    [[0, 5, 1]], 
+          "DISCONNECT": [[0, 5, 0]]
+     }, 
+     "PP_VBUS_CONN_TO_PP1V8_LDO": {
+          "CONNECT":    [[0, 6, 1]], 
+          "DISCONNECT": [[0, 6, 0]]
+     }, 
+     "PP_VBUS_CONN_TO_SYS_GND": {
+          "CONNECT":    [[0, 7, 1]], 
+          "DISCONNECT": [[0, 7, 0]]
+     }, 
+     "PP1V8_SUR_RST_LEFT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[1, 0, 1]], 
+          "DISCONNECT": [[1, 0, 0]]
+     }, 
+     "PP1V8_SUR_RST_LEFT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[1, 1, 1]], 
+          "DISCONNECT": [[1, 1, 0]]
+     }, 
+     "PP1V8_SUR_RST_LEFT_TO_COMM_PORT": {
+          "CONNECT":    [[1, 2, 1]], 
+          "DISCONNECT": [[1, 2, 0]]
+     }, 
+     "PP1V8_SUR_RST_LEFT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[1, 3, 1]], 
+          "DISCONNECT": [[1, 3, 0]]
+     }, 
+     "PP1V8_SUR_RST_LEFT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[1, 4, 1]], 
+          "DISCONNECT": [[1, 4, 0]]
+     }, 
+     "PP1V8_SUR_RST_LEFT_TO_VIN_DMM_N": {
+          "CONNECT":    [[1, 5, 1]], 
+          "DISCONNECT": [[1, 5, 0]]
+     }, 
+     "PP1V8_SUR_RST_LEFT_TO_PP1V8_LDO": {
+          "CONNECT":    [[1, 6, 1]], 
+          "DISCONNECT": [[1, 6, 0]]
+     }, 
+     "PP1V8_SUR_RST_LEFT_TO_SYS_GND": {
+          "CONNECT":    [[1, 7, 1]], 
+          "DISCONNECT": [[1, 7, 0]]
+     }, 
+     "PP1V8_SUR_RST_RIGHT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[1, 0, 1]], 
+          "DISCONNECT": [[1, 0, 0]]
+     }, 
+     "PP1V8_SUR_RST_RIGHT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[1, 1, 1]], 
+          "DISCONNECT": [[1, 1, 0]]
+     }, 
+     "PP1V8_SUR_RST_RIGHT_TO_COMM_PORT": {
+          "CONNECT":    [[1, 2, 1]], 
+          "DISCONNECT": [[1, 2, 0]]
+     }, 
+     "PP1V8_SUR_RST_RIGHT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[1, 3, 1]], 
+          "DISCONNECT": [[1, 3, 0]]
+     }, 
+     "PP1V8_SUR_RST_RIGHT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[1, 4, 1]], 
+          "DISCONNECT": [[1, 4, 0]]
+     }, 
+     "PP1V8_SUR_RST_RIGHT_TO_VIN_DMM_N": {
+          "CONNECT":    [[1, 5, 1]], 
+          "DISCONNECT": [[1, 5, 0]]
+     }, 
+     "PP1V8_SUR_RST_RIGHT_TO_PP1V8_LDO": {
+          "CONNECT":    [[1, 6, 1]], 
+          "DISCONNECT": [[1, 6, 0]]
+     }, 
+     "PP1V8_SUR_RST_RIGHT_TO_SYS_GND": {
+          "CONNECT":    [[1, 7, 1]], 
+          "DISCONNECT": [[1, 7, 0]]
+     }, 
+     "BAT_NEG_TO_CCSCVS_CH1": {
+          "CONNECT":    [[2, 0, 1]], 
+          "DISCONNECT": [[2, 0, 0]]
+     }, 
+     "BAT_NEG_TO_CCSCVS_CH2": {
+          "CONNECT":    [[2, 1, 1]], 
+          "DISCONNECT": [[2, 1, 0]]
+     }, 
+     "BAT_NEG_TO_COMM_PORT": {
+          "CONNECT":    [[2, 2, 1]], 
+          "DISCONNECT": [[2, 2, 0]]
+     }, 
+     "BAT_NEG_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[2, 3, 1]], 
+          "DISCONNECT": [[2, 3, 0]]
+     }, 
+     "BAT_NEG_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[2, 4, 1]], 
+          "DISCONNECT": [[2, 4, 0]]
+     }, 
+     "BAT_NEG_TO_VIN_DMM_N": {
+          "CONNECT":    [[2, 5, 1]], 
+          "DISCONNECT": [[2, 5, 0]]
+     }, 
+     "BAT_NEG_TO_PP1V8_LDO": {
+          "CONNECT":    [[2, 6, 1]], 
+          "DISCONNECT": [[2, 6, 0]]
+     }, 
+     "BAT_NEG_TO_SYS_GND": {
+          "CONNECT":    [[2, 7, 1]], 
+          "DISCONNECT": [[2, 7, 0]]
+     }, 
+     "PP_VBAT_CON_TO_CCSCVS_CH1": {
+          "CONNECT":    [[3, 0, 1]], 
+          "DISCONNECT": [[3, 0, 0]]
+     }, 
+     "PP_VBAT_CON_TO_CCSCVS_CH2": {
+          "CONNECT":    [[3, 1, 1]], 
+          "DISCONNECT": [[3, 1, 0]]
+     }, 
+     "PP_VBAT_CON_TO_COMM_PORT": {
+          "CONNECT":    [[3, 2, 1]], 
+          "DISCONNECT": [[3, 2, 0]]
+     }, 
+     "PP_VBAT_CON_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[3, 3, 1]], 
+          "DISCONNECT": [[3, 3, 0]]
+     }, 
+     "PP_VBAT_CON_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[3, 4, 1]], 
+          "DISCONNECT": [[3, 4, 0]]
+     }, 
+     "PP_VBAT_CON_TO_VIN_DMM_N": {
+          "CONNECT":    [[3, 5, 1]], 
+          "DISCONNECT": [[3, 5, 0]]
+     }, 
+     "PP_VBAT_CON_TO_PP1V8_LDO": {
+          "CONNECT":    [[3, 6, 1]], 
+          "DISCONNECT": [[3, 6, 0]]
+     }, 
+     "PP_VBAT_CON_TO_SYS_GND": {
+          "CONNECT":    [[3, 7, 1]], 
+          "DISCONNECT": [[3, 7, 0]]
+     }, 
+     "CHG_BAT_TS_TO_CCSCVS_CH1": {
+          "CONNECT":    [[4, 0, 1]], 
+          "DISCONNECT": [[4, 0, 0]]
+     }, 
+     "CHG_BAT_TS_TO_CCSCVS_CH2": {
+          "CONNECT":    [[4, 1, 1]], 
+          "DISCONNECT": [[4, 1, 0]]
+     }, 
+     "CHG_BAT_TS_TO_COMM_PORT": {
+          "CONNECT":    [[4, 2, 1]], 
+          "DISCONNECT": [[4, 2, 0]]
+     }, 
+     "CHG_BAT_TS_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[4, 3, 1]], 
+          "DISCONNECT": [[4, 3, 0]]
+     }, 
+     "CHG_BAT_TS_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[4, 4, 1]], 
+          "DISCONNECT": [[4, 4, 0]]
+     }, 
+     "CHG_BAT_TS_TO_VIN_DMM_N": {
+          "CONNECT":    [[4, 5, 1]], 
+          "DISCONNECT": [[4, 5, 0]]
+     }, 
+     "CHG_BAT_TS_TO_PP1V8_LDO": {
+          "CONNECT":    [[4, 6, 1]], 
+          "DISCONNECT": [[4, 6, 0]]
+     }, 
+     "CHG_BAT_TS_TO_SYS_GND": {
+          "CONNECT":    [[4, 7, 1]], 
+          "DISCONNECT": [[4, 7, 0]]
+     }, 
+     "CC1_TO_CCSCVS_CH1": {
+          "CONNECT":    [[5, 0, 1]], 
+          "DISCONNECT": [[5, 0, 0]]
+     }, 
+     "CC1_TO_CCSCVS_CH2": {
+          "CONNECT":    [[5, 1, 1]], 
+          "DISCONNECT": [[5, 1, 0]]
+     }, 
+     "CC1_TO_COMM_PORT": {
+          "CONNECT":    [[5, 2, 1]], 
+          "DISCONNECT": [[5, 2, 0]]
+     }, 
+     "CC1_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[5, 3, 1]], 
+          "DISCONNECT": [[5, 3, 0]]
+     }, 
+     "CC1_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[5, 4, 1]], 
+          "DISCONNECT": [[5, 4, 0]]
+     }, 
+     "CC1_TO_VIN_DMM_N": {
+          "CONNECT":    [[5, 5, 1]], 
+          "DISCONNECT": [[5, 5, 0]]
+     }, 
+     "CC1_TO_PP1V8_LDO": {
+          "CONNECT":    [[5, 6, 1]], 
+          "DISCONNECT": [[5, 6, 0]]
+     }, 
+     "CC1_TO_SYS_GND": {
+          "CONNECT":    [[5, 7, 1]], 
+          "DISCONNECT": [[5, 7, 0]]
+     }, 
+     "CC2_TO_CCSCVS_CH1": {
+          "CONNECT":    [[6, 0, 1]], 
+          "DISCONNECT": [[6, 0, 0]]
+     }, 
+     "CC2_TO_CCSCVS_CH2": {
+          "CONNECT":    [[6, 1, 1]], 
+          "DISCONNECT": [[6, 1, 0]]
+     }, 
+     "CC2_TO_COMM_PORT": {
+          "CONNECT":    [[6, 2, 1]], 
+          "DISCONNECT": [[6, 2, 0]]
+     }, 
+     "CC2_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[6, 3, 1]], 
+          "DISCONNECT": [[6, 3, 0]]
+     }, 
+     "CC2_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[6, 4, 1]], 
+          "DISCONNECT": [[6, 4, 0]]
+     }, 
+     "CC2_TO_VIN_DMM_N": {
+          "CONNECT":    [[6, 5, 1]], 
+          "DISCONNECT": [[6, 5, 0]]
+     }, 
+     "CC2_TO_PP1V8_LDO": {
+          "CONNECT":    [[6, 6, 1]], 
+          "DISCONNECT": [[6, 6, 0]]
+     }, 
+     "CC2_TO_SYS_GND": {
+          "CONNECT":    [[6, 7, 1]], 
+          "DISCONNECT": [[6, 7, 0]]
+     }, 
+     "PP1V8_VA18_TO_CCSCVS_CH1": {
+          "CONNECT":    [[7, 0, 1]], 
+          "DISCONNECT": [[7, 0, 0]]
+     }, 
+     "PP1V8_VA18_TO_CCSCVS_CH2": {
+          "CONNECT":    [[7, 1, 1]], 
+          "DISCONNECT": [[7, 1, 0]]
+     }, 
+     "PP1V8_VA18_TO_COMM_PORT": {
+          "CONNECT":    [[7, 2, 1]], 
+          "DISCONNECT": [[7, 2, 0]]
+     }, 
+     "PP1V8_VA18_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[7, 3, 1]], 
+          "DISCONNECT": [[7, 3, 0]]
+     }, 
+     "PP1V8_VA18_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[7, 4, 1]], 
+          "DISCONNECT": [[7, 4, 0]]
+     }, 
+     "PP1V8_VA18_TO_VIN_DMM_N": {
+          "CONNECT":    [[7, 5, 1]], 
+          "DISCONNECT": [[7, 5, 0]]
+     }, 
+     "PP1V8_VA18_TO_PP1V8_LDO": {
+          "CONNECT":    [[7, 6, 1]], 
+          "DISCONNECT": [[7, 6, 0]]
+     }, 
+     "PP1V8_VA18_TO_SYS_GND": {
+          "CONNECT":    [[7, 7, 1]], 
+          "DISCONNECT": [[7, 7, 0]]
+     }, 
+     "PP_VAUD_TO_CCSCVS_CH1": {
+          "CONNECT":    [[8, 0, 1]], 
+          "DISCONNECT": [[8, 0, 0]]
+     }, 
+     "PP_VAUD_TO_CCSCVS_CH2": {
+          "CONNECT":    [[8, 1, 1]], 
+          "DISCONNECT": [[8, 1, 0]]
+     }, 
+     "PP_VAUD_TO_COMM_PORT": {
+          "CONNECT":    [[8, 2, 1]], 
+          "DISCONNECT": [[8, 2, 0]]
+     }, 
+     "PP_VAUD_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[8, 3, 1]], 
+          "DISCONNECT": [[8, 3, 0]]
+     }, 
+     "PP_VAUD_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[8, 4, 1]], 
+          "DISCONNECT": [[8, 4, 0]]
+     }, 
+     "PP_VAUD_TO_VIN_DMM_N": {
+          "CONNECT":    [[8, 5, 1]], 
+          "DISCONNECT": [[8, 5, 0]]
+     }, 
+     "PP_VAUD_TO_PP1V8_LDO": {
+          "CONNECT":    [[8, 6, 1]], 
+          "DISCONNECT": [[8, 6, 0]]
+     }, 
+     "PP_VAUD_TO_SYS_GND": {
+          "CONNECT":    [[8, 7, 1]], 
+          "DISCONNECT": [[8, 7, 0]]
+     }, 
+     "PP_VBUS_USBC_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[9, 0, 1]], 
+          "DISCONNECT": [[9, 0, 0]]
+     }, 
+     "PP_VBUS_USBC_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[9, 1, 1]], 
+          "DISCONNECT": [[9, 1, 0]]
+     }, 
+     "PP_VBUS_USBC_B_TO_COMM_PORT": {
+          "CONNECT":    [[9, 2, 1]], 
+          "DISCONNECT": [[9, 2, 0]]
+     }, 
+     "PP_VBUS_USBC_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[9, 3, 1]], 
+          "DISCONNECT": [[9, 3, 0]]
+     }, 
+     "PP_VBUS_USBC_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[9, 4, 1]], 
+          "DISCONNECT": [[9, 4, 0]]
+     }, 
+     "PP_VBUS_USBC_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[9, 5, 1]], 
+          "DISCONNECT": [[9, 5, 0]]
+     }, 
+     "PP_VBUS_USBC_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[9, 6, 1]], 
+          "DISCONNECT": [[9, 6, 0]]
+     }, 
+     "PP_VBUS_USBC_B_TO_SYS_GND": {
+          "CONNECT":    [[9, 7, 1]], 
+          "DISCONNECT": [[9, 7, 0]]
+     }, 
+     "PM_VBUS_EN_L_TO_CCSCVS_CH1": {
+          "CONNECT":    [[10, 0, 1]], 
+          "DISCONNECT": [[10, 0, 0]]
+     }, 
+     "PM_VBUS_EN_L_TO_CCSCVS_CH2": {
+          "CONNECT":    [[10, 1, 1]], 
+          "DISCONNECT": [[10, 1, 0]]
+     }, 
+     "PM_VBUS_EN_L_TO_COMM_PORT": {
+          "CONNECT":    [[10, 2, 1]], 
+          "DISCONNECT": [[10, 2, 0]]
+     }, 
+     "PM_VBUS_EN_L_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[10, 3, 1]], 
+          "DISCONNECT": [[10, 3, 0]]
+     }, 
+     "PM_VBUS_EN_L_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[10, 4, 1]], 
+          "DISCONNECT": [[10, 4, 0]]
+     }, 
+     "PM_VBUS_EN_L_TO_VIN_DMM_N": {
+          "CONNECT":    [[10, 5, 1]], 
+          "DISCONNECT": [[10, 5, 0]]
+     }, 
+     "PM_VBUS_EN_L_TO_PP1V8_LDO": {
+          "CONNECT":    [[10, 6, 1]], 
+          "DISCONNECT": [[10, 6, 0]]
+     }, 
+     "PM_VBUS_EN_L_TO_SYS_GND": {
+          "CONNECT":    [[10, 7, 1]], 
+          "DISCONNECT": [[10, 7, 0]]
+     }, 
+     "PP_VBUS_OUT_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[11, 0, 1]], 
+          "DISCONNECT": [[11, 0, 0]]
+     }, 
+     "PP_VBUS_OUT_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[11, 1, 1]], 
+          "DISCONNECT": [[11, 1, 0]]
+     }, 
+     "PP_VBUS_OUT_B_TO_COMM_PORT": {
+          "CONNECT":    [[11, 2, 1]], 
+          "DISCONNECT": [[11, 2, 0]]
+     }, 
+     "PP_VBUS_OUT_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[11, 3, 1]], 
+          "DISCONNECT": [[11, 3, 0]]
+     }, 
+     "PP_VBUS_OUT_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[11, 4, 1]], 
+          "DISCONNECT": [[11, 4, 0]]
+     }, 
+     "PP_VBUS_OUT_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[11, 5, 1]], 
+          "DISCONNECT": [[11, 5, 0]]
+     }, 
+     "PP_VBUS_OUT_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[11, 6, 1]], 
+          "DISCONNECT": [[11, 6, 0]]
+     }, 
+     "PP_VBUS_OUT_B_TO_SYS_GND": {
+          "CONNECT":    [[11, 7, 1]], 
+          "DISCONNECT": [[11, 7, 0]]
+     }, 
+     "PP_VCORE_TO_CCSCVS_CH1": {
+          "CONNECT":    [[12, 0, 1]], 
+          "DISCONNECT": [[12, 0, 0]]
+     }, 
+     "PP_VCORE_TO_CCSCVS_CH2": {
+          "CONNECT":    [[12, 1, 1]], 
+          "DISCONNECT": [[12, 1, 0]]
+     }, 
+     "PP_VCORE_TO_COMM_PORT": {
+          "CONNECT":    [[12, 2, 1]], 
+          "DISCONNECT": [[12, 2, 0]]
+     }, 
+     "PP_VCORE_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[12, 3, 1]], 
+          "DISCONNECT": [[12, 3, 0]]
+     }, 
+     "PP_VCORE_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[12, 4, 1]], 
+          "DISCONNECT": [[12, 4, 0]]
+     }, 
+     "PP_VCORE_TO_VIN_DMM_N": {
+          "CONNECT":    [[12, 5, 1]], 
+          "DISCONNECT": [[12, 5, 0]]
+     }, 
+     "PP_VCORE_TO_PP1V8_LDO": {
+          "CONNECT":    [[12, 6, 1]], 
+          "DISCONNECT": [[12, 6, 0]]
+     }, 
+     "PP_VCORE_TO_SYS_GND": {
+          "CONNECT":    [[12, 7, 1]], 
+          "DISCONNECT": [[12, 7, 0]]
+     }, 
+     "PP3V1_VDD31_TO_CCSCVS_CH1": {
+          "CONNECT":    [[13, 0, 1]], 
+          "DISCONNECT": [[13, 0, 0]]
+     }, 
+     "PP3V1_VDD31_TO_CCSCVS_CH2": {
+          "CONNECT":    [[13, 1, 1]], 
+          "DISCONNECT": [[13, 1, 0]]
+     }, 
+     "PP3V1_VDD31_TO_COMM_PORT": {
+          "CONNECT":    [[13, 2, 1]], 
+          "DISCONNECT": [[13, 2, 0]]
+     }, 
+     "PP3V1_VDD31_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[13, 3, 1]], 
+          "DISCONNECT": [[13, 3, 0]]
+     }, 
+     "PP3V1_VDD31_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[13, 4, 1]], 
+          "DISCONNECT": [[13, 4, 0]]
+     }, 
+     "PP3V1_VDD31_TO_VIN_DMM_N": {
+          "CONNECT":    [[13, 5, 1]], 
+          "DISCONNECT": [[13, 5, 0]]
+     }, 
+     "PP3V1_VDD31_TO_PP1V8_LDO": {
+          "CONNECT":    [[13, 6, 1]], 
+          "DISCONNECT": [[13, 6, 0]]
+     }, 
+     "PP3V1_VDD31_TO_SYS_GND": {
+          "CONNECT":    [[13, 7, 1]], 
+          "DISCONNECT": [[13, 7, 0]]
+     }, 
+     "PP1V8_VDIG18_TO_CCSCVS_CH1": {
+          "CONNECT":    [[14, 0, 1]], 
+          "DISCONNECT": [[14, 0, 0]]
+     }, 
+     "PP1V8_VDIG18_TO_CCSCVS_CH2": {
+          "CONNECT":    [[14, 1, 1]], 
+          "DISCONNECT": [[14, 1, 0]]
+     }, 
+     "PP1V8_VDIG18_TO_COMM_PORT": {
+          "CONNECT":    [[14, 2, 1]], 
+          "DISCONNECT": [[14, 2, 0]]
+     }, 
+     "PP1V8_VDIG18_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[14, 3, 1]], 
+          "DISCONNECT": [[14, 3, 0]]
+     }, 
+     "PP1V8_VDIG18_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[14, 4, 1]], 
+          "DISCONNECT": [[14, 4, 0]]
+     }, 
+     "PP1V8_VDIG18_TO_VIN_DMM_N": {
+          "CONNECT":    [[14, 5, 1]], 
+          "DISCONNECT": [[14, 5, 0]]
+     }, 
+     "PP1V8_VDIG18_TO_PP1V8_LDO": {
+          "CONNECT":    [[14, 6, 1]], 
+          "DISCONNECT": [[14, 6, 0]]
+     }, 
+     "PP1V8_VDIG18_TO_SYS_GND": {
+          "CONNECT":    [[14, 7, 1]], 
+          "DISCONNECT": [[14, 7, 0]]
+     }, 
+     "PP1V8_VIO_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[15, 0, 1]], 
+          "DISCONNECT": [[15, 0, 0]]
+     }, 
+     "PP1V8_VIO_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[15, 1, 1]], 
+          "DISCONNECT": [[15, 1, 0]]
+     }, 
+     "PP1V8_VIO_B_TO_COMM_PORT": {
+          "CONNECT":    [[15, 2, 1]], 
+          "DISCONNECT": [[15, 2, 0]]
+     },
+     "PP1V8_VIO_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[15, 3, 1]], 
+          "DISCONNECT": [[15, 3, 0]]
+     }, 
+     "PP1V8_VIO_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[15, 4, 1]], 
+          "DISCONNECT": [[15, 4, 0]]
+     }, 
+     "PP1V8_VIO_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[15, 5, 1]], 
+          "DISCONNECT": [[15, 5, 0]]
+     }, 
+     "PP1V8_VIO_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[15, 6, 1]], 
+          "DISCONNECT": [[15, 6, 0]]
+     }, 
+     "PP1V8_VIO_B_TO_SYS_GND": {
+          "CONNECT":    [[15, 7, 1]], 
+          "DISCONNECT": [[15, 7, 0]]
+     }, 
+     "PP_VPA_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[16, 0, 1]], 
+          "DISCONNECT": [[16, 0, 0]]
+     }, 
+     "PP_VPA_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[16, 1, 1]], 
+          "DISCONNECT": [[16, 1, 0]]
+     }, 
+     "PP_VPA_B_TO_COMM_PORT": {
+          "CONNECT":    [[16, 2, 1]], 
+          "DISCONNECT": [[16, 2, 0]]
+     }, 
+     "PP_VPA_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[16, 3, 1]], 
+          "DISCONNECT": [[16, 3, 0]]
+     }, 
+     "PP_VPA_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[16, 4, 1]], 
+          "DISCONNECT": [[16, 4, 0]]
+     }, 
+     "PP_VPA_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[16, 5, 1]], 
+          "DISCONNECT": [[16, 5, 0]]
+     }, 
+     "PP_VPA_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[16, 6, 1]], 
+          "DISCONNECT": [[16, 6, 0]]
+     }, 
+     "PP_VPA_B_TO_SYS_GND": {
+          "CONNECT":    [[16, 7, 1]], 
+          "DISCONNECT": [[16, 7, 0]]
+     }, 
+     "PP_VRF_TO_CCSCVS_CH1": {
+          "CONNECT":    [[17, 0, 1]], 
+          "DISCONNECT": [[17, 0, 0]]
+     }, 
+     "PP_VRF_TO_CCSCVS_CH2": {
+          "CONNECT":    [[17, 1, 1]], 
+          "DISCONNECT": [[17, 1, 0]]
+     }, 
+     "PP_VRF_TO_COMM_PORT": {
+          "CONNECT":    [[17, 2, 1]], 
+          "DISCONNECT": [[17, 2, 0]]
+     }, 
+     "PP_VRF_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[17, 3, 1]], 
+          "DISCONNECT": [[17, 3, 0]]
+     }, 
+     "PP_VRF_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[17, 4, 1]], 
+          "DISCONNECT": [[17, 4, 0]]
+     }, 
+     "PP_VRF_TO_VIN_DMM_N": {
+          "CONNECT":    [[17, 5, 1]], 
+          "DISCONNECT": [[17, 5, 0]]
+     }, 
+     "PP_VRF_TO_PP1V8_LDO": {
+          "CONNECT":    [[17, 6, 1]], 
+          "DISCONNECT": [[17, 6, 0]]
+     }, 
+     "PP_VRF_TO_SYS_GND": {
+          "CONNECT":    [[17, 7, 1]], 
+          "DISCONNECT": [[17, 7, 0]]
+     }, 
+     "PP_VRTC_TO_CCSCVS_CH1": {
+          "CONNECT":    [[18, 0, 1]], 
+          "DISCONNECT": [[18, 0, 0]]
+     }, 
+     "PP_VRTC_TO_CCSCVS_CH2": {
+          "CONNECT":    [[18, 1, 1]], 
+          "DISCONNECT": [[18, 1, 0]]
+     }, 
+     "PP_VRTC_TO_COMM_PORT": {
+          "CONNECT":    [[18, 2, 1]], 
+          "DISCONNECT": [[18, 2, 0]]
+     }, 
+     "PP_VRTC_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[18, 3, 1]], 
+          "DISCONNECT": [[18, 3, 0]]
+     }, 
+     "PP_VRTC_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[18, 4, 1]], 
+          "DISCONNECT": [[18, 4, 0]]
+     }, 
+     "PP_VRTC_TO_VIN_DMM_N": {
+          "CONNECT":    [[18, 5, 1]], 
+          "DISCONNECT": [[18, 5, 0]]
+     }, 
+     "PP_VRTC_TO_PP1V8_LDO": {
+          "CONNECT":    [[18, 6, 1]], 
+          "DISCONNECT": [[18, 6, 0]]
+     }, 
+     "PP_VRTC_TO_SYS_GND": {
+          "CONNECT":    [[18, 7, 1]], 
+          "DISCONNECT": [[18, 7, 0]]
+     }, 
+     "PP_VSRAM_TO_CCSCVS_CH1": {
+          "CONNECT":    [[19, 0, 1]], 
+          "DISCONNECT": [[19, 0, 0]]
+     }, 
+     "PP_VSRAM_TO_CCSCVS_CH2": {
+          "CONNECT":    [[19, 1, 1]], 
+          "DISCONNECT": [[19, 1, 0]]
+     }, 
+     "PP_VSRAM_TO_COMM_PORT": {
+          "CONNECT":    [[19, 2, 1]], 
+          "DISCONNECT": [[19, 2, 0]]
+     }, 
+     "PP_VSRAM_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[19, 3, 1]], 
+          "DISCONNECT": [[19, 3, 0]]
+     }, 
+     "PP_VSRAM_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[19, 4, 1]], 
+          "DISCONNECT": [[19, 4, 0]]
+     }, 
+     "PP_VSRAM_TO_VIN_DMM_N": {
+          "CONNECT":    [[19, 5, 1]], 
+          "DISCONNECT": [[19, 5, 0]]
+     }, 
+     "PP_VSRAM_TO_PP1V8_LDO": {
+          "CONNECT":    [[19, 6, 1]], 
+          "DISCONNECT": [[19, 6, 0]]
+     }, 
+     "PP_VSRAM_TO_SYS_GND": {
+          "CONNECT":    [[19, 7, 1]], 
+          "DISCONNECT": [[19, 7, 0]]
+     }, 
+     "PP1V2_BUCK_OUT_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[20, 0, 1]], 
+          "DISCONNECT": [[20, 0, 0]]
+     }, 
+     "PP1V2_BUCK_OUT_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[20, 1, 1]], 
+          "DISCONNECT": [[20, 1, 0]]
+     }, 
+     "PP1V2_BUCK_OUT_B_TO_COMM_PORT": {
+          "CONNECT":    [[20, 2, 1]], 
+          "DISCONNECT": [[20, 2, 0]]
+     }, 
+     "PP1V2_BUCK_OUT_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[20, 3, 1]], 
+          "DISCONNECT": [[20, 3, 0]]
+     }, 
+     "PP1V2_BUCK_OUT_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[20, 4, 1]], 
+          "DISCONNECT": [[20, 4, 0]]
+     }, 
+     "PP1V2_BUCK_OUT_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[20, 5, 1]], 
+          "DISCONNECT": [[20, 5, 0]]
+     }, 
+     "PP1V2_BUCK_OUT_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[20, 6, 1]], 
+          "DISCONNECT": [[20, 6, 0]]
+     }, 
+     "PP1V2_BUCK_OUT_B_TO_SYS_GND": {
+          "CONNECT":    [[20, 7, 1]], 
+          "DISCONNECT": [[20, 7, 0]]
+     }, 
+     "PP_VBAT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[21, 0, 1]], 
+          "DISCONNECT": [[21, 0, 0]]
+     }, 
+     "PP_VBAT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[21, 1, 1]], 
+          "DISCONNECT": [[21, 1, 0]]
+     }, 
+     "PP_VBAT_TO_COMM_PORT": {
+          "CONNECT":    [[21, 2, 1]], 
+          "DISCONNECT": [[21, 2, 0]]
+     }, 
+     "PP_VBAT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[21, 3, 1]], 
+          "DISCONNECT": [[21, 3, 0]]
+     }, 
+     "PP_VBAT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[21, 4, 1]], 
+          "DISCONNECT": [[21, 4, 0]]
+     }, 
+     "PP_VBAT_TO_VIN_DMM_N": {
+          "CONNECT":    [[21, 5, 1]], 
+          "DISCONNECT": [[21, 5, 0]]
+     }, 
+     "PP_VBAT_TO_PP1V8_LDO": {
+          "CONNECT":    [[21, 6, 1]], 
+          "DISCONNECT": [[21, 6, 0]]
+     }, 
+     "PP_VBAT_TO_SYS_GND": {
+          "CONNECT":    [[21, 7, 1]], 
+          "DISCONNECT": [[21, 7, 0]]
+     }, 
+     "DUT_GND_TO_CCSCVS_CH1": {
+          "CONNECT":    [[22, 0, 1]], 
+          "DISCONNECT": [[22, 0, 0]]
+     }, 
+     "DUT_GND_TO_CCSCVS_CH2": {
+          "CONNECT":    [[22, 1, 1]], 
+          "DISCONNECT": [[22, 1, 0]]
+     }, 
+     "DUT_GND_TO_COMM_PORT": {
+          "CONNECT":    [[22, 2, 1]], 
+          "DISCONNECT": [[22, 2, 0]]
+     }, 
+     "DUT_GND_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[22, 3, 1]], 
+          "DISCONNECT": [[22, 3, 0]]
+     }, 
+     "DUT_GND_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[22, 4, 1]], 
+          "DISCONNECT": [[22, 4, 0]]
+     }, 
+     "DUT_GND_TO_VIN_DMM_N": {
+          "CONNECT":    [[22, 5, 1]], 
+          "DISCONNECT": [[22, 5, 0]]
+     }, 
+     "DUT_GND_TO_PP1V8_LDO": {
+          "CONNECT":    [[22, 6, 1]], 
+          "DISCONNECT": [[22, 6, 0]]
+     }, 
+     "DUT_GND_TO_SYS_GND": {
+          "CONNECT":    [[22, 7, 1]], 
+          "DISCONNECT": [[22, 7, 0]]
+     }, 
+     "DUT_GND_SNS_TO_CCSCVS_CH1": {
+          "CONNECT":    [[23, 0, 1]], 
+          "DISCONNECT": [[23, 0, 0]]
+     }, 
+     "DUT_GND_SNS_TO_CCSCVS_CH2": {
+          "CONNECT":    [[23, 1, 1]], 
+          "DISCONNECT": [[23, 1, 0]]
+     }, 
+     "DUT_GND_SNS_TO_COMM_PORT": {
+          "CONNECT":    [[23, 2, 1]], 
+          "DISCONNECT": [[23, 2, 0]]
+     }, 
+     "DUT_GND_SNS_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[23, 3, 1]], 
+          "DISCONNECT": [[23, 3, 0]]
+     }, 
+     "DUT_GND_SNS_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[23, 4, 1]], 
+          "DISCONNECT": [[23, 4, 0]]
+     }, 
+     "DUT_GND_SNS_TO_VIN_DMM_N": {
+          "CONNECT":    [[23, 5, 1]], 
+          "DISCONNECT": [[23, 5, 0]]
+     }, 
+     "DUT_GND_SNS_TO_PP1V8_LDO": {
+          "CONNECT":    [[23, 6, 1]], 
+          "DISCONNECT": [[23, 6, 0]]
+     }, 
+     "DUT_GND_SNS_TO_SYS_GND": {
+          "CONNECT":    [[23, 7, 1]], 
+          "DISCONNECT": [[23, 7, 0]]
+     }, 
+     "PP_VCHG_IN_TO_CCSCVS_CH1": {
+          "CONNECT":    [[24, 0, 1]], 
+          "DISCONNECT": [[24, 0, 0]]
+     }, 
+     "PP_VCHG_IN_TO_CCSCVS_CH2": {
+          "CONNECT":    [[24, 1, 1]], 
+          "DISCONNECT": [[24, 1, 0]]
+     }, 
+     "PP_VCHG_IN_TO_COMM_PORT": {
+          "CONNECT":    [[24, 2, 1]], 
+          "DISCONNECT": [[24, 2, 0]]
+     }, 
+     "PP_VCHG_IN_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[24, 3, 1]], 
+          "DISCONNECT": [[24, 3, 0]]
+     }, 
+     "PP_VCHG_IN_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[24, 4, 1]], 
+          "DISCONNECT": [[24, 4, 0]]
+     }, 
+     "PP_VCHG_IN_TO_VIN_DMM_N": {
+          "CONNECT":    [[24, 5, 1]], 
+          "DISCONNECT": [[24, 5, 0]]
+     }, 
+     "PP_VCHG_IN_TO_PP1V8_LDO": {
+          "CONNECT":    [[24, 6, 1]], 
+          "DISCONNECT": [[24, 6, 0]]
+     }, 
+     "PP_VCHG_IN_TO_SYS_GND": {
+          "CONNECT":    [[24, 7, 1]], 
+          "DISCONNECT": [[24, 7, 0]]
+     }, 
+     "PP_VSYS_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[25, 0, 1]], 
+          "DISCONNECT": [[25, 0, 0]]
+     }, 
+     "PP_VSYS_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[25, 1, 1]], 
+          "DISCONNECT": [[25, 1, 0]]
+     }, 
+     "PP_VSYS_B_TO_COMM_PORT": {
+          "CONNECT":    [[25, 2, 1]], 
+          "DISCONNECT": [[25, 2, 0]]
+     }, 
+     "PP_VSYS_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[25, 3, 1]], 
+          "DISCONNECT": [[25, 3, 0]]
+     }, 
+     "PP_VSYS_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[25, 4, 1]], 
+          "DISCONNECT": [[25, 4, 0]]
+     }, 
+     "PP_VSYS_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[25, 5, 1]], 
+          "DISCONNECT": [[25, 5, 0]]
+     }, 
+     "PP_VSYS_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[25, 6, 1]], 
+          "DISCONNECT": [[25, 6, 0]]
+     }, 
+     "PP_VSYS_B_TO_SYS_GND": {
+          "CONNECT":    [[25, 7, 1]], 
+          "DISCONNECT": [[25, 7, 0]]
+     }, 
+     "PP_DVDD_MLDO_TO_CCSCVS_CH1": {
+          "CONNECT":    [[26, 0, 1]], 
+          "DISCONNECT": [[26, 0, 0]]
+     }, 
+     "PP_DVDD_MLDO_TO_CCSCVS_CH2": {
+          "CONNECT":    [[26, 1, 1]], 
+          "DISCONNECT": [[26, 1, 0]]
+     }, 
+     "PP_DVDD_MLDO_TO_COMM_PORT": {
+          "CONNECT":    [[26, 2, 1]], 
+          "DISCONNECT": [[26, 2, 0]]
+     }, 
+     "PP_DVDD_MLDO_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[26, 3, 1]], 
+          "DISCONNECT": [[26, 3, 0]]
+     }, 
+     "PP_DVDD_MLDO_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[26, 4, 1]], 
+          "DISCONNECT": [[26, 4, 0]]
+     }, 
+     "PP_DVDD_MLDO_TO_VIN_DMM_N": {
+          "CONNECT":    [[26, 5, 1]], 
+          "DISCONNECT": [[26, 5, 0]]
+     }, 
+     "PP_DVDD_MLDO_TO_PP1V8_LDO": {
+          "CONNECT":    [[26, 6, 1]], 
+          "DISCONNECT": [[26, 6, 0]]
+     }, 
+     "PP_DVDD_MLDO_TO_SYS_GND": {
+          "CONNECT":    [[26, 7, 1]], 
+          "DISCONNECT": [[26, 7, 0]]
+     }, 
+     "PP_VDD_TO_CCSCVS_CH1": {
+          "CONNECT":    [[27, 0, 1]], 
+          "DISCONNECT": [[27, 0, 0]]
+     }, 
+     "PP_VDD_TO_CCSCVS_CH2": {
+          "CONNECT":    [[27, 1, 1]], 
+          "DISCONNECT": [[27, 1, 0]]
+     }, 
+     "PP_VDD_TO_COMM_PORT": {
+          "CONNECT":    [[27, 2, 1]], 
+          "DISCONNECT": [[27, 2, 0]]
+     }, 
+     "PP_VDD_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[27, 3, 1]], 
+          "DISCONNECT": [[27, 3, 0]]
+     }, 
+     "PP_VDD_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[27, 4, 1]], 
+          "DISCONNECT": [[27, 4, 0]]
+     }, 
+     "PP_VDD_TO_VIN_DMM_N": {
+          "CONNECT":    [[27, 5, 1]], 
+          "DISCONNECT": [[27, 5, 0]]
+     }, 
+     "PP_VDD_TO_PP1V8_LDO": {
+          "CONNECT":    [[27, 6, 1]], 
+          "DISCONNECT": [[27, 6, 0]]
+     }, 
+     "PP_VDD_TO_SYS_GND": {
+          "CONNECT":    [[27, 7, 1]], 
+          "DISCONNECT": [[27, 7, 0]]
+     }, 
+     "FSOURCE_D_TO_CCSCVS_CH1": {
+          "CONNECT":    [[28, 0, 1]], 
+          "DISCONNECT": [[28, 0, 0]]
+     }, 
+     "FSOURCE_D_TO_CCSCVS_CH2": {
+          "CONNECT":    [[28, 1, 1]], 
+          "DISCONNECT": [[28, 1, 0]]
+     }, 
+     "FSOURCE_D_TO_COMM_PORT": {
+          "CONNECT":    [[28, 2, 1]], 
+          "DISCONNECT": [[28, 2, 0]]
+     }, 
+     "FSOURCE_D_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[28, 3, 1]], 
+          "DISCONNECT": [[28, 3, 0]]
+     }, 
+     "FSOURCE_D_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[28, 4, 1]], 
+          "DISCONNECT": [[28, 4, 0]]
+     }, 
+     "FSOURCE_D_TO_VIN_DMM_N": {
+          "CONNECT":    [[28, 5, 1]], 
+          "DISCONNECT": [[28, 5, 0]]
+     }, 
+     "FSOURCE_D_TO_PP1V8_LDO": {
+          "CONNECT":    [[28, 6, 1]], 
+          "DISCONNECT": [[28, 6, 0]]
+     }, 
+     "FSOURCE_D_TO_SYS_GND": {
+          "CONNECT":    [[28, 7, 1]], 
+          "DISCONNECT": [[28, 7, 0]]
+     }, 
+     "PM_CHG_EN_TO_CCSCVS_CH1": {
+          "CONNECT":    [[29, 0, 1]], 
+          "DISCONNECT": [[29, 0, 0]]
+     }, 
+     "PM_CHG_EN_TO_CCSCVS_CH2": {
+          "CONNECT":    [[29, 1, 1]], 
+          "DISCONNECT": [[29, 1, 0]]
+     }, 
+     "PM_CHG_EN_TO_COMM_PORT": {
+          "CONNECT":    [[29, 2, 1]], 
+          "DISCONNECT": [[29, 2, 0]]
+     }, 
+     "PM_CHG_EN_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[29, 3, 1]], 
+          "DISCONNECT": [[29, 3, 0]]
+     }, 
+     "PM_CHG_EN_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[29, 4, 1]], 
+          "DISCONNECT": [[29, 4, 0]]
+     }, 
+     "PM_CHG_EN_TO_VIN_DMM_N": {
+          "CONNECT":    [[29, 5, 1]], 
+          "DISCONNECT": [[29, 5, 0]]
+     }, 
+     "PM_CHG_EN_TO_PP1V8_LDO": {
+          "CONNECT":    [[29, 6, 1]], 
+          "DISCONNECT": [[29, 6, 0]]
+     }, 
+     "PM_CHG_EN_TO_SYS_GND": {
+          "CONNECT":    [[29, 7, 1]], 
+          "DISCONNECT": [[29, 7, 0]]
+     }, 
+     "PP_PMID_CHG_TO_CCSCVS_CH1": {
+          "CONNECT":    [[30, 0, 1]], 
+          "DISCONNECT": [[30, 0, 0]]
+     }, 
+     "PP_PMID_CHG_TO_CCSCVS_CH2": {
+          "CONNECT":    [[30, 1, 1]], 
+          "DISCONNECT": [[30, 1, 0]]
+     }, 
+     "PP_PMID_CHG_TO_COMM_PORT": {
+          "CONNECT":    [[30, 2, 1]], 
+          "DISCONNECT": [[30, 2, 0]]
+     }, 
+     "PP_PMID_CHG_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[30, 3, 1]], 
+          "DISCONNECT": [[30, 3, 0]]
+     }, 
+     "PP_PMID_CHG_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[30, 4, 1]], 
+          "DISCONNECT": [[30, 4, 0]]
+     }, 
+     "PP_PMID_CHG_TO_VIN_DMM_N": {
+          "CONNECT":    [[30, 5, 1]], 
+          "DISCONNECT": [[30, 5, 0]]
+     }, 
+     "PP_PMID_CHG_TO_PP1V8_LDO": {
+          "CONNECT":    [[30, 6, 1]], 
+          "DISCONNECT": [[30, 6, 0]]
+     }, 
+     "PP_PMID_CHG_TO_SYS_GND": {
+          "CONNECT":    [[30, 7, 1]], 
+          "DISCONNECT": [[30, 7, 0]]
+     }, 
+     "PM_CHG_QON_L_TO_CCSCVS_CH1": {
+          "CONNECT":    [[31, 0, 1]], 
+          "DISCONNECT": [[31, 0, 0]]
+     }, 
+     "PM_CHG_QON_L_TO_CCSCVS_CH2": {
+          "CONNECT":    [[31, 1, 1]], 
+          "DISCONNECT": [[31, 1, 0]]
+     }, 
+     "PM_CHG_QON_L_TO_COMM_PORT": {
+          "CONNECT":    [[31, 2, 1]], 
+          "DISCONNECT": [[31, 2, 0]]
+     }, 
+     "PM_CHG_QON_L_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[31, 3, 1]], 
+          "DISCONNECT": [[31, 3, 0]]
+     }, 
+     "PM_CHG_QON_L_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[31, 4, 1]], 
+          "DISCONNECT": [[31, 4, 0]]
+     }, 
+     "PM_CHG_QON_L_TO_VIN_DMM_N": {
+          "CONNECT":    [[31, 5, 1]], 
+          "DISCONNECT": [[31, 5, 0]]
+     }, 
+     "PM_CHG_QON_L_TO_PP1V8_LDO": {
+          "CONNECT":    [[31, 6, 1]], 
+          "DISCONNECT": [[31, 6, 0]]
+     }, 
+     "PM_CHG_QON_L_TO_SYS_GND": {
+          "CONNECT":    [[31, 7, 1]], 
+          "DISCONNECT": [[31, 7, 0]]
+     }, 
+     "PP_CHG_REGN_LDO_TO_CCSCVS_CH1": {
+          "CONNECT":    [[32, 0, 1]], 
+          "DISCONNECT": [[32, 0, 0]]
+     }, 
+     "PP_CHG_REGN_LDO_TO_CCSCVS_CH2": {
+          "CONNECT":    [[32, 1, 1]], 
+          "DISCONNECT": [[32, 1, 0]]
+     }, 
+     "PP_CHG_REGN_LDO_TO_COMM_PORT": {
+          "CONNECT":    [[32, 2, 1]], 
+          "DISCONNECT": [[32, 2, 0]]
+     }, 
+     "PP_CHG_REGN_LDO_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[32, 3, 1]], 
+          "DISCONNECT": [[32, 3, 0]]
+     }, 
+     "PP_CHG_REGN_LDO_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[32, 4, 1]], 
+          "DISCONNECT": [[32, 4, 0]]
+     }, 
+     "PP_CHG_REGN_LDO_TO_VIN_DMM_N": {
+          "CONNECT":    [[32, 5, 1]], 
+          "DISCONNECT": [[32, 5, 0]]
+     }, 
+     "PP_CHG_REGN_LDO_TO_PP1V8_LDO": {
+          "CONNECT":    [[32, 6, 1]], 
+          "DISCONNECT": [[32, 6, 0]]
+     }, 
+     "PP_CHG_REGN_LDO_TO_SYS_GND": {
+          "CONNECT":    [[32, 7, 1]], 
+          "DISCONNECT": [[32, 7, 0]]
+     }, 
+     "CHG_STAT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[33, 0, 1]], 
+          "DISCONNECT": [[33, 0, 0]]
+     }, 
+     "CHG_STAT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[33, 1, 1]], 
+          "DISCONNECT": [[33, 1, 0]]
+     }, 
+     "CHG_STAT_TO_COMM_PORT": {
+          "CONNECT":    [[33, 2, 1]], 
+          "DISCONNECT": [[33, 2, 0]]
+     }, 
+     "CHG_STAT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[33, 3, 1]], 
+          "DISCONNECT": [[33, 3, 0]]
+     }, 
+     "CHG_STAT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[33, 4, 1]], 
+          "DISCONNECT": [[33, 4, 0]]
+     }, 
+     "CHG_STAT_TO_VIN_DMM_N": {
+          "CONNECT":    [[33, 5, 1]], 
+          "DISCONNECT": [[33, 5, 0]]
+     }, 
+     "CHG_STAT_TO_PP1V8_LDO": {
+          "CONNECT":    [[33, 6, 1]], 
+          "DISCONNECT": [[33, 6, 0]]
+     }, 
+     "CHG_STAT_TO_SYS_GND": {
+          "CONNECT":    [[33, 7, 1]], 
+          "DISCONNECT": [[33, 7, 0]]
+     }, 
+     "PP_CHG_TS_BIAS_TO_CCSCVS_CH1": {
+          "CONNECT":    [[34, 0, 1]], 
+          "DISCONNECT": [[34, 0, 0]]
+     }, 
+     "PP_CHG_TS_BIAS_TO_CCSCVS_CH2": {
+          "CONNECT":    [[34, 1, 1]], 
+          "DISCONNECT": [[34, 1, 0]]
+     }, 
+     "PP_CHG_TS_BIAS_TO_COMM_PORT": {
+          "CONNECT":    [[34, 2, 1]], 
+          "DISCONNECT": [[34, 2, 0]]
+     }, 
+     "PP_CHG_TS_BIAS_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[34, 3, 1]], 
+          "DISCONNECT": [[34, 3, 0]]
+     }, 
+     "PP_CHG_TS_BIAS_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[34, 4, 1]], 
+          "DISCONNECT": [[34, 4, 0]]
+     }, 
+     "PP_CHG_TS_BIAS_TO_VIN_DMM_N": {
+          "CONNECT":    [[34, 5, 1]], 
+          "DISCONNECT": [[34, 5, 0]]
+     }, 
+     "PP_CHG_TS_BIAS_TO_PP1V8_LDO": {
+          "CONNECT":    [[34, 6, 1]], 
+          "DISCONNECT": [[34, 6, 0]]
+     }, 
+     "PP_CHG_TS_BIAS_TO_SYS_GND": {
+          "CONNECT":    [[34, 7, 1]], 
+          "DISCONNECT": [[34, 7, 0]]
+     }, 
+     "PP_VSYS_CHG_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[35, 0, 1]], 
+          "DISCONNECT": [[35, 0, 0]]
+     }, 
+     "PP_VSYS_CHG_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[35, 1, 1]], 
+          "DISCONNECT": [[35, 1, 0]]
+     }, 
+     "PP_VSYS_CHG_B_TO_COMM_PORT": {
+          "CONNECT":    [[35, 2, 1]], 
+          "DISCONNECT": [[35, 2, 0]]
+     }, 
+     "PP_VSYS_CHG_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[35, 3, 1]], 
+          "DISCONNECT": [[35, 3, 0]]
+     }, 
+     "PP_VSYS_CHG_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[35, 4, 1]], 
+          "DISCONNECT": [[35, 4, 0]]
+     }, 
+     "PP_VSYS_CHG_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[35, 5, 1]], 
+          "DISCONNECT": [[35, 5, 0]]
+     }, 
+     "PP_VSYS_CHG_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[35, 6, 1]], 
+          "DISCONNECT": [[35, 6, 0]]
+     }, 
+     "PP_VSYS_CHG_B_TO_SYS_GND": {
+          "CONNECT":    [[35, 7, 1]], 
+          "DISCONNECT": [[35, 7, 0]]
+     }, 
+     "DCR_USB_D1_P_TO_CCSCVS_CH1": {
+          "CONNECT":    [[36, 0, 1]], 
+          "DISCONNECT": [[36, 0, 0]]
+     }, 
+     "DCR_USB_D1_P_TO_CCSCVS_CH2": {
+          "CONNECT":    [[36, 1, 1]], 
+          "DISCONNECT": [[36, 1, 0]]
+     }, 
+     "DCR_USB_D1_P_TO_COMM_PORT": {
+          "CONNECT":    [[36, 2, 1]], 
+          "DISCONNECT": [[36, 2, 0]]
+     }, 
+     "DCR_USB_D1_P_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[36, 3, 1]], 
+          "DISCONNECT": [[36, 3, 0]]
+     }, 
+     "DCR_USB_D1_P_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[36, 4, 1]], 
+          "DISCONNECT": [[36, 4, 0]]
+     }, 
+     "DCR_USB_D1_P_TO_VIN_DMM_N": {
+          "CONNECT":    [[36, 5, 1]], 
+          "DISCONNECT": [[36, 5, 0]]
+     }, 
+     "DCR_USB_D1_P_TO_PP1V8_LDO": {
+          "CONNECT":    [[36, 6, 1]], 
+          "DISCONNECT": [[36, 6, 0]]
+     }, 
+     "DCR_USB_D1_P_TO_SYS_GND": {
+          "CONNECT":    [[36, 7, 1]], 
+          "DISCONNECT": [[36, 7, 0]]
+     }, 
+     "DCR_USB_D1_N_TO_CCSCVS_CH1": {
+          "CONNECT":    [[37, 0, 1]], 
+          "DISCONNECT": [[37, 0, 0]]
+     }, 
+     "DCR_USB_D1_N_TO_CCSCVS_CH2": {
+          "CONNECT":    [[37, 1, 1]], 
+          "DISCONNECT": [[37, 1, 0]]
+     }, 
+     "DCR_USB_D1_N_TO_COMM_PORT": {
+          "CONNECT":    [[37, 2, 1]], 
+          "DISCONNECT": [[37, 2, 0]]
+     }, 
+     "DCR_USB_D1_N_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[37, 3, 1]], 
+          "DISCONNECT": [[37, 3, 0]]
+     }, 
+     "DCR_USB_D1_N_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[37, 4, 1]], 
+          "DISCONNECT": [[37, 4, 0]]
+     }, 
+     "DCR_USB_D1_N_TO_VIN_DMM_N": {
+          "CONNECT":    [[37, 5, 1]], 
+          "DISCONNECT": [[37, 5, 0]]
+     }, 
+     "DCR_USB_D1_N_TO_PP1V8_LDO": {
+          "CONNECT":    [[37, 6, 1]], 
+          "DISCONNECT": [[37, 6, 0]]
+     }, 
+     "DCR_USB_D1_N_TO_SYS_GND": {
+          "CONNECT":    [[37, 7, 1]], 
+          "DISCONNECT": [[37, 7, 0]]
+     }, 
+     "DCR_UART0_RX_TO_CCSCVS_CH1": {
+          "CONNECT":    [[38, 0, 1]], 
+          "DISCONNECT": [[38, 0, 0]]
+     }, 
+     "DCR_UART0_RX_TO_CCSCVS_CH2": {
+          "CONNECT":    [[38, 1, 1]], 
+          "DISCONNECT": [[38, 1, 0]]
+     }, 
+     "DCR_UART0_RX_TO_COMM_PORT": {
+          "CONNECT":    [[38, 2, 1]], 
+          "DISCONNECT": [[38, 2, 0]]
+     }, 
+     "DCR_UART0_RX_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[38, 3, 1]], 
+          "DISCONNECT": [[38, 3, 0]]
+     }, 
+     "DCR_UART0_RX_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[38, 4, 1]], 
+          "DISCONNECT": [[38, 4, 0]]
+     }, 
+     "DCR_UART0_RX_TO_VIN_DMM_N": {
+          "CONNECT":    [[38, 5, 1]], 
+          "DISCONNECT": [[38, 5, 0]]
+     }, 
+     "DCR_UART0_RX_TO_PP1V8_LDO": {
+          "CONNECT":    [[38, 6, 1]], 
+          "DISCONNECT": [[38, 6, 0]]
+     }, 
+     "DCR_UART0_RX_TO_SYS_GND": {
+          "CONNECT":    [[38, 7, 1]], 
+          "DISCONNECT": [[38, 7, 0]]
+     }, 
+     "DCR_UART0_TX_TO_CCSCVS_CH1": {
+          "CONNECT":    [[39, 0, 1]], 
+          "DISCONNECT": [[39, 0, 0]]
+     }, 
+     "DCR_UART0_TX_TO_CCSCVS_CH2": {
+          "CONNECT":    [[39, 1, 1]], 
+          "DISCONNECT": [[39, 1, 0]]
+     }, 
+     "DCR_UART0_TX_TO_COMM_PORT": {
+          "CONNECT":    [[39, 2, 1]], 
+          "DISCONNECT": [[39, 2, 0]]
+     }, 
+     "DCR_UART0_TX_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[39, 3, 1]], 
+          "DISCONNECT": [[39, 3, 0]]
+     }, 
+     "DCR_UART0_TX_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[39, 4, 1]], 
+          "DISCONNECT": [[39, 4, 0]]
+     }, 
+     "DCR_UART0_TX_TO_VIN_DMM_N": {
+          "CONNECT":    [[39, 5, 1]], 
+          "DISCONNECT": [[39, 5, 0]]
+     }, 
+     "DCR_UART0_TX_TO_PP1V8_LDO": {
+          "CONNECT":    [[39, 6, 1]], 
+          "DISCONNECT": [[39, 6, 0]]
+     }, 
+     "DCR_UART0_TX_TO_SYS_GND": {
+          "CONNECT":    [[39, 7, 1]], 
+          "DISCONNECT": [[39, 7, 0]]
+     }, 
+     "DCR_UART1_RX_TO_CCSCVS_CH1": {
+          "CONNECT":    [[40, 0, 1]], 
+          "DISCONNECT": [[40, 0, 0]]
+     }, 
+     "DCR_UART1_RX_TO_CCSCVS_CH2": {
+          "CONNECT":    [[40, 1, 1]], 
+          "DISCONNECT": [[40, 1, 0]]
+     }, 
+     "DCR_UART1_RX_TO_COMM_PORT": {
+          "CONNECT":    [[40, 2, 1]], 
+          "DISCONNECT": [[40, 2, 0]]
+     }, 
+     "DCR_UART1_RX_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[40, 3, 1]], 
+          "DISCONNECT": [[40, 3, 0]]
+     }, 
+     "DCR_UART1_RX_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[40, 4, 1]], 
+          "DISCONNECT": [[40, 4, 0]]
+     }, 
+     "DCR_UART1_RX_TO_VIN_DMM_N": {
+          "CONNECT":    [[40, 5, 1]], 
+          "DISCONNECT": [[40, 5, 0]]
+     }, 
+     "DCR_UART1_RX_TO_PP1V8_LDO": {
+          "CONNECT":    [[40, 6, 1]], 
+          "DISCONNECT": [[40, 6, 0]]
+     }, 
+     "DCR_UART1_RX_TO_SYS_GND": {
+          "CONNECT":    [[40, 7, 1]], 
+          "DISCONNECT": [[40, 7, 0]]
+     }, 
+     "DCR_UART1_TX_TO_CCSCVS_CH1": {
+          "CONNECT":    [[41, 0, 1]], 
+          "DISCONNECT": [[41, 0, 0]]
+     }, 
+     "DCR_UART1_TX_TO_CCSCVS_CH2": {
+          "CONNECT":    [[41, 1, 1]], 
+          "DISCONNECT": [[41, 1, 0]]
+     }, 
+     "DCR_UART1_TX_TO_COMM_PORT": {
+          "CONNECT":    [[41, 2, 1]], 
+          "DISCONNECT": [[41, 2, 0]]
+     }, 
+     "DCR_UART1_TX_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[41, 3, 1]], 
+          "DISCONNECT": [[41, 3, 0]]
+     }, 
+     "DCR_UART1_TX_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[41, 4, 1]], 
+          "DISCONNECT": [[41, 4, 0]]
+     }, 
+     "DCR_UART1_TX_TO_VIN_DMM_N": {
+          "CONNECT":    [[41, 5, 1]], 
+          "DISCONNECT": [[41, 5, 0]]
+     }, 
+     "DCR_UART1_TX_TO_PP1V8_LDO": {
+          "CONNECT":    [[41, 6, 1]], 
+          "DISCONNECT": [[41, 6, 0]]
+     }, 
+     "DCR_UART1_TX_TO_SYS_GND": {
+          "CONNECT":    [[41, 7, 1]], 
+          "DISCONNECT": [[41, 7, 0]]
+     }, 
+     "PP_VBUS_RVP_TO_CCSCVS_CH1": {
+          "CONNECT":    [[42, 0, 1]], 
+          "DISCONNECT": [[42, 0, 0]]
+     }, 
+     "PP_VBUS_RVP_TO_CCSCVS_CH2": {
+          "CONNECT":    [[42, 1, 1]], 
+          "DISCONNECT": [[42, 1, 0]]
+     }, 
+     "PP_VBUS_RVP_TO_COMM_PORT": {
+          "CONNECT":    [[42, 2, 1]], 
+          "DISCONNECT": [[42, 2, 0]]
+     }, 
+     "PP_VBUS_RVP_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[42, 3, 1]], 
+          "DISCONNECT": [[42, 3, 0]]
+     }, 
+     "PP_VBUS_RVP_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[42, 4, 1]], 
+          "DISCONNECT": [[42, 4, 0]]
+     }, 
+     "PP_VBUS_RVP_TO_VIN_DMM_N": {
+          "CONNECT":    [[42, 5, 1]], 
+          "DISCONNECT": [[42, 5, 0]]
+     }, 
+     "PP_VBUS_RVP_TO_PP1V8_LDO": {
+          "CONNECT":    [[42, 6, 1]], 
+          "DISCONNECT": [[42, 6, 0]]
+     }, 
+     "PP_VBUS_RVP_TO_SYS_GND": {
+          "CONNECT":    [[42, 7, 1]], 
+          "DISCONNECT": [[42, 7, 0]]
+     }, 
+     "VOX_SEL_PERF_TO_CCSCVS_CH1": {
+          "CONNECT":    [[43, 0, 1]], 
+          "DISCONNECT": [[43, 0, 0]]
+     }, 
+     "VOX_SEL_PERF_TO_CCSCVS_CH2": {
+          "CONNECT":    [[43, 1, 1]], 
+          "DISCONNECT": [[43, 1, 0]]
+     }, 
+     "VOX_SEL_PERF_TO_COMM_PORT": {
+          "CONNECT":    [[43, 2, 1]], 
+          "DISCONNECT": [[43, 2, 0]]
+     }, 
+     "VOX_SEL_PERF_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[43, 3, 1]], 
+          "DISCONNECT": [[43, 3, 0]]
+     }, 
+     "VOX_SEL_PERF_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[43, 4, 1]], 
+          "DISCONNECT": [[43, 4, 0]]
+     }, 
+     "VOX_SEL_PERF_TO_VIN_DMM_N": {
+          "CONNECT":    [[43, 5, 1]], 
+          "DISCONNECT": [[43, 5, 0]]
+     }, 
+     "VOX_SEL_PERF_TO_PP1V8_LDO": {
+          "CONNECT":    [[43, 6, 1]], 
+          "DISCONNECT": [[43, 6, 0]]
+     }, 
+     "VOX_SEL_PERF_TO_SYS_GND": {
+          "CONNECT":    [[43, 7, 1]], 
+          "DISCONNECT": [[43, 7, 0]]
+     }, 
+     "CHG_ILIM_TO_CCSCVS_CH1": {
+          "CONNECT":    [[44, 0, 1]], 
+          "DISCONNECT": [[44, 0, 0]]
+     }, 
+     "CHG_ILIM_TO_CCSCVS_CH2": {
+          "CONNECT":    [[44, 1, 1]], 
+          "DISCONNECT": [[44, 1, 0]]
+     }, 
+     "CHG_ILIM_TO_COMM_PORT": {
+          "CONNECT":    [[44, 2, 1]], 
+          "DISCONNECT": [[44, 2, 0]]
+     }, 
+     "CHG_ILIM_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[44, 3, 1]], 
+          "DISCONNECT": [[44, 3, 0]]
+     }, 
+     "CHG_ILIM_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[44, 4, 1]], 
+          "DISCONNECT": [[44, 4, 0]]
+     }, 
+     "CHG_ILIM_TO_VIN_DMM_N": {
+          "CONNECT":    [[44, 5, 1]], 
+          "DISCONNECT": [[44, 5, 0]]
+     }, 
+     "CHG_ILIM_TO_PP1V8_LDO": {
+          "CONNECT":    [[44, 6, 1]], 
+          "DISCONNECT": [[44, 6, 0]]
+     }, 
+     "CHG_ILIM_TO_SYS_GND": {
+          "CONNECT":    [[44, 7, 1]], 
+          "DISCONNECT": [[44, 7, 0]]
+     }, 
+     "CHG_INT_L_TO_CCSCVS_CH1": {
+          "CONNECT":    [[45, 0, 1]], 
+          "DISCONNECT": [[45, 0, 0]]
+     }, 
+     "CHG_INT_L_TO_CCSCVS_CH2": {
+          "CONNECT":    [[45, 1, 1]], 
+          "DISCONNECT": [[45, 1, 0]]
+     }, 
+     "CHG_INT_L_TO_COMM_PORT": {
+          "CONNECT":    [[45, 2, 1]], 
+          "DISCONNECT": [[45, 2, 0]]
+     }, 
+     "CHG_INT_L_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[45, 3, 1]], 
+          "DISCONNECT": [[45, 3, 0]]
+     }, 
+     "CHG_INT_L_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[45, 4, 1]], 
+          "DISCONNECT": [[45, 4, 0]]
+     }, 
+     "CHG_INT_L_TO_VIN_DMM_N": {
+          "CONNECT":    [[45, 5, 1]], 
+          "DISCONNECT": [[45, 5, 0]]
+     }, 
+     "CHG_INT_L_TO_PP1V8_LDO": {
+          "CONNECT":    [[45, 6, 1]], 
+          "DISCONNECT": [[45, 6, 0]]
+     }, 
+     "CHG_INT_L_TO_SYS_GND": {
+          "CONNECT":    [[45, 7, 1]], 
+          "DISCONNECT": [[45, 7, 0]]
+     }, 
+     "CHG_PG_L_TO_CCSCVS_CH1": {
+          "CONNECT":    [[46, 0, 1]], 
+          "DISCONNECT": [[46, 0, 0]]
+     }, 
+     "CHG_PG_L_TO_CCSCVS_CH2": {
+          "CONNECT":    [[46, 1, 1]], 
+          "DISCONNECT": [[46, 1, 0]]
+     }, 
+     "CHG_PG_L_TO_COMM_PORT": {
+          "CONNECT":    [[46, 2, 1]], 
+          "DISCONNECT": [[46, 2, 0]]
+     }, 
+     "CHG_PG_L_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[46, 3, 1]], 
+          "DISCONNECT": [[46, 3, 0]]
+     }, 
+     "CHG_PG_L_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[46, 4, 1]], 
+          "DISCONNECT": [[46, 4, 0]]
+     }, 
+     "CHG_PG_L_TO_VIN_DMM_N": {
+          "CONNECT":    [[46, 5, 1]], 
+          "DISCONNECT": [[46, 5, 0]]
+     }, 
+     "CHG_PG_L_TO_PP1V8_LDO": {
+          "CONNECT":    [[46, 6, 1]], 
+          "DISCONNECT": [[46, 6, 0]]
+     }, 
+     "CHG_PG_L_TO_SYS_GND": {
+          "CONNECT":    [[46, 7, 1]], 
+          "DISCONNECT": [[46, 7, 0]]
+     }, 
+     "UART_TX_EN_TO_CCSCVS_CH1": {
+          "CONNECT":    [[47, 0, 1]], 
+          "DISCONNECT": [[47, 0, 0]]
+     }, 
+     "UART_TX_EN_TO_CCSCVS_CH2": {
+          "CONNECT":    [[47, 1, 1]], 
+          "DISCONNECT": [[47, 1, 0]]
+     }, 
+     "UART_TX_EN_TO_COMM_PORT": {
+          "CONNECT":    [[47, 2, 1]], 
+          "DISCONNECT": [[47, 2, 0]]
+     }, 
+     "UART_TX_EN_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[47, 3, 1]], 
+          "DISCONNECT": [[47, 3, 0]]
+     }, 
+     "UART_TX_EN_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[47, 4, 1]], 
+          "DISCONNECT": [[47, 4, 0]]
+     }, 
+     "UART_TX_EN_TO_VIN_DMM_N": {
+          "CONNECT":    [[47, 5, 1]], 
+          "DISCONNECT": [[47, 5, 0]]
+     }, 
+     "UART_TX_EN_TO_PP1V8_LDO": {
+          "CONNECT":    [[47, 6, 1]], 
+          "DISCONNECT": [[47, 6, 0]]
+     }, 
+     "UART_TX_EN_TO_SYS_GND": {
+          "CONNECT":    [[47, 7, 1]], 
+          "DISCONNECT": [[47, 7, 0]]
+     }, 
+     "BTN_VUP_L_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[48, 0, 1]], 
+          "DISCONNECT": [[48, 0, 0]]
+     }, 
+     "BTN_VUP_L_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[48, 1, 1]], 
+          "DISCONNECT": [[48, 1, 0]]
+     }, 
+     "BTN_VUP_L_B_TO_COMM_PORT": {
+          "CONNECT":    [[48, 2, 1]], 
+          "DISCONNECT": [[48, 2, 0]]
+     }, 
+     "BTN_VUP_L_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[48, 3, 1]], 
+          "DISCONNECT": [[48, 3, 0]]
+     }, 
+     "BTN_VUP_L_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[48, 4, 1]], 
+          "DISCONNECT": [[48, 4, 0]]
+     }, 
+     "BTN_VUP_L_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[48, 5, 1]], 
+          "DISCONNECT": [[48, 5, 0]]
+     }, 
+     "BTN_VUP_L_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[48, 6, 1]], 
+          "DISCONNECT": [[48, 6, 0]]
+     }, 
+     "BTN_VUP_L_B_TO_SYS_GND": {
+          "CONNECT":    [[48, 7, 1]], 
+          "DISCONNECT": [[48, 7, 0]]
+     }, 
+     "BTN_NCB_L_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[48, 0, 1]], 
+          "DISCONNECT": [[48, 0, 0]]
+     }, 
+     "BTN_NCB_L_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[48, 1, 1]], 
+          "DISCONNECT": [[48, 1, 0]]
+     }, 
+     "BTN_NCB_L_B_TO_COMM_PORT": {
+          "CONNECT":    [[48, 2, 1]], 
+          "DISCONNECT": [[48, 2, 0]]
+     }, 
+     "BTN_NCB_L_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[48, 3, 1]], 
+          "DISCONNECT": [[48, 3, 0]]
+     }, 
+     "BTN_NCB_L_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[48, 4, 1]], 
+          "DISCONNECT": [[48, 4, 0]]
+     }, 
+     "BTN_NCB_L_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[48, 5, 1]], 
+          "DISCONNECT": [[48, 5, 0]]
+     }, 
+     "BTN_NCB_L_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[48, 6, 1]], 
+          "DISCONNECT": [[48, 6, 0]]
+     }, 
+     "BTN_NCB_L_B_TO_SYS_GND": {
+          "CONNECT":    [[48, 7, 1]], 
+          "DISCONNECT": [[48, 7, 0]]
+     }, 
+     "DCR_BTN_MFB_L_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[49, 0, 1]], 
+          "DISCONNECT": [[49, 0, 0]]
+     }, 
+     "DCR_BTN_MFB_L_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[49, 1, 1]], 
+          "DISCONNECT": [[49, 1, 0]]
+     }, 
+     "DCR_BTN_MFB_L_B_TO_COMM_PORT": {
+          "CONNECT":    [[49, 2, 1]], 
+          "DISCONNECT": [[49, 2, 0]]
+     }, 
+     "DCR_BTN_MFB_L_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[49, 3, 1]], 
+          "DISCONNECT": [[49, 3, 0]]
+     }, 
+     "DCR_BTN_MFB_L_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[49, 4, 1]], 
+          "DISCONNECT": [[49, 4, 0]]
+     }, 
+     "DCR_BTN_MFB_L_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[49, 5, 1]], 
+          "DISCONNECT": [[49, 5, 0]]
+     }, 
+     "DCR_BTN_MFB_L_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[49, 6, 1]], 
+          "DISCONNECT": [[49, 6, 0]]
+     }, 
+     "DCR_BTN_MFB_L_B_TO_SYS_GND": {
+          "CONNECT":    [[49, 7, 1]], 
+          "DISCONNECT": [[49, 7, 0]]
+     }, 
+     "BTN_PWR_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[49, 0, 1]], 
+          "DISCONNECT": [[49, 0, 0]]
+     }, 
+     "BTN_PWR_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[49, 1, 1]], 
+          "DISCONNECT": [[49, 1, 0]]
+     }, 
+     "BTN_PWR_B_TO_COMM_PORT": {
+          "CONNECT":    [[49, 2, 1]], 
+          "DISCONNECT": [[49, 2, 0]]
+     }, 
+     "BTN_PWR_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[49, 3, 1]], 
+          "DISCONNECT": [[49, 3, 0]]
+     }, 
+     "BTN_PWR_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[49, 4, 1]], 
+          "DISCONNECT": [[49, 4, 0]]
+     }, 
+     "BTN_PWR_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[49, 5, 1]], 
+          "DISCONNECT": [[49, 5, 0]]
+     }, 
+     "BTN_PWR_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[49, 6, 1]], 
+          "DISCONNECT": [[49, 6, 0]]
+     }, 
+     "BTN_PWR_B_TO_SYS_GND": {
+          "CONNECT":    [[49, 7, 1]], 
+          "DISCONNECT": [[49, 7, 0]]
+     }, 
+     "BTN_VDN_L_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[50, 0, 1]], 
+          "DISCONNECT": [[50, 0, 0]]
+     }, 
+     "BTN_VDN_L_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[50, 1, 1]], 
+          "DISCONNECT": [[50, 1, 0]]
+     }, 
+     "BTN_VDN_L_B_TO_COMM_PORT": {
+          "CONNECT":    [[50, 2, 1]], 
+          "DISCONNECT": [[50, 2, 0]]
+     }, 
+     "BTN_VDN_L_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[50, 3, 1]], 
+          "DISCONNECT": [[50, 3, 0]]
+     }, 
+     "BTN_VDN_L_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[50, 4, 1]], 
+          "DISCONNECT": [[50, 4, 0]]
+     }, 
+     "BTN_VDN_L_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[50, 5, 1]], 
+          "DISCONNECT": [[50, 5, 0]]
+     }, 
+     "BTN_VDN_L_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[50, 6, 1]], 
+          "DISCONNECT": [[50, 6, 0]]
+     }, 
+     "BTN_VDN_L_B_TO_SYS_GND": {
+          "CONNECT":    [[50, 7, 1]], 
+          "DISCONNECT": [[50, 7, 0]]
+     }, 
+     "KOBOL_INT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[50, 0, 1]], 
+          "DISCONNECT": [[50, 0, 0]]
+     }, 
+     "KOBOL_INT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[50, 1, 1]], 
+          "DISCONNECT": [[50, 1, 0]]
+     }, 
+     "KOBOL_INT_TO_COMM_PORT": {
+          "CONNECT":    [[50, 2, 1]], 
+          "DISCONNECT": [[50, 2, 0]]
+     }, 
+     "KOBOL_INT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[50, 3, 1]], 
+          "DISCONNECT": [[50, 3, 0]]
+     }, 
+     "KOBOL_INT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[50, 4, 1]], 
+          "DISCONNECT": [[50, 4, 0]]
+     }, 
+     "KOBOL_INT_TO_VIN_DMM_N": {
+          "CONNECT":    [[50, 5, 1]], 
+          "DISCONNECT": [[50, 5, 0]]
+     }, 
+     "KOBOL_INT_TO_PP1V8_LDO": {
+          "CONNECT":    [[50, 6, 1]], 
+          "DISCONNECT": [[50, 6, 0]]
+     }, 
+     "KOBOL_INT_TO_SYS_GND": {
+          "CONNECT":    [[50, 7, 1]], 
+          "DISCONNECT": [[50, 7, 0]]
+     }, 
+     "BTNPWR_TO_CCSCVS_CH1": {
+          "CONNECT":    [[51, 0, 1]], 
+          "DISCONNECT": [[51, 0, 0]]
+     }, 
+     "BTNPWR_TO_CCSCVS_CH2": {
+          "CONNECT":    [[51, 1, 1]], 
+          "DISCONNECT": [[51, 1, 0]]
+     }, 
+     "BTNPWR_TO_COMM_PORT": {
+          "CONNECT":    [[51, 2, 1]], 
+          "DISCONNECT": [[51, 2, 0]]
+     }, 
+     "BTNPWR_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[51, 3, 1]], 
+          "DISCONNECT": [[51, 3, 0]]
+     }, 
+     "BTNPWR_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[51, 4, 1]], 
+          "DISCONNECT": [[51, 4, 0]]
+     }, 
+     "BTNPWR_TO_VIN_DMM_N": {
+          "CONNECT":    [[51, 5, 1]], 
+          "DISCONNECT": [[51, 5, 0]]
+     }, 
+     "BTNPWR_TO_PP1V8_LDO": {
+          "CONNECT":    [[51, 6, 1]], 
+          "DISCONNECT": [[51, 6, 0]]
+     }, 
+     "BTNPWR_TO_SYS_GND": {
+          "CONNECT":    [[51, 7, 1]], 
+          "DISCONNECT": [[51, 7, 0]]
+     }, 
+     "KOBOL_MOTION_INT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[51, 0, 1]], 
+          "DISCONNECT": [[51, 0, 0]]
+     }, 
+     "KOBOL_MOTION_INT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[51, 1, 1]], 
+          "DISCONNECT": [[51, 1, 0]]
+     }, 
+     "KOBOL_MOTION_INT_TO_COMM_PORT": {
+          "CONNECT":    [[51, 2, 1]], 
+          "DISCONNECT": [[51, 2, 0]]
+     }, 
+     "KOBOL_MOTION_INT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[51, 3, 1]], 
+          "DISCONNECT": [[51, 3, 0]]
+     }, 
+     "KOBOL_MOTION_INT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[51, 4, 1]], 
+          "DISCONNECT": [[51, 4, 0]]
+     }, 
+     "KOBOL_MOTION_INT_TO_VIN_DMM_N": {
+          "CONNECT":    [[51, 5, 1]], 
+          "DISCONNECT": [[51, 5, 0]]
+     }, 
+     "KOBOL_MOTION_INT_TO_PP1V8_LDO": {
+          "CONNECT":    [[51, 6, 1]], 
+          "DISCONNECT": [[51, 6, 0]]
+     }, 
+     "KOBOL_MOTION_INT_TO_SYS_GND": {
+          "CONNECT":    [[51, 7, 1]], 
+          "DISCONNECT": [[51, 7, 0]]
+     }, 
+     "USB_DL_MODE_EN_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[52, 0, 1]], 
+          "DISCONNECT": [[52, 0, 0]]
+     }, 
+     "USB_DL_MODE_EN_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[52, 1, 1]], 
+          "DISCONNECT": [[52, 1, 0]]
+     }, 
+     "USB_DL_MODE_EN_B_TO_COMM_PORT": {
+          "CONNECT":    [[52, 2, 1]], 
+          "DISCONNECT": [[52, 2, 0]]
+     }, 
+     "USB_DL_MODE_EN_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[52, 3, 1]], 
+          "DISCONNECT": [[52, 3, 0]]
+     }, 
+     "USB_DL_MODE_EN_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[52, 4, 1]], 
+          "DISCONNECT": [[52, 4, 0]]
+     }, 
+     "USB_DL_MODE_EN_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[52, 5, 1]], 
+          "DISCONNECT": [[52, 5, 0]]
+     }, 
+     "USB_DL_MODE_EN_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[52, 6, 1]], 
+          "DISCONNECT": [[52, 6, 0]]
+     }, 
+     "USB_DL_MODE_EN_B_TO_SYS_GND": {
+          "CONNECT":    [[52, 7, 1]], 
+          "DISCONNECT": [[52, 7, 0]]
+     }, 
+     "HWID_EN_TO_CCSCVS_CH1": {
+          "CONNECT":    [[53, 0, 1]], 
+          "DISCONNECT": [[53, 0, 0]]
+     }, 
+     "HWID_EN_TO_CCSCVS_CH2": {
+          "CONNECT":    [[53, 1, 1]], 
+          "DISCONNECT": [[53, 1, 0]]
+     }, 
+     "HWID_EN_TO_COMM_PORT": {
+          "CONNECT":    [[53, 2, 1]], 
+          "DISCONNECT": [[53, 2, 0]]
+     }, 
+     "HWID_EN_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[53, 3, 1]], 
+          "DISCONNECT": [[53, 3, 0]]
+     }, 
+     "HWID_EN_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[53, 4, 1]], 
+          "DISCONNECT": [[53, 4, 0]]
+     }, 
+     "HWID_EN_TO_VIN_DMM_N": {
+          "CONNECT":    [[53, 5, 1]], 
+          "DISCONNECT": [[53, 5, 0]]
+     }, 
+     "HWID_EN_TO_PP1V8_LDO": {
+          "CONNECT":    [[53, 6, 1]], 
+          "DISCONNECT": [[53, 6, 0]]
+     }, 
+     "HWID_EN_TO_SYS_GND": {
+          "CONNECT":    [[53, 7, 1]], 
+          "DISCONNECT": [[53, 7, 0]]
+     }, 
+     "BART_SPARE1_TO_CCSCVS_CH1": {
+          "CONNECT":    [[54, 0, 1]], 
+          "DISCONNECT": [[54, 0, 0]]
+     }, 
+     "BART_SPARE1_TO_CCSCVS_CH2": {
+          "CONNECT":    [[54, 1, 1]], 
+          "DISCONNECT": [[54, 1, 0]]
+     }, 
+     "BART_SPARE1_TO_COMM_PORT": {
+          "CONNECT":    [[54, 2, 1]], 
+          "DISCONNECT": [[54, 2, 0]]
+     }, 
+     "BART_SPARE1_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[54, 3, 1]], 
+          "DISCONNECT": [[54, 3, 0]]
+     }, 
+     "BART_SPARE1_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[54, 4, 1]], 
+          "DISCONNECT": [[54, 4, 0]]
+     }, 
+     "BART_SPARE1_TO_VIN_DMM_N": {
+          "CONNECT":    [[54, 5, 1]], 
+          "DISCONNECT": [[54, 5, 0]]
+     }, 
+     "BART_SPARE1_TO_PP1V8_LDO": {
+          "CONNECT":    [[54, 6, 1]], 
+          "DISCONNECT": [[54, 6, 0]]
+     }, 
+     "BART_SPARE1_TO_SYS_GND": {
+          "CONNECT":    [[54, 7, 1]], 
+          "DISCONNECT": [[54, 7, 0]]
+     }, 
+     "BART_SPARE2_TO_CCSCVS_CH1": {
+          "CONNECT":    [[55, 0, 1]], 
+          "DISCONNECT": [[55, 0, 0]]
+     }, 
+     "BART_SPARE2_TO_CCSCVS_CH2": {
+          "CONNECT":    [[55, 1, 1]], 
+          "DISCONNECT": [[55, 1, 0]]
+     }, 
+     "BART_SPARE2_TO_COMM_PORT": {
+          "CONNECT":    [[55, 2, 1]], 
+          "DISCONNECT": [[55, 2, 0]]
+     }, 
+     "BART_SPARE2_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[55, 3, 1]], 
+          "DISCONNECT": [[55, 3, 0]]
+     }, 
+     "BART_SPARE2_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[55, 4, 1]], 
+          "DISCONNECT": [[55, 4, 0]]
+     }, 
+     "BART_SPARE2_TO_VIN_DMM_N": {
+          "CONNECT":    [[55, 5, 1]], 
+          "DISCONNECT": [[55, 5, 0]]
+     }, 
+     "BART_SPARE2_TO_PP1V8_LDO": {
+          "CONNECT":    [[55, 6, 1]], 
+          "DISCONNECT": [[55, 6, 0]]
+     }, 
+     "BART_SPARE2_TO_SYS_GND": {
+          "CONNECT":    [[55, 7, 1]], 
+          "DISCONNECT": [[55, 7, 0]]
+     }, 
+     "PM_LP5811_EN_TO_CCSCVS_CH1": {
+          "CONNECT":    [[56, 0, 1]], 
+          "DISCONNECT": [[56, 0, 0]]
+     }, 
+     "PM_LP5811_EN_TO_CCSCVS_CH2": {
+          "CONNECT":    [[56, 1, 1]], 
+          "DISCONNECT": [[56, 1, 0]]
+     }, 
+     "PM_LP5811_EN_TO_COMM_PORT": {
+          "CONNECT":    [[56, 2, 1]], 
+          "DISCONNECT": [[56, 2, 0]]
+     }, 
+     "PM_LP5811_EN_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[56, 3, 1]], 
+          "DISCONNECT": [[56, 3, 0]]
+     }, 
+     "PM_LP5811_EN_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[56, 4, 1]], 
+          "DISCONNECT": [[56, 4, 0]]
+     }, 
+     "PM_LP5811_EN_TO_VIN_DMM_N": {
+          "CONNECT":    [[56, 5, 1]], 
+          "DISCONNECT": [[56, 5, 0]]
+     }, 
+     "PM_LP5811_EN_TO_PP1V8_LDO": {
+          "CONNECT":    [[56, 6, 1]], 
+          "DISCONNECT": [[56, 6, 0]]
+     }, 
+     "PM_LP5811_EN_TO_SYS_GND": {
+          "CONNECT":    [[56, 7, 1]], 
+          "DISCONNECT": [[56, 7, 0]]
+     }, 
+     "DCR_PP_LP5811_BOOST_TO_CCSCVS_CH1": {
+          "CONNECT":    [[57, 0, 1]], 
+          "DISCONNECT": [[57, 0, 0]]
+     }, 
+     "DCR_PP_LP5811_BOOST_TO_CCSCVS_CH2": {
+          "CONNECT":    [[57, 1, 1]], 
+          "DISCONNECT": [[57, 1, 0]]
+     }, 
+     "DCR_PP_LP5811_BOOST_TO_COMM_PORT": {
+          "CONNECT":    [[57, 2, 1]], 
+          "DISCONNECT": [[57, 2, 0]]
+     }, 
+     "DCR_PP_LP5811_BOOST_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[57, 3, 1]], 
+          "DISCONNECT": [[57, 3, 0]]
+     }, 
+     "DCR_PP_LP5811_BOOST_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[57, 4, 1]], 
+          "DISCONNECT": [[57, 4, 0]]
+     }, 
+     "DCR_PP_LP5811_BOOST_TO_VIN_DMM_N": {
+          "CONNECT":    [[57, 5, 1]], 
+          "DISCONNECT": [[57, 5, 0]]
+     }, 
+     "DCR_PP_LP5811_BOOST_TO_PP1V8_LDO": {
+          "CONNECT":    [[57, 6, 1]], 
+          "DISCONNECT": [[57, 6, 0]]
+     }, 
+     "DCR_PP_LP5811_BOOST_TO_SYS_GND": {
+          "CONNECT":    [[57, 7, 1]], 
+          "DISCONNECT": [[57, 7, 0]]
+     }, 
+     "DCR_LED_LP5811_WHITE_TO_CCSCVS_CH1": {
+          "CONNECT":    [[58, 0, 1]], 
+          "DISCONNECT": [[58, 0, 0]]
+     }, 
+     "DCR_LED_LP5811_WHITE_TO_CCSCVS_CH2": {
+          "CONNECT":    [[58, 1, 1]], 
+          "DISCONNECT": [[58, 1, 0]]
+     }, 
+     "DCR_LED_LP5811_WHITE_TO_COMM_PORT": {
+          "CONNECT":    [[58, 2, 1]], 
+          "DISCONNECT": [[58, 2, 0]]
+     }, 
+     "DCR_LED_LP5811_WHITE_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[58, 3, 1]], 
+          "DISCONNECT": [[58, 3, 0]]
+     }, 
+     "DCR_LED_LP5811_WHITE_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[58, 4, 1]], 
+          "DISCONNECT": [[58, 4, 0]]
+     }, 
+     "DCR_LED_LP5811_WHITE_TO_VIN_DMM_N": {
+          "CONNECT":    [[58, 5, 1]], 
+          "DISCONNECT": [[58, 5, 0]]
+     }, 
+     "DCR_LED_LP5811_WHITE_TO_PP1V8_LDO": {
+          "CONNECT":    [[58, 6, 1]], 
+          "DISCONNECT": [[58, 6, 0]]
+     }, 
+     "DCR_LED_LP5811_WHITE_TO_SYS_GND": {
+          "CONNECT":    [[58, 7, 1]], 
+          "DISCONNECT": [[58, 7, 0]]
+     }, 
+     "DCR_LED_LP5811_RED_TO_CCSCVS_CH1": {
+          "CONNECT":    [[59, 0, 1]], 
+          "DISCONNECT": [[59, 0, 0]]
+     }, 
+     "DCR_LED_LP5811_RED_TO_CCSCVS_CH2": {
+          "CONNECT":    [[59, 1, 1]], 
+          "DISCONNECT": [[59, 1, 0]]
+     }, 
+     "DCR_LED_LP5811_RED_TO_COMM_PORT": {
+          "CONNECT":    [[59, 2, 1]], 
+          "DISCONNECT": [[59, 2, 0]]
+     }, 
+     "DCR_LED_LP5811_RED_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[59, 3, 1]], 
+          "DISCONNECT": [[59, 3, 0]]
+     }, 
+     "DCR_LED_LP5811_RED_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[59, 4, 1]], 
+          "DISCONNECT": [[59, 4, 0]]
+     }, 
+     "DCR_LED_LP5811_RED_TO_VIN_DMM_N": {
+          "CONNECT":    [[59, 5, 1]], 
+          "DISCONNECT": [[59, 5, 0]]
+     }, 
+     "DCR_LED_LP5811_RED_TO_PP1V8_LDO": {
+          "CONNECT":    [[59, 6, 1]], 
+          "DISCONNECT": [[59, 6, 0]]
+     }, 
+     "DCR_LED_LP5811_RED_TO_SYS_GND": {
+          "CONNECT":    [[59, 7, 1]], 
+          "DISCONNECT": [[59, 7, 0]]
+     }, 
+     "DCR_PDM_CLK_FF2_FF3_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[60, 0, 1]], 
+          "DISCONNECT": [[60, 0, 0]]
+     }, 
+     "DCR_PDM_CLK_FF2_FF3_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[60, 1, 1]], 
+          "DISCONNECT": [[60, 1, 0]]
+     }, 
+     "DCR_PDM_CLK_FF2_FF3_B_TO_COMM_PORT": {
+          "CONNECT":    [[60, 2, 1]], 
+          "DISCONNECT": [[60, 2, 0]]
+     }, 
+     "DCR_PDM_CLK_FF2_FF3_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[60, 3, 1]], 
+          "DISCONNECT": [[60, 3, 0]]
+     }, 
+     "DCR_PDM_CLK_FF2_FF3_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[60, 4, 1]], 
+          "DISCONNECT": [[60, 4, 0]]
+     }, 
+     "DCR_PDM_CLK_FF2_FF3_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[60, 5, 1]], 
+          "DISCONNECT": [[60, 5, 0]]
+     }, 
+     "DCR_PDM_CLK_FF2_FF3_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[60, 6, 1]], 
+          "DISCONNECT": [[60, 6, 0]]
+     }, 
+     "DCR_PDM_CLK_FF2_FF3_B_TO_SYS_GND": {
+          "CONNECT":    [[60, 7, 1]], 
+          "DISCONNECT": [[60, 7, 0]]
+     }, 
+     "DCR_PDM_DAT_FF2_FF3_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[61, 0, 1]], 
+          "DISCONNECT": [[61, 0, 0]]
+     }, 
+     "DCR_PDM_DAT_FF2_FF3_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[61, 1, 1]], 
+          "DISCONNECT": [[61, 1, 0]]
+     }, 
+     "DCR_PDM_DAT_FF2_FF3_B_TO_COMM_PORT": {
+          "CONNECT":    [[61, 2, 1]], 
+          "DISCONNECT": [[61, 2, 0]]
+     }, 
+     "DCR_PDM_DAT_FF2_FF3_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[61, 3, 1]], 
+          "DISCONNECT": [[61, 3, 0]]
+     }, 
+     "DCR_PDM_DAT_FF2_FF3_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[61, 4, 1]], 
+          "DISCONNECT": [[61, 4, 0]]
+     }, 
+     "DCR_PDM_DAT_FF2_FF3_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[61, 5, 1]], 
+          "DISCONNECT": [[61, 5, 0]]
+     }, 
+     "DCR_PDM_DAT_FF2_FF3_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[61, 6, 1]], 
+          "DISCONNECT": [[61, 6, 0]]
+     }, 
+     "DCR_PDM_DAT_FF2_FF3_B_TO_SYS_GND": {
+          "CONNECT":    [[61, 7, 1]], 
+          "DISCONNECT": [[61, 7, 0]]
+     }, 
+     "DCR_PDM_CLK_FF1_FB_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[62, 0, 1]], 
+          "DISCONNECT": [[62, 0, 0]]
+     }, 
+     "DCR_PDM_CLK_FF1_FB_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[62, 1, 1]], 
+          "DISCONNECT": [[62, 1, 0]]
+     }, 
+     "DCR_PDM_CLK_FF1_FB_B_TO_COMM_PORT": {
+          "CONNECT":    [[62, 2, 1]], 
+          "DISCONNECT": [[62, 2, 0]]
+     }, 
+     "DCR_PDM_CLK_FF1_FB_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[62, 3, 1]], 
+          "DISCONNECT": [[62, 3, 0]]
+     }, 
+     "DCR_PDM_CLK_FF1_FB_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[62, 4, 1]], 
+          "DISCONNECT": [[62, 4, 0]]
+     }, 
+     "DCR_PDM_CLK_FF1_FB_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[62, 5, 1]], 
+          "DISCONNECT": [[62, 5, 0]]
+     }, 
+     "DCR_PDM_CLK_FF1_FB_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[62, 6, 1]], 
+          "DISCONNECT": [[62, 6, 0]]
+     }, 
+     "DCR_PDM_CLK_FF1_FB_B_TO_SYS_GND": {
+          "CONNECT":    [[62, 7, 1]], 
+          "DISCONNECT": [[62, 7, 0]]
+     }, 
+     "DCR_PDM_DAT_FF1_FB_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[63, 0, 1]], 
+          "DISCONNECT": [[63, 0, 0]]
+     }, 
+     "DCR_PDM_DAT_FF1_FB_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[63, 1, 1]], 
+          "DISCONNECT": [[63, 1, 0]]
+     }, 
+     "DCR_PDM_DAT_FF1_FB_B_TO_COMM_PORT": {
+          "CONNECT":    [[63, 2, 1]], 
+          "DISCONNECT": [[63, 2, 0]]
+     }, 
+     "DCR_PDM_DAT_FF1_FB_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[63, 3, 1]], 
+          "DISCONNECT": [[63, 3, 0]]
+     }, 
+     "DCR_PDM_DAT_FF1_FB_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[63, 4, 1]], 
+          "DISCONNECT": [[63, 4, 0]]
+     }, 
+     "DCR_PDM_DAT_FF1_FB_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[63, 5, 1]], 
+          "DISCONNECT": [[63, 5, 0]]
+     }, 
+     "DCR_PDM_DAT_FF1_FB_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[63, 6, 1]], 
+          "DISCONNECT": [[63, 6, 0]]
+     }, 
+     "DCR_PDM_DAT_FF1_FB_B_TO_SYS_GND": {
+          "CONNECT":    [[63, 7, 1]], 
+          "DISCONNECT": [[63, 7, 0]]
+     }, 
+     "DCR_PDM_VOX_CLK_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[64, 0, 1]], 
+          "DISCONNECT": [[64, 0, 0]]
+     }, 
+     "DCR_PDM_VOX_CLK_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[64, 1, 1]], 
+          "DISCONNECT": [[64, 1, 0]]
+     }, 
+     "DCR_PDM_VOX_CLK_B_TO_COMM_PORT": {
+          "CONNECT":    [[64, 2, 1]], 
+          "DISCONNECT": [[64, 2, 0]]
+     }, 
+     "DCR_PDM_VOX_CLK_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[64, 3, 1]], 
+          "DISCONNECT": [[64, 3, 0]]
+     }, 
+     "DCR_PDM_VOX_CLK_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[64, 4, 1]], 
+          "DISCONNECT": [[64, 4, 0]]
+     }, 
+     "DCR_PDM_VOX_CLK_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[64, 5, 1]], 
+          "DISCONNECT": [[64, 5, 0]]
+     }, 
+     "DCR_PDM_VOX_CLK_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[64, 6, 1]], 
+          "DISCONNECT": [[64, 6, 0]]
+     }, 
+     "DCR_PDM_VOX_CLK_B_TO_SYS_GND": {
+          "CONNECT":    [[64, 7, 1]], 
+          "DISCONNECT": [[64, 7, 0]]
+     }, 
+     "DCR_PDM_VOX_DAT_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[65, 0, 1]], 
+          "DISCONNECT": [[65, 0, 0]]
+     }, 
+     "DCR_PDM_VOX_DAT_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[65, 1, 1]], 
+          "DISCONNECT": [[65, 1, 0]]
+     }, 
+     "DCR_PDM_VOX_DAT_B_TO_COMM_PORT": {
+          "CONNECT":    [[65, 2, 1]], 
+          "DISCONNECT": [[65, 2, 0]]
+     }, 
+     "DCR_PDM_VOX_DAT_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[65, 3, 1]], 
+          "DISCONNECT": [[65, 3, 0]]
+     }, 
+     "DCR_PDM_VOX_DAT_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[65, 4, 1]], 
+          "DISCONNECT": [[65, 4, 0]]
+     }, 
+     "DCR_PDM_VOX_DAT_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[65, 5, 1]], 
+          "DISCONNECT": [[65, 5, 0]]
+     }, 
+     "DCR_PDM_VOX_DAT_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[65, 6, 1]], 
+          "DISCONNECT": [[65, 6, 0]]
+     }, 
+     "DCR_PDM_VOX_DAT_B_TO_SYS_GND": {
+          "CONNECT":    [[65, 7, 1]], 
+          "DISCONNECT": [[65, 7, 0]]
+     }, 
+     "AMP_GAIN_TO_CCSCVS_CH1": {
+          "CONNECT":    [[66, 0, 1]], 
+          "DISCONNECT": [[66, 0, 0]]
+     }, 
+     "AMP_GAIN_TO_CCSCVS_CH2": {
+          "CONNECT":    [[66, 1, 1]], 
+          "DISCONNECT": [[66, 1, 0]]
+     }, 
+     "AMP_GAIN_TO_COMM_PORT": {
+          "CONNECT":    [[66, 2, 1]], 
+          "DISCONNECT": [[66, 2, 0]]
+     }, 
+     "AMP_GAIN_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[66, 3, 1]], 
+          "DISCONNECT": [[66, 3, 0]]
+     }, 
+     "AMP_GAIN_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[66, 4, 1]], 
+          "DISCONNECT": [[66, 4, 0]]
+     }, 
+     "AMP_GAIN_TO_VIN_DMM_N": {
+          "CONNECT":    [[66, 5, 1]], 
+          "DISCONNECT": [[66, 5, 0]]
+     }, 
+     "AMP_GAIN_TO_PP1V8_LDO": {
+          "CONNECT":    [[66, 6, 1]], 
+          "DISCONNECT": [[66, 6, 0]]
+     }, 
+     "AMP_GAIN_TO_SYS_GND": {
+          "CONNECT":    [[66, 7, 1]], 
+          "DISCONNECT": [[66, 7, 0]]
+     }, 
+     "AMP_SHDN_L_TO_CCSCVS_CH1": {
+          "CONNECT":    [[67, 0, 1]], 
+          "DISCONNECT": [[67, 0, 0]]
+     }, 
+     "AMP_SHDN_L_TO_CCSCVS_CH2": {
+          "CONNECT":    [[67, 1, 1]], 
+          "DISCONNECT": [[67, 1, 0]]
+     }, 
+     "AMP_SHDN_L_TO_COMM_PORT": {
+          "CONNECT":    [[67, 2, 1]], 
+          "DISCONNECT": [[67, 2, 0]]
+     }, 
+     "AMP_SHDN_L_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[67, 3, 1]], 
+          "DISCONNECT": [[67, 3, 0]]
+     }, 
+     "AMP_SHDN_L_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[67, 4, 1]], 
+          "DISCONNECT": [[67, 4, 0]]
+     }, 
+     "AMP_SHDN_L_TO_VIN_DMM_N": {
+          "CONNECT":    [[67, 5, 1]], 
+          "DISCONNECT": [[67, 5, 0]]
+     }, 
+     "AMP_SHDN_L_TO_PP1V8_LDO": {
+          "CONNECT":    [[67, 6, 1]], 
+          "DISCONNECT": [[67, 6, 0]]
+     }, 
+     "AMP_SHDN_L_TO_SYS_GND": {
+          "CONNECT":    [[67, 7, 1]], 
+          "DISCONNECT": [[67, 7, 0]]
+     }, 
+     "DCR_HPOUTN_TO_CCSCVS_CH1": {
+          "CONNECT":    [[68, 0, 1]], 
+          "DISCONNECT": [[68, 0, 0]]
+     }, 
+     "DCR_HPOUTN_TO_CCSCVS_CH2": {
+          "CONNECT":    [[68, 1, 1]], 
+          "DISCONNECT": [[68, 1, 0]]
+     }, 
+     "DCR_HPOUTN_TO_COMM_PORT": {
+          "CONNECT":    [[68, 2, 1]], 
+          "DISCONNECT": [[68, 2, 0]]
+     }, 
+     "DCR_HPOUTN_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[68, 3, 1]], 
+          "DISCONNECT": [[68, 3, 0]]
+     }, 
+     "DCR_HPOUTN_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[68, 4, 1]], 
+          "DISCONNECT": [[68, 4, 0]]
+     }, 
+     "DCR_HPOUTN_TO_VIN_DMM_N": {
+          "CONNECT":    [[68, 5, 1]], 
+          "DISCONNECT": [[68, 5, 0]]
+     }, 
+     "DCR_HPOUTN_TO_PP1V8_LDO": {
+          "CONNECT":    [[68, 6, 1]], 
+          "DISCONNECT": [[68, 6, 0]]
+     }, 
+     "DCR_HPOUTN_TO_SYS_GND": {
+          "CONNECT":    [[68, 7, 1]], 
+          "DISCONNECT": [[68, 7, 0]]
+     }, 
+     "DCR_HPOUTP_TO_CCSCVS_CH1": {
+          "CONNECT":    [[69, 0, 1]], 
+          "DISCONNECT": [[69, 0, 0]]
+     }, 
+     "DCR_HPOUTP_TO_CCSCVS_CH2": {
+          "CONNECT":    [[69, 1, 1]], 
+          "DISCONNECT": [[69, 1, 0]]
+     }, 
+     "DCR_HPOUTP_TO_COMM_PORT": {
+          "CONNECT":    [[69, 2, 1]], 
+          "DISCONNECT": [[69, 2, 0]]
+     }, 
+     "DCR_HPOUTP_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[69, 3, 1]], 
+          "DISCONNECT": [[69, 3, 0]]
+     }, 
+     "DCR_HPOUTP_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[69, 4, 1]], 
+          "DISCONNECT": [[69, 4, 0]]
+     }, 
+     "DCR_HPOUTP_TO_VIN_DMM_N": {
+          "CONNECT":    [[69, 5, 1]], 
+          "DISCONNECT": [[69, 5, 0]]
+     }, 
+     "DCR_HPOUTP_TO_PP1V8_LDO": {
+          "CONNECT":    [[69, 6, 1]], 
+          "DISCONNECT": [[69, 6, 0]]
+     }, 
+     "DCR_HPOUTP_TO_SYS_GND": {
+          "CONNECT":    [[69, 7, 1]], 
+          "DISCONNECT": [[69, 7, 0]]
+     }, 
+     "PP1V8_SUR_TON_RIGHT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[70, 0, 1]], 
+          "DISCONNECT": [[70, 0, 0]]
+     }, 
+     "PP1V8_SUR_TON_RIGHT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[70, 1, 1]], 
+          "DISCONNECT": [[70, 1, 0]]
+     }, 
+     "PP1V8_SUR_TON_RIGHT_TO_COMM_PORT": {
+          "CONNECT":    [[70, 2, 1]], 
+          "DISCONNECT": [[70, 2, 0]]
+     }, 
+     "PP1V8_SUR_TON_RIGHT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[70, 3, 1]], 
+          "DISCONNECT": [[70, 3, 0]]
+     }, 
+     "PP1V8_SUR_TON_RIGHT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[70, 4, 1]], 
+          "DISCONNECT": [[70, 4, 0]]
+     }, 
+     "PP1V8_SUR_TON_RIGHT_TO_VIN_DMM_N": {
+          "CONNECT":    [[70, 5, 1]], 
+          "DISCONNECT": [[70, 5, 0]]
+     }, 
+     "PP1V8_SUR_TON_RIGHT_TO_PP1V8_LDO": {
+          "CONNECT":    [[70, 6, 1]], 
+          "DISCONNECT": [[70, 6, 0]]
+     }, 
+     "PP1V8_SUR_TON_RIGHT_TO_SYS_GND": {
+          "CONNECT":    [[70, 7, 1]], 
+          "DISCONNECT": [[70, 7, 0]]
+     }, 
+     "PP1V8_SUR_TON_LEFT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[70, 0, 1]], 
+          "DISCONNECT": [[70, 0, 0]]
+     }, 
+     "PP1V8_SUR_TON_LEFT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[70, 1, 1]], 
+          "DISCONNECT": [[70, 1, 0]]
+     }, 
+     "PP1V8_SUR_TON_LEFT_TO_COMM_PORT": {
+          "CONNECT":    [[70, 2, 1]], 
+          "DISCONNECT": [[70, 2, 0]]
+     }, 
+     "PP1V8_SUR_TON_LEFT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[70, 3, 1]], 
+          "DISCONNECT": [[70, 3, 0]]
+     }, 
+     "PP1V8_SUR_TON_LEFT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[70, 4, 1]], 
+          "DISCONNECT": [[70, 4, 0]]
+     }, 
+     "PP1V8_SUR_TON_LEFT_TO_VIN_DMM_N": {
+          "CONNECT":    [[70, 5, 1]], 
+          "DISCONNECT": [[70, 5, 0]]
+     }, 
+     "PP1V8_SUR_TON_LEFT_TO_PP1V8_LDO": {
+          "CONNECT":    [[70, 6, 1]], 
+          "DISCONNECT": [[70, 6, 0]]
+     }, 
+     "PP1V8_SUR_TON_LEFT_TO_SYS_GND": {
+          "CONNECT":    [[70, 7, 1]], 
+          "DISCONNECT": [[70, 7, 0]]
+     }, 
+     "SURIMI_RST_OUT_L_TO_CCSCVS_CH1": {
+          "CONNECT":    [[71, 0, 1]], 
+          "DISCONNECT": [[71, 0, 0]]
+     }, 
+     "SURIMI_RST_OUT_L_TO_CCSCVS_CH2": {
+          "CONNECT":    [[71, 1, 1]], 
+          "DISCONNECT": [[71, 1, 0]]
+     }, 
+     "SURIMI_RST_OUT_L_TO_COMM_PORT": {
+          "CONNECT":    [[71, 2, 1]], 
+          "DISCONNECT": [[71, 2, 0]]
+     }, 
+     "SURIMI_RST_OUT_L_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[71, 3, 1]], 
+          "DISCONNECT": [[71, 3, 0]]
+     }, 
+     "SURIMI_RST_OUT_L_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[71, 4, 1]], 
+          "DISCONNECT": [[71, 4, 0]]
+     }, 
+     "SURIMI_RST_OUT_L_TO_VIN_DMM_N": {
+          "CONNECT":    [[71, 5, 1]], 
+          "DISCONNECT": [[71, 5, 0]]
+     }, 
+     "SURIMI_RST_OUT_L_TO_PP1V8_LDO": {
+          "CONNECT":    [[71, 6, 1]], 
+          "DISCONNECT": [[71, 6, 0]]
+     }, 
+     "SURIMI_RST_OUT_L_TO_SYS_GND": {
+          "CONNECT":    [[71, 7, 1]], 
+          "DISCONNECT": [[71, 7, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_P_TO_CCSCVS_CH1": {
+          "CONNECT":    [[72, 0, 1]], 
+          "DISCONNECT": [[72, 0, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_P_TO_CCSCVS_CH2": {
+          "CONNECT":    [[72, 1, 1]], 
+          "DISCONNECT": [[72, 1, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_P_TO_COMM_PORT": {
+          "CONNECT":    [[72, 2, 1]], 
+          "DISCONNECT": [[72, 2, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_P_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[72, 3, 1]], 
+          "DISCONNECT": [[72, 3, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_P_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[72, 4, 1]], 
+          "DISCONNECT": [[72, 4, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_P_TO_VIN_DMM_N": {
+          "CONNECT":    [[72, 5, 1]], 
+          "DISCONNECT": [[72, 5, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_P_TO_PP1V8_LDO": {
+          "CONNECT":    [[72, 6, 1]], 
+          "DISCONNECT": [[72, 6, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_P_TO_SYS_GND": {
+          "CONNECT":    [[72, 7, 1]], 
+          "DISCONNECT": [[72, 7, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_N_TO_CCSCVS_CH1": {
+          "CONNECT":    [[73, 0, 1]], 
+          "DISCONNECT": [[73, 0, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_N_TO_CCSCVS_CH2": {
+          "CONNECT":    [[73, 1, 1]], 
+          "DISCONNECT": [[73, 1, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_N_TO_COMM_PORT": {
+          "CONNECT":    [[73, 2, 1]], 
+          "DISCONNECT": [[73, 2, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_N_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[73, 3, 1]], 
+          "DISCONNECT": [[73, 3, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_N_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[73, 4, 1]], 
+          "DISCONNECT": [[73, 4, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_N_TO_VIN_DMM_N": {
+          "CONNECT":    [[73, 5, 1]], 
+          "DISCONNECT": [[73, 5, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_N_TO_PP1V8_LDO": {
+          "CONNECT":    [[73, 6, 1]], 
+          "DISCONNECT": [[73, 6, 0]]
+     }, 
+     "DCR_ANALOG_AMP_OUT_N_TO_SYS_GND": {
+          "CONNECT":    [[73, 7, 1]], 
+          "DISCONNECT": [[73, 7, 0]]
+     }, 
+     "DCR_I2C_SCL_TO_CCSCVS_CH1": {
+          "CONNECT":    [[74, 0, 1]], 
+          "DISCONNECT": [[74, 0, 0]]
+     }, 
+     "DCR_I2C_SCL_TO_CCSCVS_CH2": {
+          "CONNECT":    [[74, 1, 1]], 
+          "DISCONNECT": [[74, 1, 0]]
+     }, 
+     "DCR_I2C_SCL_TO_COMM_PORT": {
+          "CONNECT":    [[74, 2, 1]], 
+          "DISCONNECT": [[74, 2, 0]]
+     }, 
+     "DCR_I2C_SCL_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[74, 3, 1]], 
+          "DISCONNECT": [[74, 3, 0]]
+     }, 
+     "DCR_I2C_SCL_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[74, 4, 1]], 
+          "DISCONNECT": [[74, 4, 0]]
+     }, 
+     "DCR_I2C_SCL_TO_VIN_DMM_N": {
+          "CONNECT":    [[74, 5, 1]], 
+          "DISCONNECT": [[74, 5, 0]]
+     }, 
+     "DCR_I2C_SCL_TO_PP1V8_LDO": {
+          "CONNECT":    [[74, 6, 1]], 
+          "DISCONNECT": [[74, 6, 0]]
+     }, 
+     "DCR_I2C_SCL_TO_SYS_GND": {
+          "CONNECT":    [[74, 7, 1]], 
+          "DISCONNECT": [[74, 7, 0]]
+     }, 
+     "DCR_I2C_SDA_TO_CCSCVS_CH1": {
+          "CONNECT":    [[75, 0, 1]], 
+          "DISCONNECT": [[75, 0, 0]]
+     }, 
+     "DCR_I2C_SDA_TO_CCSCVS_CH2": {
+          "CONNECT":    [[75, 1, 1]], 
+          "DISCONNECT": [[75, 1, 0]]
+     }, 
+     "DCR_I2C_SDA_TO_COMM_PORT": {
+          "CONNECT":    [[75, 2, 1]], 
+          "DISCONNECT": [[75, 2, 0]]
+     }, 
+     "DCR_I2C_SDA_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[75, 3, 1]], 
+          "DISCONNECT": [[75, 3, 0]]
+     }, 
+     "DCR_I2C_SDA_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[75, 4, 1]], 
+          "DISCONNECT": [[75, 4, 0]]
+     }, 
+     "DCR_I2C_SDA_TO_VIN_DMM_N": {
+          "CONNECT":    [[75, 5, 1]], 
+          "DISCONNECT": [[75, 5, 0]]
+     }, 
+     "DCR_I2C_SDA_TO_PP1V8_LDO": {
+          "CONNECT":    [[75, 6, 1]], 
+          "DISCONNECT": [[75, 6, 0]]
+     }, 
+     "DCR_I2C_SDA_TO_SYS_GND": {
+          "CONNECT":    [[75, 7, 1]], 
+          "DISCONNECT": [[75, 7, 0]]
+     }, 
+     "FB_HALL2_NORTH_TO_CCSCVS_CH1": {
+          "CONNECT":    [[76, 0, 1]], 
+          "DISCONNECT": [[76, 0, 0]]
+     }, 
+     "FB_HALL2_NORTH_TO_CCSCVS_CH2": {
+          "CONNECT":    [[76, 1, 1]], 
+          "DISCONNECT": [[76, 1, 0]]
+     }, 
+     "FB_HALL2_NORTH_TO_COMM_PORT": {
+          "CONNECT":    [[76, 2, 1]], 
+          "DISCONNECT": [[76, 2, 0]]
+     }, 
+     "FB_HALL2_NORTH_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[76, 3, 1]], 
+          "DISCONNECT": [[76, 3, 0]]
+     }, 
+     "FB_HALL2_NORTH_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[76, 4, 1]], 
+          "DISCONNECT": [[76, 4, 0]]
+     }, 
+     "FB_HALL2_NORTH_TO_VIN_DMM_N": {
+          "CONNECT":    [[76, 5, 1]], 
+          "DISCONNECT": [[76, 5, 0]]
+     }, 
+     "FB_HALL2_NORTH_TO_PP1V8_LDO": {
+          "CONNECT":    [[76, 6, 1]], 
+          "DISCONNECT": [[76, 6, 0]]
+     }, 
+     "FB_HALL2_NORTH_R_TO_SYS_GND": {
+          "CONNECT":    [[77, 7, 1]], 
+          "DISCONNECT": [[77, 7, 0]]
+     }, 
+     "FB_HALL2_NORTH_L_TO_SYS_GND": {
+          "CONNECT":    [[76, 7, 1]], 
+          "DISCONNECT": [[76, 7, 0]]
+     },
+     "FB_HALL2_SOUTH_TO_CCSCVS_CH1": {
+          "CONNECT":    [[77, 0, 1]], 
+          "DISCONNECT": [[77, 0, 0]]
+     }, 
+     "FB_HALL2_SOUTH_TO_CCSCVS_CH2": {
+          "CONNECT":    [[77, 1, 1]], 
+          "DISCONNECT": [[77, 1, 0]]
+     }, 
+     "FB_HALL2_SOUTH_TO_COMM_PORT": {
+          "CONNECT":    [[77, 2, 1]], 
+          "DISCONNECT": [[77, 2, 0]]
+     }, 
+     "FB_HALL2_SOUTH_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[77, 3, 1]], 
+          "DISCONNECT": [[77, 3, 0]]
+     }, 
+     "FB_HALL2_SOUTH_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[77, 4, 1]], 
+          "DISCONNECT": [[77, 4, 0]]
+     }, 
+     "FB_HALL2_SOUTH_TO_VIN_DMM_N": {
+          "CONNECT":    [[77, 5, 1]], 
+          "DISCONNECT": [[77, 5, 0]]
+     }, 
+     "FB_HALL2_SOUTH_TO_PP1V8_LDO": {
+          "CONNECT":    [[77, 6, 1]], 
+          "DISCONNECT": [[77, 6, 0]]
+     }, 
+     "FB_HALL2_SOUTH_R_TO_SYS_GND": {
+          "CONNECT":    [[76, 7, 1]], 
+          "DISCONNECT": [[76, 7, 0]]
+     }, 
+     "FB_HALL2_SOUTH_L_TO_SYS_GND": {
+          "CONNECT":    [[77, 7, 1]], 
+          "DISCONNECT": [[77, 7, 0]]
+     },
+     "SPI_KOBOL_MISO_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[78, 0, 1]], 
+          "DISCONNECT": [[78, 0, 0]]
+     }, 
+     "SPI_KOBOL_MISO_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[78, 1, 1]], 
+          "DISCONNECT": [[78, 1, 0]]
+     }, 
+     "SPI_KOBOL_MISO_B_TO_COMM_PORT": {
+          "CONNECT":    [[78, 2, 1]], 
+          "DISCONNECT": [[78, 2, 0]]
+     }, 
+     "SPI_KOBOL_MISO_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[78, 3, 1]], 
+          "DISCONNECT": [[78, 3, 0]]
+     }, 
+     "SPI_KOBOL_MISO_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[78, 4, 1]], 
+          "DISCONNECT": [[78, 4, 0]]
+     }, 
+     "SPI_KOBOL_MISO_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[78, 5, 1]], 
+          "DISCONNECT": [[78, 5, 0]]
+     }, 
+     "SPI_KOBOL_MISO_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[78, 6, 1]], 
+          "DISCONNECT": [[78, 6, 0]]
+     }, 
+     "SPI_KOBOL_MISO_B_TO_SYS_GND": {
+          "CONNECT":    [[78, 7, 1]], 
+          "DISCONNECT": [[78, 7, 0]]
+     }, 
+     "SPI_KOBOL_MOSI_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[79, 0, 1]], 
+          "DISCONNECT": [[79, 0, 0]]
+     }, 
+     "SPI_KOBOL_MOSI_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[79, 1, 1]], 
+          "DISCONNECT": [[79, 1, 0]]
+     }, 
+     "SPI_KOBOL_MOSI_B_TO_COMM_PORT": {
+          "CONNECT":    [[79, 2, 1]], 
+          "DISCONNECT": [[79, 2, 0]]
+     }, 
+     "SPI_KOBOL_MOSI_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[79, 3, 1]], 
+          "DISCONNECT": [[79, 3, 0]]
+     }, 
+     "SPI_KOBOL_MOSI_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[79, 4, 1]], 
+          "DISCONNECT": [[79, 4, 0]]
+     }, 
+     "SPI_KOBOL_MOSI_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[79, 5, 1]], 
+          "DISCONNECT": [[79, 5, 0]]
+     }, 
+     "SPI_KOBOL_MOSI_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[79, 6, 1]], 
+          "DISCONNECT": [[79, 6, 0]]
+     }, 
+     "SPI_KOBOL_MOSI_B_TO_SYS_GND": {
+          "CONNECT":    [[79, 7, 1]], 
+          "DISCONNECT": [[79, 7, 0]]
+     }, 
+     "SPI_KOBOL_SCK_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[80, 0, 1]], 
+          "DISCONNECT": [[80, 0, 0]]
+     }, 
+     "SPI_KOBOL_SCK_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[80, 1, 1]], 
+          "DISCONNECT": [[80, 1, 0]]
+     }, 
+     "SPI_KOBOL_SCK_B_TO_COMM_PORT": {
+          "CONNECT":    [[80, 2, 1]], 
+          "DISCONNECT": [[80, 2, 0]]
+     }, 
+     "SPI_KOBOL_SCK_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[80, 3, 1]], 
+          "DISCONNECT": [[80, 3, 0]]
+     }, 
+     "SPI_KOBOL_SCK_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[80, 4, 1]], 
+          "DISCONNECT": [[80, 4, 0]]
+     }, 
+     "SPI_KOBOL_SCK_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[80, 5, 1]], 
+          "DISCONNECT": [[80, 5, 0]]
+     }, 
+     "SPI_KOBOL_SCK_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[80, 6, 1]], 
+          "DISCONNECT": [[80, 6, 0]]
+     }, 
+     "SPI_KOBOL_SCK_B_TO_SYS_GND": {
+          "CONNECT":    [[80, 7, 1]], 
+          "DISCONNECT": [[80, 7, 0]]
+     }, 
+     "SPI_KOBOL_CS_L_TO_CCSCVS_CH1": {
+          "CONNECT":    [[81, 0, 1]], 
+          "DISCONNECT": [[81, 0, 0]]
+     }, 
+     "SPI_KOBOL_CS_L_TO_CCSCVS_CH2": {
+          "CONNECT":    [[81, 1, 1]], 
+          "DISCONNECT": [[81, 1, 0]]
+     }, 
+     "SPI_KOBOL_CS_L_TO_COMM_PORT": {
+          "CONNECT":    [[81, 2, 1]], 
+          "DISCONNECT": [[81, 2, 0]]
+     }, 
+     "SPI_KOBOL_CS_L_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[81, 3, 1]], 
+          "DISCONNECT": [[81, 3, 0]]
+     }, 
+     "SPI_KOBOL_CS_L_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[81, 4, 1]], 
+          "DISCONNECT": [[81, 4, 0]]
+     }, 
+     "SPI_KOBOL_CS_L_TO_VIN_DMM_N": {
+          "CONNECT":    [[81, 5, 1]], 
+          "DISCONNECT": [[81, 5, 0]]
+     }, 
+     "SPI_KOBOL_CS_L_TO_PP1V8_LDO": {
+          "CONNECT":    [[81, 6, 1]], 
+          "DISCONNECT": [[81, 6, 0]]
+     }, 
+     "SPI_KOBOL_CS_L_TO_SYS_GND": {
+          "CONNECT":    [[81, 7, 1]], 
+          "DISCONNECT": [[81, 7, 0]]
+     }, 
+     "COMM_CAL_PORT_P_TO_CCSCVS_CH1": {
+          "CONNECT":    [[82, 0, 1]], 
+          "DISCONNECT": [[82, 0, 0]]
+     }, 
+     "COMM_CAL_PORT_P_TO_CCSCVS_CH2": {
+          "CONNECT":    [[82, 1, 1]], 
+          "DISCONNECT": [[82, 1, 0]]
+     }, 
+     "COMM_CAL_PORT_P_TO_COMM_PORT": {
+          "CONNECT":    [[82, 2, 1]], 
+          "DISCONNECT": [[82, 2, 0]]
+     }, 
+     "COMM_CAL_PORT_P_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[82, 3, 1]], 
+          "DISCONNECT": [[82, 3, 0]]
+     }, 
+     "COMM_CAL_PORT_P_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[82, 4, 1]], 
+          "DISCONNECT": [[82, 4, 0]]
+     }, 
+     "COMM_CAL_PORT_P_TO_VIN_DMM_N": {
+          "CONNECT":    [[82, 5, 1]], 
+          "DISCONNECT": [[82, 5, 0]]
+     }, 
+     "COMM_CAL_PORT_P_TO_PP1V8_LDO": {
+          "CONNECT":    [[82, 6, 1]], 
+          "DISCONNECT": [[82, 6, 0]]
+     }, 
+     "COMM_CAL_PORT_P_TO_SYS_GND": {
+          "CONNECT":    [[82, 7, 1]], 
+          "DISCONNECT": [[82, 7, 0]]
+     }, 
+     "COMM_CAL_PORT_N_TO_CCSCVS_CH1": {
+          "CONNECT":    [[83, 0, 1]], 
+          "DISCONNECT": [[83, 0, 0]]
+     }, 
+     "COMM_CAL_PORT_N_TO_CCSCVS_CH2": {
+          "CONNECT":    [[83, 1, 1]], 
+          "DISCONNECT": [[83, 1, 0]]
+     }, 
+     "COMM_CAL_PORT_N_TO_COMM_PORT": {
+          "CONNECT":    [[83, 2, 1]], 
+          "DISCONNECT": [[83, 2, 0]]
+     }, 
+     "COMM_CAL_PORT_N_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[83, 3, 1]], 
+          "DISCONNECT": [[83, 3, 0]]
+     }, 
+     "COMM_CAL_PORT_N_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[83, 4, 1]], 
+          "DISCONNECT": [[83, 4, 0]]
+     }, 
+     "COMM_CAL_PORT_N_TO_VIN_DMM_N": {
+          "CONNECT":    [[83, 5, 1]], 
+          "DISCONNECT": [[83, 5, 0]]
+     }, 
+     "COMM_CAL_PORT_N_TO_PP1V8_LDO": {
+          "CONNECT":    [[83, 6, 1]], 
+          "DISCONNECT": [[83, 6, 0]]
+     }, 
+     "COMM_CAL_PORT_N_TO_SYS_GND": {
+          "CONNECT":    [[83, 7, 1]], 
+          "DISCONNECT": [[83, 7, 0]]
+     }, 
+     "PULL_DOWN_499R_TO_CCSCVS_CH1": {
+          "CONNECT":    [[84, 0, 1]], 
+          "DISCONNECT": [[84, 0, 0]]
+     }, 
+     "PULL_DOWN_499R_TO_CCSCVS_CH2": {
+          "CONNECT":    [[84, 1, 1]], 
+          "DISCONNECT": [[84, 1, 0]]
+     }, 
+     "PULL_DOWN_499R_TO_COMM_PORT": {
+          "CONNECT":    [[84, 2, 1]], 
+          "DISCONNECT": [[84, 2, 0]]
+     }, 
+     "PULL_DOWN_499R_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[84, 3, 1]], 
+          "DISCONNECT": [[84, 3, 0]]
+     }, 
+     "PULL_DOWN_499R_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[84, 4, 1]], 
+          "DISCONNECT": [[84, 4, 0]]
+     }, 
+     "PULL_DOWN_499R_TO_VIN_DMM_N": {
+          "CONNECT":    [[84, 5, 1]], 
+          "DISCONNECT": [[84, 5, 0]]
+     }, 
+     "PULL_DOWN_499R_TO_PP1V8_LDO": {
+          "CONNECT":    [[84, 6, 1]], 
+          "DISCONNECT": [[84, 6, 0]]
+     }, 
+     "PULL_DOWN_499R_TO_SYS_GND": {
+          "CONNECT":    [[84, 7, 1]], 
+          "DISCONNECT": [[84, 7, 0]]
+     }, 
+     "FB_HALL3_NORTH_TO_CCSCVS_CH1": {
+          "CONNECT":    [[85, 0, 1]], 
+          "DISCONNECT": [[85, 0, 0]]
+     }, 
+     "FB_HALL3_NORTH_TO_CCSCVS_CH2": {
+          "CONNECT":    [[85, 1, 1]], 
+          "DISCONNECT": [[85, 1, 0]]
+     }, 
+     "FB_HALL3_NORTH_TO_COMM_PORT": {
+          "CONNECT":    [[85, 2, 1]], 
+          "DISCONNECT": [[85, 2, 0]]
+     }, 
+     "FB_HALL3_NORTH_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[85, 3, 1]], 
+          "DISCONNECT": [[85, 3, 0]]
+     }, 
+     "FB_HALL3_NORTH_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[85, 4, 1]], 
+          "DISCONNECT": [[85, 4, 0]]
+     }, 
+     "FB_HALL3_NORTH_TO_VIN_DMM_N": {
+          "CONNECT":    [[85, 5, 1]], 
+          "DISCONNECT": [[85, 5, 0]]
+     }, 
+     "FB_HALL3_NORTH_TO_PP1V8_LDO": {
+          "CONNECT":    [[85, 6, 1]], 
+          "DISCONNECT": [[85, 6, 0]]
+     }, 
+     "FB_HALL3_NORTH_R_TO_SYS_GND": {
+          "CONNECT":    [[86, 7, 1]], 
+          "DISCONNECT": [[86, 7, 0]]
+     }, 
+     "FB_HALL3_NORTH_L_TO_SYS_GND": {
+          "CONNECT":    [[85, 7, 1]], 
+          "DISCONNECT": [[85, 7, 0]]
+     },
+     "FB_HALL3_SOUTH_TO_CCSCVS_CH1": {
+          "CONNECT":    [[86, 0, 1]], 
+          "DISCONNECT": [[86, 0, 0]]
+     }, 
+     "FB_HALL3_SOUTH_TO_CCSCVS_CH2": {
+          "CONNECT":    [[86, 1, 1]], 
+          "DISCONNECT": [[86, 1, 0]]
+     }, 
+     "FB_HALL3_SOUTH_TO_COMM_PORT": {
+          "CONNECT":    [[86, 2, 1]], 
+          "DISCONNECT": [[86, 2, 0]]
+     }, 
+     "FB_HALL3_SOUTH_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[86, 3, 1]], 
+          "DISCONNECT": [[86, 3, 0]]
+     }, 
+     "FB_HALL3_SOUTH_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[86, 4, 1]], 
+          "DISCONNECT": [[86, 4, 0]]
+     }, 
+     "FB_HALL3_SOUTH_TO_VIN_DMM_N": {
+          "CONNECT":    [[86, 5, 1]], 
+          "DISCONNECT": [[86, 5, 0]]
+     }, 
+     "FB_HALL3_SOUTH_TO_PP1V8_LDO": {
+          "CONNECT":    [[86, 6, 1]], 
+          "DISCONNECT": [[86, 6, 0]]
+     }, 
+     "FB_HALL3_SOUTH_L_TO_SYS_GND": {
+          "CONNECT":    [[86, 7, 1]], 
+          "DISCONNECT": [[86, 7, 0]]
+     }, 
+     "FB_HALL3_SOUTH_R_TO_SYS_GND": {
+          "CONNECT":    [[85, 7, 1]], 
+          "DISCONNECT": [[85, 7, 0]]
+     },
+     "FB_HALL4_NORTH_TO_CCSCVS_CH1": {
+          "CONNECT":    [[87, 0, 1]], 
+          "DISCONNECT": [[87, 0, 0]]
+     }, 
+     "FB_HALL4_NORTH_TO_CCSCVS_CH2": {
+          "CONNECT":    [[87, 1, 1]], 
+          "DISCONNECT": [[87, 1, 0]]
+     }, 
+     "FB_HALL4_NORTH_TO_COMM_PORT": {
+          "CONNECT":    [[87, 2, 1]], 
+          "DISCONNECT": [[87, 2, 0]]
+     }, 
+     "FB_HALL4_NORTH_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[87, 3, 1]], 
+          "DISCONNECT": [[87, 3, 0]]
+     }, 
+     "FB_HALL4_NORTH_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[87, 4, 1]], 
+          "DISCONNECT": [[87, 4, 0]]
+     }, 
+     "FB_HALL4_NORTH_TO_VIN_DMM_N": {
+          "CONNECT":    [[87, 5, 1]], 
+          "DISCONNECT": [[87, 5, 0]]
+     }, 
+     "FB_HALL4_NORTH_TO_PP1V8_LDO": {
+          "CONNECT":    [[87, 6, 1]], 
+          "DISCONNECT": [[87, 6, 0]]
+     }, 
+     "FB_HALL4_NORTH_R_TO_SYS_GND": {
+          "CONNECT":    [[88, 7, 1]], 
+          "DISCONNECT": [[88, 7, 0]]
+     }, 
+     "FB_HALL4_NORTH_L_TO_SYS_GND": {
+          "CONNECT":    [[87, 7, 1]], 
+          "DISCONNECT": [[87, 7, 0]]
+     }, 
+     "FB_HALL4_SOUTH_TO_CCSCVS_CH1": {
+          "CONNECT":    [[88, 0, 1]], 
+          "DISCONNECT": [[88, 0, 0]]
+     }, 
+     "FB_HALL4_SOUTH_TO_CCSCVS_CH2": {
+          "CONNECT":    [[88, 1, 1]], 
+          "DISCONNECT": [[88, 1, 0]]
+     }, 
+     "FB_HALL4_SOUTH_TO_COMM_PORT": {
+          "CONNECT":    [[88, 2, 1]], 
+          "DISCONNECT": [[88, 2, 0]]
+     }, 
+     "FB_HALL4_SOUTH_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[88, 3, 1]], 
+          "DISCONNECT": [[88, 3, 0]]
+     }, 
+     "FB_HALL4_SOUTH_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[88, 4, 1]], 
+          "DISCONNECT": [[88, 4, 0]]
+     }, 
+     "FB_HALL4_SOUTH_TO_VIN_DMM_N": {
+          "CONNECT":    [[88, 5, 1]], 
+          "DISCONNECT": [[88, 5, 0]]
+     }, 
+     "FB_HALL4_SOUTH_TO_PP1V8_LDO": {
+          "CONNECT":    [[88, 6, 1]], 
+          "DISCONNECT": [[88, 6, 0]]
+     }, 
+     "FB_HALL4_SOUTH_L_TO_SYS_GND": {
+          "CONNECT":    [[88, 7, 1]], 
+          "DISCONNECT": [[88, 7, 0]]
+     }, 
+     "FB_HALL4_SOUTH_R_TO_SYS_GND": {
+          "CONNECT":    [[87, 7, 1]], 
+          "DISCONNECT": [[87, 7, 0]]
+     },
+     "HES_INT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[89, 0, 1]], 
+          "DISCONNECT": [[89, 0, 0]]
+     }, 
+     "HES_INT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[89, 1, 1]], 
+          "DISCONNECT": [[89, 1, 0]]
+     }, 
+     "HES_INT_TO_COMM_PORT": {
+          "CONNECT":    [[89, 2, 1]], 
+          "DISCONNECT": [[89, 2, 0]]
+     }, 
+     "HES_INT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[89, 3, 1]], 
+          "DISCONNECT": [[89, 3, 0]]
+     }, 
+     "HES_INT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[89, 4, 1]], 
+          "DISCONNECT": [[89, 4, 0]]
+     }, 
+     "HES_INT_TO_VIN_DMM_N": {
+          "CONNECT":    [[89, 5, 1]], 
+          "DISCONNECT": [[89, 5, 0]]
+     }, 
+     "HES_INT_TO_PP1V8_LDO": {
+          "CONNECT":    [[89, 6, 1]], 
+          "DISCONNECT": [[89, 6, 0]]
+     }, 
+     "HES_INT_TO_SYS_GND": {
+          "CONNECT":    [[89, 7, 1]], 
+          "DISCONNECT": [[89, 7, 0]]
+     }, 
+     "SURIMI_RST_EN_TO_CCSCVS_CH1": {
+          "CONNECT":    [[90, 0, 1]], 
+          "DISCONNECT": [[90, 0, 0]]
+     }, 
+     "SURIMI_RST_EN_TO_CCSCVS_CH2": {
+          "CONNECT":    [[90, 1, 1]], 
+          "DISCONNECT": [[90, 1, 0]]
+     }, 
+     "SURIMI_RST_EN_TO_COMM_PORT": {
+          "CONNECT":    [[90, 2, 1]], 
+          "DISCONNECT": [[90, 2, 0]]
+     }, 
+     "SURIMI_RST_EN_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[90, 3, 1]], 
+          "DISCONNECT": [[90, 3, 0]]
+     }, 
+     "SURIMI_RST_EN_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[90, 4, 1]], 
+          "DISCONNECT": [[90, 4, 0]]
+     }, 
+     "SURIMI_RST_EN_TO_VIN_DMM_N": {
+          "CONNECT":    [[90, 5, 1]], 
+          "DISCONNECT": [[90, 5, 0]]
+     }, 
+     "SURIMI_RST_EN_TO_PP1V8_LDO": {
+          "CONNECT":    [[90, 6, 1]], 
+          "DISCONNECT": [[90, 6, 0]]
+     }, 
+     "SURIMI_RST_EN_TO_SYS_GND": {
+          "CONNECT":    [[90, 7, 1]], 
+          "DISCONNECT": [[90, 7, 0]]
+     }, 
+     "EN_VBUS_LOAD_SWITCH_TO_CCSCVS_CH1": {
+          "CONNECT":    [[90, 0, 1]], 
+          "DISCONNECT": [[90, 0, 0]]
+     }, 
+     "EN_VBUS_LOAD_SWITCH_TO_CCSCVS_CH2": {
+          "CONNECT":    [[90, 1, 1]], 
+          "DISCONNECT": [[90, 1, 0]]
+     }, 
+     "EN_VBUS_LOAD_SWITCH_TO_COMM_PORT": {
+          "CONNECT":    [[90, 2, 1]], 
+          "DISCONNECT": [[90, 2, 0]]
+     }, 
+     "EN_VBUS_LOAD_SWITCH_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[90, 3, 1]], 
+          "DISCONNECT": [[90, 3, 0]]
+     }, 
+     "EN_VBUS_LOAD_SWITCH_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[90, 4, 1]], 
+          "DISCONNECT": [[90, 4, 0]]
+     }, 
+     "EN_VBUS_LOAD_SWITCH_TO_VIN_DMM_N": {
+          "CONNECT":    [[90, 5, 1]], 
+          "DISCONNECT": [[90, 5, 0]]
+     }, 
+     "EN_VBUS_LOAD_SWITCH_TO_PP1V8_LDO": {
+          "CONNECT":    [[90, 6, 1]], 
+          "DISCONNECT": [[90, 6, 0]]
+     }, 
+     "EN_VBUS_LOAD_SWITCH_TO_SYS_GND": {
+          "CONNECT":    [[90, 7, 1]], 
+          "DISCONNECT": [[90, 7, 0]]
+     }, 
+     "DCR_PP_VBUS_HB_B_TO_CCSCVS_CH1": {
+          "CONNECT":    [[91, 0, 1]], 
+          "DISCONNECT": [[91, 0, 0]]
+     }, 
+     "DCR_PP_VBUS_HB_B_TO_CCSCVS_CH2": {
+          "CONNECT":    [[91, 1, 1]], 
+          "DISCONNECT": [[91, 1, 0]]
+     }, 
+     "DCR_PP_VBUS_HB_B_TO_COMM_PORT": {
+          "CONNECT":    [[91, 2, 1]], 
+          "DISCONNECT": [[91, 2, 0]]
+     }, 
+     "DCR_PP_VBUS_HB_B_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[91, 3, 1]], 
+          "DISCONNECT": [[91, 3, 0]]
+     }, 
+     "DCR_PP_VBUS_HB_B_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[91, 4, 1]], 
+          "DISCONNECT": [[91, 4, 0]]
+     }, 
+     "DCR_PP_VBUS_HB_B_TO_VIN_DMM_N": {
+          "CONNECT":    [[91, 5, 1]], 
+          "DISCONNECT": [[91, 5, 0]]
+     }, 
+     "DCR_PP_VBUS_HB_B_TO_PP1V8_LDO": {
+          "CONNECT":    [[91, 6, 1]], 
+          "DISCONNECT": [[91, 6, 0]]
+     }, 
+     "DCR_PP_VBUS_HB_B_TO_SYS_GND": {
+          "CONNECT":    [[91, 7, 1]], 
+          "DISCONNECT": [[91, 7, 0]]
+     }, 
+     "SURIMI_TONE_TO_CCSCVS_CH1": {
+          "CONNECT":    [[92, 0, 1]], 
+          "DISCONNECT": [[92, 0, 0]]
+     }, 
+     "SURIMI_TONE_TO_CCSCVS_CH2": {
+          "CONNECT":    [[92, 1, 1]], 
+          "DISCONNECT": [[92, 1, 0]]
+     }, 
+     "SURIMI_TONE_TO_COMM_PORT": {
+          "CONNECT":    [[92, 2, 1]], 
+          "DISCONNECT": [[92, 2, 0]]
+     }, 
+     "SURIMI_TONE_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[92, 3, 1]], 
+          "DISCONNECT": [[92, 3, 0]]
+     }, 
+     "SURIMI_TONE_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[92, 4, 1]], 
+          "DISCONNECT": [[92, 4, 0]]
+     }, 
+     "SURIMI_TONE_TO_VIN_DMM_N": {
+          "CONNECT":    [[92, 5, 1]], 
+          "DISCONNECT": [[92, 5, 0]]
+     }, 
+     "SURIMI_TONE_TO_PP1V8_LDO": {
+          "CONNECT":    [[92, 6, 1]], 
+          "DISCONNECT": [[92, 6, 0]]
+     }, 
+     "SURIMI_TONE_TO_SYS_GND": {
+          "CONNECT":    [[92, 7, 1]], 
+          "DISCONNECT": [[92, 7, 0]]
+     }, 
+     "DCR_SURIMI_MFB_STATUS_L_TO_CCSCVS_CH1": {
+          "CONNECT":    [[93, 0, 1]], 
+          "DISCONNECT": [[93, 0, 0]]
+     }, 
+     "DCR_SURIMI_MFB_STATUS_L_TO_CCSCVS_CH2": {
+          "CONNECT":    [[93, 1, 1]], 
+          "DISCONNECT": [[93, 1, 0]]
+     }, 
+     "DCR_SURIMI_MFB_STATUS_L_TO_COMM_PORT": {
+          "CONNECT":    [[93, 2, 1]], 
+          "DISCONNECT": [[93, 2, 0]]
+     }, 
+     "DCR_SURIMI_MFB_STATUS_L_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[93, 3, 1]], 
+          "DISCONNECT": [[93, 3, 0]]
+     }, 
+     "DCR_SURIMI_MFB_STATUS_L_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[93, 4, 1]], 
+          "DISCONNECT": [[93, 4, 0]]
+     }, 
+     "DCR_SURIMI_MFB_STATUS_L_TO_VIN_DMM_N": {
+          "CONNECT":    [[93, 5, 1]], 
+          "DISCONNECT": [[93, 5, 0]]
+     }, 
+     "DCR_SURIMI_MFB_STATUS_L_TO_PP1V8_LDO": {
+          "CONNECT":    [[93, 6, 1]], 
+          "DISCONNECT": [[93, 6, 0]]
+     }, 
+     "DCR_SURIMI_MFB_STATUS_L_TO_SYS_GND": {
+          "CONNECT":    [[93, 7, 1]], 
+          "DISCONNECT": [[93, 7, 0]]
+     }, 
+     "SURIMI_VDN_STATUS_L_TO_CCSCVS_CH1": {
+          "CONNECT":    [[94, 0, 1]], 
+          "DISCONNECT": [[94, 0, 0]]
+     }, 
+     "SURIMI_VDN_STATUS_L_TO_CCSCVS_CH2": {
+          "CONNECT":    [[94, 1, 1]], 
+          "DISCONNECT": [[94, 1, 0]]
+     }, 
+     "SURIMI_VDN_STATUS_L_TO_COMM_PORT": {
+          "CONNECT":    [[94, 2, 1]], 
+          "DISCONNECT": [[94, 2, 0]]
+     }, 
+     "SURIMI_VDN_STATUS_L_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[94, 3, 1]], 
+          "DISCONNECT": [[94, 3, 0]]
+     }, 
+     "SURIMI_VDN_STATUS_L_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[94, 4, 1]], 
+          "DISCONNECT": [[94, 4, 0]]
+     }, 
+     "SURIMI_VDN_STATUS_L_TO_VIN_DMM_N": {
+          "CONNECT":    [[94, 5, 1]], 
+          "DISCONNECT": [[94, 5, 0]]
+     }, 
+     "SURIMI_VDN_STATUS_L_TO_PP1V8_LDO": {
+          "CONNECT":    [[94, 6, 1]], 
+          "DISCONNECT": [[94, 6, 0]]
+     }, 
+     "SURIMI_VDN_STATUS_L_TO_SYS_GND": {
+          "CONNECT":    [[94, 7, 1]], 
+          "DISCONNECT": [[94, 7, 0]]
+     }, 
+     "SUR_RST_WDOG_LEFT_TO_CCSCVS_CH1": {
+          "CONNECT":    [[95, 0, 1]], 
+          "DISCONNECT": [[95, 0, 0]]
+     }, 
+     "SUR_RST_WDOG_LEFT_TO_CCSCVS_CH2": {
+          "CONNECT":    [[95, 1, 1]], 
+          "DISCONNECT": [[95, 1, 0]]
+     }, 
+     "SUR_RST_WDOG_LEFT_TO_COMM_PORT": {
+          "CONNECT":    [[95, 2, 1]], 
+          "DISCONNECT": [[95, 2, 0]]
+     }, 
+     "SUR_RST_WDOG_LEFT_TO_VIN_DMM_CH2_P": {
+          "CONNECT":    [[95, 3, 1]], 
+          "DISCONNECT": [[95, 3, 0]]
+     }, 
+     "SUR_RST_WDOG_LEFT_TO_VIN_DMM_CH1_P": {
+          "CONNECT":    [[95, 4, 1]], 
+          "DISCONNECT": [[95, 4, 0]]
+     }, 
+     "SUR_RST_WDOG_LEFT_TO_VIN_DMM_N": {
+          "CONNECT":    [[95, 5, 1]], 
+          "DISCONNECT": [[95, 5, 0]]
+     }, 
+     "SUR_RST_WDOG_LEFT_TO_PP1V8_LDO": {
+          "CONNECT":    [[95, 6, 1]], 
+          "DISCONNECT": [[95, 6, 0]]
+     }, 
+     "SUR_RST_WDOG_LEFT_TO_SYS_GND": {
+          "CONNECT":    [[95, 7, 1]], 
+          "DISCONNECT": [[95, 7, 0]]
+     },
+     "LEAKAGE_TO_PP_VBUS_CONN": {
+          "CONNECT": [
+               ["PP_VBUS_CONN_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VBUS_CONN_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VBUS_CONN_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VBUS_CONN_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP1V8_SUR_RST_LEFT": {
+          "CONNECT": [
+               ["PP1V8_SUR_RST_LEFT_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP1V8_SUR_RST_LEFT_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP1V8_SUR_RST_LEFT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP1V8_SUR_RST_LEFT_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_BAT_NEG": {
+          "CONNECT": [
+               ["BAT_NEG_TO_CCSCVS_CH1", "CONNECT"],
+               ["BAT_NEG_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BAT_NEG_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["BAT_NEG_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP_VBAT_CON": {
+          "CONNECT": [
+               ["PP_VBAT_CON_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VBAT_CON_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VBAT_CON_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VBAT_CON_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_CHG_BAT_TS": {
+          "CONNECT": [
+               ["CHG_BAT_TS_TO_CCSCVS_CH1", "CONNECT"],
+               ["CHG_BAT_TS_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["CHG_BAT_TS_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["CHG_BAT_TS_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_CC1": {
+          "CONNECT": [
+               ["CC1_TO_CCSCVS_CH1", "CONNECT"],
+               ["CC1_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["CC1_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["CC1_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_CC2": {
+          "CONNECT": [
+               ["CC2_TO_CCSCVS_CH1", "CONNECT"],
+               ["CC2_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["CC2_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["CC2_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP1V8_VA18": {
+          "CONNECT": [
+               ["PP1V8_VA18_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP1V8_VA18_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP1V8_VA18_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP1V8_VA18_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_VAUD": {
+          "CONNECT": [
+               ["PP_VAUD_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VAUD_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VAUD_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VAUD_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP_VBUS_USBC_B": {
+          "CONNECT": [
+               ["PP_VBUS_USBC_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VBUS_USBC_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VBUS_USBC_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VBUS_USBC_B_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PM_VBUS_EN_L": {
+          "CONNECT": [
+               ["PM_VBUS_EN_L_TO_CCSCVS_CH1", "CONNECT"],
+               ["PM_VBUS_EN_L_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PM_VBUS_EN_L_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PM_VBUS_EN_L_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP_VBUS_OUT_B": {
+          "CONNECT": [
+               ["PP_VBUS_OUT_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VBUS_OUT_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VBUS_OUT_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VBUS_OUT_B_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP_VCORE": {
+          "CONNECT": [
+               ["PP_VCORE_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VCORE_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VCORE_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VCORE_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP3V1_VDD31": {
+          "CONNECT": [
+               ["PP3V1_VDD31_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP3V1_VDD31_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP3V1_VDD31_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP3V1_VDD31_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP1V8_VDIG18": {
+          "CONNECT": [
+               ["PP1V8_VDIG18_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP1V8_VDIG18_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP1V8_VDIG18_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP1V8_VDIG18_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP1V8_VIO_B": {
+          "CONNECT": [
+               ["PP1V8_VIO_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP1V8_VIO_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP1V8_VIO_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP1V8_VIO_B_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP_VPA_B": {
+          "CONNECT": [
+               ["PP_VPA_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VPA_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VPA_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VPA_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_VRF": {
+          "CONNECT": [
+               ["PP_VRF_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VRF_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VRF_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VRF_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP_VRTC": {
+          "CONNECT": [
+               ["PP_VRTC_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VRTC_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VRTC_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VRTC_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_VSRAM": {
+          "CONNECT": [
+               ["PP_VSRAM_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VSRAM_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VSRAM_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VSRAM_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP1V2_BUCK_OUT_B": {
+          "CONNECT": [
+               ["PP1V2_BUCK_OUT_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP1V2_BUCK_OUT_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP1V2_BUCK_OUT_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP1V2_BUCK_OUT_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_VBAT": {
+          "CONNECT": [
+               ["PP_VBAT_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VBAT_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VBAT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VBAT_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_VCHG_IN": {
+          "CONNECT": [
+               ["PP_VCHG_IN_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VCHG_IN_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VCHG_IN_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VCHG_IN_TO_SYS_GND", "CONNECT"]
+          ]
+     },  
+     "LEAKAGE_TO_PP_VSYS_B": {
+          "CONNECT": [
+               ["PP_VSYS_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VSYS_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VSYS_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VSYS_B_TO_SYS_GND", "CONNECT"]
+          ]
+     },  
+     "LEAKAGE_TO_PP_DVDD_MLDO": {
+          "CONNECT": [
+               ["PP_DVDD_MLDO_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_DVDD_MLDO_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_DVDD_MLDO_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_DVDD_MLDO_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_VDD": {
+          "CONNECT": [
+               ["PP_VDD_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VDD_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VDD_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VDD_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_FSOURCE_D": {
+          "CONNECT": [
+               ["FSOURCE_D_TO_CCSCVS_CH1", "CONNECT"],
+               ["FSOURCE_D_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["FSOURCE_D_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["FSOURCE_D_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PM_CHG_EN": {
+          "CONNECT": [
+               ["PM_CHG_EN_TO_CCSCVS_CH1", "CONNECT"],
+               ["PM_CHG_EN_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PM_CHG_EN_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PM_CHG_EN_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_PMID_CHG": {
+          "CONNECT": [
+               ["PP_PMID_CHG_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_PMID_CHG_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_PMID_CHG_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_PMID_CHG_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PM_CHG_QON_L": {
+          "CONNECT": [
+               ["PM_CHG_QON_L_TO_CCSCVS_CH1", "CONNECT"],
+               ["PM_CHG_QON_L_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PM_CHG_QON_L_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PM_CHG_QON_L_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_CHG_REGN_LDO": {
+          "CONNECT": [
+               ["PP_CHG_REGN_LDO_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_CHG_REGN_LDO_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_CHG_REGN_LDO_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_CHG_REGN_LDO_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_CHG_STAT": {
+          "CONNECT": [
+               ["CHG_STAT_TO_CCSCVS_CH1", "CONNECT"],
+               ["CHG_STAT_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["CHG_STAT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["CHG_STAT_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_CHG_TS_BIAS": {
+          "CONNECT": [
+               ["PP_CHG_TS_BIAS_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_CHG_TS_BIAS_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_CHG_TS_BIAS_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_CHG_TS_BIAS_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_USB_D1_P": {
+          "CONNECT": [
+               ["DCR_USB_D1_P_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_USB_D1_P_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_USB_D1_P_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_USB_D1_P_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_USB_D1_N": {
+          "CONNECT": [
+               ["DCR_USB_D1_N_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_USB_D1_N_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_USB_D1_N_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_USB_D1_N_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PP_VSYS_CHG_B": {
+          "CONNECT": [
+               ["PP_VSYS_CHG_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VSYS_CHG_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VSYS_CHG_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VSYS_CHG_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_UART0_RX": {
+          "CONNECT": [
+               ["DCR_UART0_RX_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_UART0_RX_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_UART0_RX_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_UART0_RX_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_UART0_TX": {
+          "CONNECT": [
+               ["DCR_UART0_TX_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_UART0_TX_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_UART0_TX_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_UART0_TX_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_UART1_RX": {
+          "CONNECT": [
+               ["DCR_UART1_RX_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_UART1_RX_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_UART1_RX_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_UART1_RX_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_UART1_TX": {
+          "CONNECT": [
+               ["DCR_UART1_TX_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_UART1_TX_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_UART1_TX_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_UART1_TX_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP_VBUS_RVP": {
+          "CONNECT": [
+               ["PP_VBUS_RVP_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP_VBUS_RVP_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP_VBUS_RVP_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP_VBUS_RVP_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_VOX_SEL_PERF": {
+          "CONNECT": [
+               ["VOX_SEL_PERF_TO_CCSCVS_CH1", "CONNECT"],
+               ["VOX_SEL_PERF_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["VOX_SEL_PERF_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["VOX_SEL_PERF_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_CHG_ILIM": {
+          "CONNECT": [
+               ["CHG_ILIM_TO_CCSCVS_CH1", "CONNECT"],
+               ["CHG_ILIM_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["CHG_ILIM_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["CHG_ILIM_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_CHG_INT_L": {
+          "CONNECT": [
+               ["CHG_INT_L_TO_CCSCVS_CH1", "CONNECT"],
+               ["CHG_INT_L_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["CHG_INT_L_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["CHG_INT_L_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_CHG_PG_L": {
+          "CONNECT": [
+               ["CHG_PG_L_TO_CCSCVS_CH1", "CONNECT"],
+               ["CHG_PG_L_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["CHG_PG_L_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["CHG_PG_L_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_UART_TX_EN": {
+          "CONNECT": [
+               ["UART_TX_EN_TO_CCSCVS_CH1", "CONNECT"],
+               ["UART_TX_EN_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["UART_TX_EN_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["UART_TX_EN_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_BTN_VUP_L_B": {
+          "CONNECT": [
+               ["BTN_VUP_L_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["BTN_VUP_L_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BTN_VUP_L_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["BTN_VUP_L_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_BTN_NCB_L_B": {
+          "CONNECT": [
+               ["BTN_NCB_L_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["BTN_NCB_L_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BTN_NCB_L_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["BTN_NCB_L_B_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_BTN_MFB_L_B": {
+          "CONNECT": [
+               ["DCR_BTN_MFB_L_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_BTN_MFB_L_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_BTN_MFB_L_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_BTN_MFB_L_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_BTN_PWR_B": {
+          "CONNECT": [
+               ["BTN_PWR_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["BTN_PWR_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BTN_PWR_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["BTN_PWR_B_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_BTN_VDN_L_B": {
+          "CONNECT": [
+               ["BTN_VDN_L_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["BTN_VDN_L_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BTN_VDN_L_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["BTN_VDN_L_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_KOBOL_INT": {
+          "CONNECT": [
+               ["KOBOL_INT_TO_CCSCVS_CH1", "CONNECT"],
+               ["KOBOL_INT_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["KOBOL_INT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["KOBOL_INT_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_BTNPWR": {
+          "CONNECT": [
+               ["BTNPWR_TO_CCSCVS_CH1", "CONNECT"],
+               ["BTNPWR_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BTNPWR_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["BTNPWR_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_KOBOL_MOTION_INT": {
+          "CONNECT": [
+               ["KOBOL_MOTION_INT_TO_CCSCVS_CH1", "CONNECT"],
+               ["KOBOL_MOTION_INT_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["KOBOL_MOTION_INT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["KOBOL_MOTION_INT_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_USB_DL_MODE_EN_B": {
+          "CONNECT": [
+               ["USB_DL_MODE_EN_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["USB_DL_MODE_EN_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["USB_DL_MODE_EN_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["USB_DL_MODE_EN_B_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_HWID_EN": {
+          "CONNECT": [
+               ["HWID_EN_TO_CCSCVS_CH1", "CONNECT"],
+               ["HWID_EN_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["HWID_EN_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["HWID_EN_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_BART_SPARE1": {
+          "CONNECT": [
+               ["BART_SPARE1_TO_CCSCVS_CH1", "CONNECT"],
+               ["BART_SPARE1_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BART_SPARE1_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["BART_SPARE1_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_BART_SPARE2": {
+          "CONNECT": [
+               ["BART_SPARE2_TO_CCSCVS_CH1", "CONNECT"],
+               ["BART_SPARE2_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BART_SPARE2_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["BART_SPARE2_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_PM_LP5811_EN": {
+          "CONNECT": [
+               ["PM_LP5811_EN_TO_CCSCVS_CH1", "CONNECT"],
+               ["PM_LP5811_EN_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PM_LP5811_EN_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PM_LP5811_EN_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_PP_LP5811_BOOST": {
+          "CONNECT": [
+               ["DCR_PP_LP5811_BOOST_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_PP_LP5811_BOOST_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_PP_LP5811_BOOST_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_PP_LP5811_BOOST_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_LED_LP5811_WHITE": {
+          "CONNECT": [
+               ["DCR_LED_LP5811_WHITE_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_LED_LP5811_WHITE_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_LED_LP5811_WHITE_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_LED_LP5811_WHITE_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_LED_LP5811_RED": {
+          "CONNECT": [
+               ["DCR_LED_LP5811_RED_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_LED_LP5811_RED_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_LED_LP5811_RED_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_LED_LP5811_RED_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_PDM_CLK_FF2_FF3_B": {
+          "CONNECT": [
+               ["DCR_PDM_CLK_FF2_FF3_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_PDM_CLK_FF2_FF3_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_PDM_CLK_FF2_FF3_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_PDM_CLK_FF2_FF3_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_PDM_DAT_FF2_FF3_B": {
+          "CONNECT": [
+               ["DCR_PDM_DAT_FF2_FF3_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_PDM_DAT_FF2_FF3_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_PDM_DAT_FF2_FF3_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_PDM_DAT_FF2_FF3_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_PDM_CLK_FF1_FB_B": {
+          "CONNECT": [
+               ["DCR_PDM_CLK_FF1_FB_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_PDM_CLK_FF1_FB_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_PDM_CLK_FF1_FB_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_PDM_CLK_FF1_FB_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_PDM_DAT_FF1_FB_B": {
+          "CONNECT": [
+               ["DCR_PDM_DAT_FF1_FB_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_PDM_DAT_FF1_FB_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_PDM_DAT_FF1_FB_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_PDM_DAT_FF1_FB_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_PDM_VOX_CLK_B": {
+          "CONNECT": [
+               ["DCR_PDM_VOX_CLK_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_PDM_VOX_CLK_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_PDM_VOX_CLK_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_PDM_VOX_CLK_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_PDM_VOX_DAT_B": {
+          "CONNECT": [
+               ["DCR_PDM_VOX_DAT_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_PDM_VOX_DAT_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_PDM_VOX_DAT_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_PDM_VOX_DAT_B_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_AMP_GAIN": {
+          "CONNECT": [
+               ["AMP_GAIN_TO_CCSCVS_CH1", "CONNECT"],
+               ["AMP_GAIN_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["AMP_GAIN_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["AMP_GAIN_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_AMP_SHDN_L": {
+          "CONNECT": [
+               ["AMP_SHDN_L_TO_CCSCVS_CH1", "CONNECT"],
+               ["AMP_SHDN_L_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["AMP_SHDN_L_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["AMP_SHDN_L_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_HPOUTN": {
+          "CONNECT": [
+               ["DCR_HPOUTN_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_HPOUTN_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_HPOUTN_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_HPOUTN_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_HPOUTP": {
+          "CONNECT": [
+               ["DCR_HPOUTP_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_HPOUTP_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_HPOUTP_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_HPOUTP_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP1V8_SUR_TON_RIGHT": {
+          "CONNECT": [
+               ["PP1V8_SUR_TON_RIGHT_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP1V8_SUR_TON_RIGHT_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP1V8_SUR_TON_RIGHT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP1V8_SUR_TON_RIGHT_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_PP1V8_SUR_TON_LEFT": {
+          "CONNECT": [
+               ["PP1V8_SUR_TON_LEFT_TO_CCSCVS_CH1", "CONNECT"],
+               ["PP1V8_SUR_TON_LEFT_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["PP1V8_SUR_TON_LEFT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["PP1V8_SUR_TON_LEFT_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_SURIMI_RST_OUT_L": {
+          "CONNECT": [
+               ["SURIMI_RST_OUT_L_TO_CCSCVS_CH1", "CONNECT"],
+               ["SURIMI_RST_OUT_L_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["SURIMI_RST_OUT_L_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["SURIMI_RST_OUT_L_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_ANALOG_AMP_OUT_P": {
+          "CONNECT": [
+               ["DCR_ANALOG_AMP_OUT_P_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_ANALOG_AMP_OUT_P_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_ANALOG_AMP_OUT_P_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_ANALOG_AMP_OUT_P_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_ANALOG_AMP_OUT_N": {
+          "CONNECT": [
+               ["DCR_ANALOG_AMP_OUT_N_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_ANALOG_AMP_OUT_N_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_ANALOG_AMP_OUT_N_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_ANALOG_AMP_OUT_N_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_I2C_SCL": {
+          "CONNECT": [
+               ["DCR_I2C_SCL_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_I2C_SCL_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_I2C_SCL_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_I2C_SCL_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_I2C_SDA": {
+          "CONNECT": [
+               ["DCR_I2C_SDA_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_I2C_SDA_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_I2C_SDA_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_I2C_SDA_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_FB_HALL2_NORTH": {
+          "CONNECT": [
+               ["FB_HALL2_NORTH_TO_CCSCVS_CH1", "CONNECT"],
+               ["FB_HALL2_NORTH_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["FB_HALL2_NORTH_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["FB_HALL2_NORTH_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_FB_HALL2_SOUTH": {
+          "CONNECT": [
+               ["FB_HALL2_SOUTH_TO_CCSCVS_CH1", "CONNECT"],
+               ["FB_HALL2_SOUTH_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["FB_HALL2_SOUTH_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["FB_HALL2_SOUTH_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_SPI_KOBOL_MISO_B": {
+          "CONNECT": [
+               ["SPI_KOBOL_MISO_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["SPI_KOBOL_MISO_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["SPI_KOBOL_MISO_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["SPI_KOBOL_MISO_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_SPI_KOBOL_SCK_B": {
+          "CONNECT": [
+               ["SPI_KOBOL_SCK_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["SPI_KOBOL_SCK_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["SPI_KOBOL_SCK_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["SPI_KOBOL_SCK_B_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_SPI_KOBOL_CS_L": {
+          "CONNECT": [
+               ["SPI_KOBOL_CS_L_TO_CCSCVS_CH1", "CONNECT"],
+               ["SPI_KOBOL_CS_L_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["SPI_KOBOL_CS_L_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["SPI_KOBOL_CS_L_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_FB_HALL3_NORTH": {
+          "CONNECT": [
+               ["FB_HALL3_NORTH_TO_CCSCVS_CH1", "CONNECT"],
+               ["FB_HALL3_NORTH_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["FB_HALL3_NORTH_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["FB_HALL3_NORTH_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_FB_HALL3_SOUTH": {
+          "CONNECT": [
+               ["FB_HALL3_SOUTH_TO_CCSCVS_CH1", "CONNECT"],
+               ["FB_HALL3_SOUTH_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["FB_HALL3_SOUTH_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["FB_HALL3_SOUTH_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_FB_HALL4_NORTH": {
+          "CONNECT": [
+               ["FB_HALL4_NORTH_TO_CCSCVS_CH1", "CONNECT"],
+               ["FB_HALL4_NORTH_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["FB_HALL4_NORTH_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["FB_HALL4_NORTH_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_FB_HALL4_SOUTH": {
+          "CONNECT": [
+               ["FB_HALL4_SOUTH_TO_CCSCVS_CH1", "CONNECT"],
+               ["FB_HALL4_SOUTH_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["FB_HALL4_SOUTH_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["FB_HALL4_SORTH_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_HES_INT": {
+          "CONNECT": [
+               ["HES_INT_TO_CCSCVS_CH1", "CONNECT"],
+               ["HES_INT_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["HES_INT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["HES_INT_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_SURIMI_RST_EN": {
+          "CONNECT": [
+               ["SURIMI_RST_EN_TO_CCSCVS_CH1", "CONNECT"],
+               ["SURIMI_RST_EN_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["HES_INT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["HES_INT_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_EN_VBUS_LOAD_SWITCH": {
+          "CONNECT": [
+               ["EN_VBUS_LOAD_SWITCH_TO_CCSCVS_CH1", "CONNECT"],
+               ["EN_VBUS_LOAD_SWITCH_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["EN_VBUS_LOAD_SWITCH_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["EN_VBUS_LOAD_SWITCH_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_DCR_PP_VBUS_HB_B": {
+          "CONNECT": [
+               ["DCR_PP_VBUS_HB_B_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_PP_VBUS_HB_B_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_PP_VBUS_HB_B_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_PP_VBUS_HB_B_TO_SYS_GND", "CONNECT"]
+          ]
+     }, 
+     "LEAKAGE_TO_SURIMI_TONE": {
+          "CONNECT": [
+               ["SURIMI_TONE_TO_CCSCVS_CH1", "CONNECT"],
+               ["SURIMI_TONE_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["SURIMI_TONE_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["SURIMI_TONE_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_DCR_SURIMI_MFB_STATUS_L": {
+          "CONNECT": [
+               ["DCR_SURIMI_MFB_STATUS_L_TO_CCSCVS_CH1", "CONNECT"],
+               ["DCR_SURIMI_MFB_STATUS_L_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["DCR_SURIMI_MFB_STATUS_L_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["DCR_SURIMI_MFB_STATUS_L_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_SURIMI_VDN_STATUS_L": {
+          "CONNECT": [
+               ["SURIMI_VDN_STATUS_L_TO_CCSCVS_CH1", "CONNECT"],
+               ["SURIMI_VDN_STATUS_L_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["SURIMI_VDN_STATUS_L_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["SURIMI_VDN_STATUS_L_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "LEAKAGE_TO_SUR_RST_WDOG_LEFT": {
+          "CONNECT": [
+               ["SUR_RST_WDOG_LEFT_TO_CCSCVS_CH1", "CONNECT"],
+               ["SUR_RST_WDOG_LEFT_TO_SYS_GND", "DISCONNECT"]
+          ],
+          "DISCONNECT": [
+               ["SUR_RST_WDOG_LEFT_TO_CCSCVS_CH1", "DISCONNECT"],
+               ["SUR_RST_WDOG_LEFT_TO_SYS_GND", "CONNECT"]
+          ]
+     },
+     "BTN_PWR_B_TO_PP_VSYS_CHG_B": {
+          "CONNECT": [
+               ["BTN_PWR_B_TO_COMM_PORT", "CONNECT"],
+               ["PP_VSYS_CHG_B_TO_COMM_PORT", "CONNECT"]
+          ],
+          "DISCONNECT": [
+               ["BTN_PWR_B_TO_COMM_PORT", "DISCONNECT"],
+               ["PP_VSYS_CHG_B_TO_COMM_PORT", "DISCONNECT"]
+          ]
+     }
+}

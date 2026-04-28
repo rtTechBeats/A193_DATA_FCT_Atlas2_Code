@@ -1,0 +1,12 @@
+- technology: VDM_OQC
+  coverage: VDM_OQC_CC1
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - VDM_OQC_VDM_OQC_CC1:
+        filename: VDM_OQC/VDM_OQC_CC1.csv
+        plugins: '*'
+    type: sequential

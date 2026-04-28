@@ -1,0 +1,12 @@
+- technology: System_Info
+  coverage: SYS_RST_CURRENT
+  testParameters: '*'
+  inputs: {}
+  outputs: {}
+  conditions: {}
+  sequence:
+    actions:
+    - System_Info_SYS_RST_CURRENT:
+        filename: System_Info/SYS_RST_CURRENT.csv
+        plugins: '*'
+    type: sequential
