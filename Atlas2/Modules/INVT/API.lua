@@ -158,13 +158,14 @@ function API.measureCurrentByPSU(params)
 
     if disUart then 
         xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"DUT_USBUART_EN", "DISCONNECT"}, timeout)
+        time.sleep(0.5)
         xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"I2C_LV_SHIFT_DISABLE"}, timeout)
-        time.sleep(1.5)
+        time.sleep(1)
     end
 
     if disLvs then
         xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"I2C_LV_SHIFT_DISABLE"}, timeout)
-        time.sleep(1.5)
+        time.sleep(1)
     end
 
     local status, result = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.measure_current_with_psu", {module, sample_rate, count, max_range}, timeout)
@@ -174,13 +175,15 @@ function API.measureCurrentByPSU(params)
     end
 
     if result >= upperLimit * 0.8 then
-        for i = 1, 3 do 
+        for i = 1, 2 do 
             xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"DUT_USBUART_EN"}, timeout)
+            time.sleep(1)
             xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"I2C_LV_SHIFT_DISABLE", "DISCONNECT"}, timeout)
             time.sleep(1)
             xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"DUT_USBUART_EN", "DISCONNECT"}, timeout)
+            time.sleep(1)
             xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"I2C_LV_SHIFT_DISABLE"}, timeout)
-            time.sleep(2.5)
+            time.sleep(1)
             status, result = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.measure_current_with_psu", {module, sample_rate, count, max_range}, timeout)
             if result <= upperLimit * 0.8 and result >= lowerLimit then
                 break
@@ -195,8 +198,9 @@ function API.measureCurrentByPSU(params)
 
     if disUart then 
         xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"DUT_USBUART_EN"}, timeout)
+        time.sleep(0.25)
         xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"I2C_LV_SHIFT_DISABLE", "DISCONNECT"}, timeout)
-        time.sleep(0.5)
+        time.sleep(0.25)
     end
 
     if disLvs then
@@ -295,6 +299,149 @@ function API.dmmDatalogger(params)
     end
 
     return filePath
+end
+
+local function _read_csv_to_float_table(file_path, filter)
+    local data_table = {}
+    local file, err = io.open(file_path, "r")
+    if not file then
+        error("无法打开文件 '" .. file_path .. "': " .. (err or "未知错误"))
+    end
+    local i = 0
+    -- 按行读取文件
+    for line in file:lines() do
+        line = line:match("^%s*(.-)%s*$")
+        if line ~= "" and line ~= nil then -- 跳过空行
+            num = tonumber(line)
+            if num then
+                i = i + 1
+                table.insert(data_table, num)
+                if filter and i == 16384 then
+                    break
+                end
+            end
+        end
+    end
+
+    file:close()
+    return data_table
+end
+
+local function findSineWavePeaksAndValleys(data, epsilon)
+    local eps = epsilon or 1e-10
+    local peaks = {}
+    local valleys = {}
+    local n = #data
+    
+    if n < 3 then
+        return peaks, valleys
+    end
+    
+    local diffs = {}
+    for i = 1, n-1 do
+        diffs[i] = data[i+1] - data[i]
+    end
+    
+    for i = 2, n-1 do
+        local left_diff = diffs[i-1]
+        local right_diff = diffs[i]
+        
+        if math.abs(left_diff) > eps and math.abs(right_diff) > eps then
+            if left_diff > eps and right_diff < -eps then
+                table.insert(peaks, data[i])
+            elseif left_diff < -eps and right_diff > eps then
+                table.insert(valleys, data[i])
+            end
+        end
+    end
+    return {StatsUtils.mean(peaks), StatsUtils.mean(valleys)}
+end
+
+local function findPeaksAndValleys(data, epsilon)
+    local min, max = StatsUtils.minmax(data)
+    local epsilon = epsilon or 0.005
+    local total = max - min
+    local max_table = {}
+    local min_table = {}
+    for k, v in pairs(data) do
+        if v > max - (total * epsilon) then
+            table.insert(max_table, v)
+        end
+        if v < min + (total * epsilon) then
+            table.insert(min_table, v)
+        end
+    end
+
+    return {StatsUtils.mean(max_table), StatsUtils.mean(min_table)}
+end
+
+function API.dmmMeasureRipple(params)
+    Log.LogFlowDebug("dmmMeasureRipple params: "..comFunc.dump(params))
+    local channel = params.channel or "ch0"
+    local scope = params.scope or "7000mv"
+    local sampleRate = params.sampleRate or 1000
+    local duration = params.duration or 3000
+    local fileName = params.fileName
+    local net = params.net
+    local resolution = params.resolution or 0.005
+    local timeout = params.timeout or 20
+    local convertUnit = (params or {}).csvUnit
+    local limitTable = (params or {}).limitTable
+    local unit = (limitTable or {}).unit
+    local status = nil
+    local retVal = nil
+
+    xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {net}, timeout)
+    if net:match("TO_RIPPLE_BOARD") then
+        xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"RIPPLE_VOUT_TO_DMMCH0"}, timeout)
+    end
+    time.sleep(1)
+
+    if not fileName then 
+        status, retVal = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.measureVoltageWithDMM", {channel, scope, net, sampleRate, 1, 1}, timeout)
+        xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {net, "DISCONNECT"}, timeout)
+        xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"RIPPLE_VOUT_TO_DMMCH0", "DISCONNECT"}, timeout)
+    else
+        status, retVal = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.dataloggerWithDMM", {channel, scope, sampleRate, duration}, timeout)
+        if not status then
+            Log.LogError("Error executing RPC command: " .. tostring(retVal))
+            error("Error executing RPC command: " .. tostring(retVal))
+        end
+        xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {net, "DISCONNECT"}, timeout)
+        if net:match("TO_RIPPLE_BOARD") then
+            xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"RIPPLE_VOUT_TO_DMMCH0", "DISCONNECT"}, timeout)
+        end
+        retVal = retVal[1]
+        Log.LogFlowDebug(string.format("Data Length: "..tostring(#retVal)))
+
+        local slotID = Device.systemIndex + 1
+        local deviceName = "slot" .. slotID
+        deviceName = mlbSn or deviceName
+        local workingDirectory = Device.userDirectory .. "/"
+        fileName = deviceName .. "_" .. fileName
+        local filePath = workingDirectory .. fileName
+        local failureMsg = ""
+
+        local csvFile = io.open(filePath, "a+")
+        if csvFile then
+            for i = 1, #retVal do
+                csvFile:write(retVal[i] .. "\n")
+            end
+            csvFile:close()
+        else
+            helper.LogError("Open " .. fileName .. " fail.")
+            return false
+        end
+        time.sleep(0.1)
+        local peakValley = findPeaksAndValleys(retVal, resolution)
+        Log.LogFlowDebug("Peak value:", peakValley[1])
+        Log.LogFlowDebug("Valley value:", peakValley[2])
+        retVal = peakValley[1] - peakValley[2]
+    end
+    if net:match("TO_RIPPLE_BOARD") then
+        retVal = retVal / 50.653
+    end
+    return retVal
 end
 
 function API.dmmStopDatalogger(params)
@@ -1100,32 +1247,6 @@ function API.accelSelfTest(params)
     return result
 end
 
-local function _read_csv_to_float_table(file_path, filter)
-    local data_table = {}
-    local file, err = io.open(file_path, "r")
-    if not file then
-        error("无法打开文件 '" .. file_path .. "': " .. (err or "未知错误"))
-    end
-    local i = 0
-    -- 按行读取文件
-    for line in file:lines() do
-        line = line:match("^%s*(.-)%s*$")
-        if line ~= "" and line ~= nil then -- 跳过空行
-            num = tonumber(line)
-            if num then
-                i = i + 1
-                table.insert(data_table, num)
-                if filter and i == 16384 then
-                    break
-                end
-            end
-        end
-    end
-
-    file:close()
-    return data_table
-end
-
 local function find_stable_level(waveform)
     local window_size = math.min(10, math.floor(#waveform / 4))
     if window_size < 2 then
@@ -1401,36 +1522,6 @@ function API.calculatePulseTime(params)
     return retVal
 end
 
-local function findSineWavePeaksAndValleys(data, epsilon)
-    local eps = epsilon or 1e-10
-    local peaks = {}
-    local valleys = {}
-    local n = #data
-    
-    if n < 3 then
-        return peaks, valleys
-    end
-    
-    local diffs = {}
-    for i = 1, n-1 do
-        diffs[i] = data[i+1] - data[i]
-    end
-    
-    for i = 2, n-1 do
-        local left_diff = diffs[i-1]
-        local right_diff = diffs[i]
-        
-        if math.abs(left_diff) > eps and math.abs(right_diff) > eps then
-            if left_diff > eps and right_diff < -eps then
-                table.insert(peaks, data[i])
-            elseif left_diff < -eps and right_diff > eps then
-                table.insert(valleys, data[i])
-            end
-        end
-    end
-    return {StatsUtils.mean(peaks), StatsUtils.mean(valleys)}
-end
-
 function API.analyzeAudioData(params)
     Log.LogFlowDebug("analyzeAudioData params: "..comFunc.dump(params))
     local filePath = params.filePath or nil
@@ -1447,12 +1538,16 @@ function API.analyzeAudioData(params)
         Log.LogError("Error: " .. tostring(retVal))
         error("Error: " .. tostring(retVal))
     end
-    -- local status, peakValley = xpcall(findSineWavePeaksAndValleys, debug.traceback, data)
+
+    local status, calData = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.read_calibration_cell", {50}, timeout)
+
 
     retVal.vpp = tonumber(retVal.vpp) * 11
     retVal.rms = tonumber(retVal.rms) * 11
-    -- retVal.top_v = peakValley[1] * 11
-    -- retVal.base_v = peakValley[2] * 11
+
+    if status and calData.offset ~= 0 then
+        retVal.vpp = retVal.vpp + calData.offset
+    end
 
     return retVal
 end
@@ -1696,7 +1791,7 @@ function API.mixVersion(param)
     local timeout = param.Timeout * 1000
     local queryKey = param.AdditionalParameters.queryKey
     local args = queryKey and {queryKey} or {}
-    local bRet, retVal = xpcall(rpcClient.callRPCFunc, debug.traceback, args, {}, timeout)
+    local bRet, retVal = xpcall(rpcClient.callRPCFunc, debug.traceback, args, timeout)
     if not bRet then
         Log.LogFlowDebug("Get mix Version failed with "..tostring(retVal))
         return false
@@ -1863,7 +1958,7 @@ function API.checkPluseWidth(param)
     local csvUnit = param.AdditionalParameters.csvUnit
     local duration = param.AdditionalParameters.duration or 0.5
 
-    local bRet, retTab = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.trboardStopMeasure", {channel, duration}, {}, timeout)
+    local bRet, retTab = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.trboardStopMeasure", {channel, duration}, timeout)
 
     if not bRet or type(retTab) ~= "table" then
         Log.LogFlowDebug("Not capture pluse width wave!")
@@ -2262,7 +2357,7 @@ function API.dataloggerWithPSU(param)
     local startTime = time.time()
     while time.time() - startTime <= duration do
         time.sleep(0.25)
-        local tempTab = rpcClient.callRPCFunc("mixdevice.getSamplingData", {module, channel, needCal, index}, {}, 10000)
+        local tempTab = rpcClient.callRPCFunc("mixdevice.getSamplingData", {module, channel, needCal, index}, 10000)
         retTab = rtLib.array_concat(retTab, tempTab)
     end
     rpcClient.callRPCFunc("mixdevice.stopDatalogger", {module})
