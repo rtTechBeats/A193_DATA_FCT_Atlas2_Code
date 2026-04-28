@@ -979,7 +979,7 @@ return  {
           upperLimit = 5300
         },
         {
-          lowerLimit = 0.1,
+          lowerLimit = 0.01,
           required = true,
           subsubtestname = "PP_VSYS_I_No_Load",
           subtestname = "No_Load",
@@ -1228,7 +1228,7 @@ return  {
           testname = "Buck_1V8"
         },
         {
-          lowerLimit = 0.1,
+          lowerLimit = 0.01,
           required = true,
           subsubtestname = "PP_VSYS_I_No_Load",
           subtestname = "Load_10mA_1V8",
@@ -1372,13 +1372,13 @@ return  {
           upperLimit = 210
         },
         {
-          lowerLimit = 0,
+          lowerLimit = 1,
           required = true,
           subsubtestname = "Ripple_Load_200mA",
           subtestname = "Load_200mA_1V8_AON",
           testname = "Buck_1V8",
           units = "mV",
-          upperLimit = 50
+          upperLimit = 12
         },
         {
           lowerLimit = 80,
@@ -1387,7 +1387,7 @@ return  {
           subtestname = "Load_200mA_1V8_AON",
           testname = "Buck_1V8",
           units = "%",
-          upperLimit = 90
+          upperLimit = 95
         },
         {
           required = true,
@@ -5383,7 +5383,7 @@ return  {
           upperLimit = 5300
         },
         {
-          lowerLimit = 0.1,
+          lowerLimit = 0.01,
           required = true,
           subsubtestname = "PP_VSYS_I_No_Load",
           subtestname = "No_Load",
@@ -5632,7 +5632,7 @@ return  {
           testname = "Buck_1V8"
         },
         {
-          lowerLimit = 0.1,
+          lowerLimit = 0.01,
           required = true,
           subsubtestname = "PP_VSYS_I_No_Load",
           subtestname = "Load_10mA_1V8",
@@ -5776,13 +5776,13 @@ return  {
           upperLimit = 210
         },
         {
-          lowerLimit = 0,
+          lowerLimit = 1,
           required = true,
           subsubtestname = "Ripple_Load_200mA",
           subtestname = "Load_200mA_1V8_AON",
           testname = "Buck_1V8",
           units = "mV",
-          upperLimit = 50
+          upperLimit = 12
         },
         {
           lowerLimit = 80,
@@ -5791,7 +5791,7 @@ return  {
           subtestname = "Load_200mA_1V8_AON",
           testname = "Buck_1V8",
           units = "%",
-          upperLimit = 90
+          upperLimit = 95
         },
         {
           required = true,
