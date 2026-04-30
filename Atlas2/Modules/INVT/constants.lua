@@ -81,13 +81,6 @@ constants.RP2Port = {
     slot4 = "/dev/cu.usbmodemRYNTC41",
 }
 
-constants.USBPorts = {
-    {"/dev/cu.CDC_DTM", "/dev/cu.CDC_DTM7", "/dev/cu.CDC_DTM8"},
-    {"/dev/cu.CDC_DTM9", "/dev/cu.CDC_DTM10", "/dev/cu.CDC_DTM11"},
-    {"/dev/cu.CDC_DTM12", "/dev/cu.CDC_DTM13", "/dev/cu.CDC_DTM14"},
-    {"/dev/cu.CDC_DTM15", "/dev/cu.CDC_DTM16", "/dev/cu.CDC_DTM17"}
-}
-
 constants.StationURL = {
     --!@ CommBuilder Plugin create Uart URL format as below
     --!@ uart://{port}?baud={baud}&mode={dataBits}{parity}{stopBits}
@@ -165,7 +158,7 @@ constants.COMM_MUX = {
             delimiter = "[m",
             hangDetection = false
         },
-        need_open = true
+        need_open = false
     }
 }
 

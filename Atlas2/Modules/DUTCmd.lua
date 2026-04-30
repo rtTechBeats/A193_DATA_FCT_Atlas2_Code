@@ -335,12 +335,10 @@ function DUTCmd.detectDiagsUsb(params)
     Log.LogFlowDebug("diags params: "..comFunc.dump(params))
 
     local targetString = params.targetString
-    local delayTime = params.delayTime or 5
     local testName = Device.test .. '_' .. Device.subtest
     local subsubtest = params.subsubtest
     local timeout = params.timeout or 5
 
-    time.sleep(delayTime)
     local status, response = xpcall(DutCmdCoreUsb.detectCore, debug.traceback, targetString, timeout, testName, subsubtest)
     if not status then
         Log.LogError("detectCore failed,", response)

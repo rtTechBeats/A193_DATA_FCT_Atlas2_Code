@@ -7,12 +7,7 @@ local record = require("Common/record")
 local PluginsLoader = require("INVT/Modules/PluginsLoader")
 local runShellCmd = PluginsLoader.getPlugin("RunShellCommand")
 local constants = require("INVT/constants")
-local variableTable = Device.getPlugin("VariableTable")
-local rtLib = require("INVT/Modules/RTCommonLib")
-local fileOperation = require("Common/FileOperation")
 
-
-DutCmdCoreUsbUart.usbPlugin = nil
 DutCmdCoreUsbUart.CMD_ONLY = true
 DutCmdCoreUsbUart.SEND_AS_DATA = true
 local PARAMETRIC_MAX_LEN = 2 ^ 256
@@ -52,7 +47,7 @@ function DutCmdCoreUsbUart.getDutComm(timeout)
         while time.time() - startTime <= timeout do
             Log.LogFlowDebug("[Send shell command]: ls /dev/cu.*")
             local retVal = runShellCmd.run("ls /dev/cu.*", 3000).output
-            Log.LogFlowDebug("[shell Receive] ", retVal)
+            Log.LogFlowDebug("[shell Receive] "..retVal)
             if retVal:match(dutUSBDev) then 
                 Log.LogFlowDebug("Found Device...")
                 break
@@ -66,133 +61,6 @@ function DutCmdCoreUsbUart.getDutComm(timeout)
         end
     end
     return dutChannel
-end
-
-local function createComm(device, url)
-    local commBuilder = Atlas.loadPlugin('CommBuilder')
-    local deviceUserDir = Device.userDirectory
-    local activeChannelOn = 1
-    local legacyLogModeOn = 1
-
-    local commPlugin = nil
-
-    config = constants.COMM_MUX.USBUart
-    -- create commPlugins
-    Log.LogFlowDebug("create comm channel: ", url)
-    commBuilder.setDelimiter(config.setup_params.delimiter)
-    Log.LogFlowDebug("set delimiter: ", config.setup_params.delimiter)
-    if not constants.DEBUGGING_LOG_DISABLED then
-        local postLogFilePath = deviceUserDir .. config.setup_params.log.PostLogFile
-        local preLogFilePath = deviceUserDir .. config.setup_params.log.PreLogFile
-        commBuilder.setLogFilePath(postLogFilePath, preLogFilePath)
-        -- create DutCommunication Log File Folder
-        for _, file in ipairs({postLogFilePath, preLogFilePath}) do
-            local dutCommLogFolder = string.match(file, "(%/.*)%/")
-            if not comFunc.fileExists(dutCommLogFolder) then
-                fileOperation.createDirectory(dutCommLogFolder)
-            end
-        end
-    end
-
-    Log.LogFlowDebug("set active channel: ", config.setup_params.active)
-    if config.setup_params.active then
-        commBuilder.setActiveChannelOnOff(activeChannelOn)
-    end
-
-    local baseChannel = commBuilder.createBaseChannel(url)
-
-    -- create SMT Data Channel
-    local SMTDataChannel = Atlas.loadPlugin("SMTDataChannel")
-    local channelPlugin = SMTDataChannel.createChannelPlugin()
-
-    -- creater SMT Log
-    local smtLogFilePath = deviceUserDir .. config.setup_params.log.SMTLogFile
-    channelPlugin.setLogFilePath(smtLogFilePath)
-    local folder = string.match(smtLogFilePath, "(%/.*)%/")
-    if not comFunc.fileExists(folder) then
-        fileOperation.createDirectory(folder)
-    end
-    channelPlugin.setLegacyLogMode(legacyLogModeOn)
-
-    local dataChannel = channelPlugin.createDataChannel(baseChannel)
-    commPlugin = commBuilder.createEFIPlugin(dataChannel)
-    -- BP fixture hub config apple vid/pid with tray board,
-    -- kis dock channel 0 will disappear after resetStation setup
-    if config.need_open then
-        os.execute("sleep 0.5")
-        commPlugin.open()
-        Log.LogFlowDebug("commPlugin is open: ", commPlugin.isOpened())
-    end
-    return commPlugin
-end
-
-
-local function getUSBPortWithSlot(timeout, targetString)
-    local slotID = "slot"..string.match(Device.identifier, "S=%a*(%d+)")
-    local dutUSBLocationID = constants.StationURL[slotID].dutUSBLocationID
-    local devicePathTable = nil
-    -- local USBPorts = constants.StationURL[slotID].USBPorts
-    local findUSBFlg = false
-
-    local startTime = time.time()
-    while time.time() - startTime <= timeout do
-        local retVal = rtLib.getUSBDeviceFromLocationID(dutUSBLocationID)
-        Log.LogFlowDebug("[Device Found]: ", comFunc.dump(retVal))
-        if retVal.locationID == dutUSBLocationID then 
-            devicePathTable = retVal.devicePaths
-            Log.LogFlowDebug("[Device paths]: ", devicePathTable)
-            if #(devicePathTable) == 3 and devicePathTable[3]:match("cu.CDC_DTM") then
-                break
-            end
-        end
-        time.sleep(1)
-    end
-
-    if not devicePathTable then 
-        return false
-    else
-        for k, v in ipairs(devicePathTable) do
-            url = string.format("uart://%s?baud=115200&mode=8N1", v)
-            DutCmdCoreUsbUart.usbPlugin =  createComm(Device.identifier, url)
-            for i = 1, 2 do
-                DutCmdCoreUsbUart.usbPlugin.setDelimiter(targetString)
-                local status, response = xpcall(DutCmdCoreUsbUart.usbPlugin.send, debug.traceback, "app version\n", 1)              
-                if status then
-                    Log.LogFlowDebug(v.." Send Read: ", comFunc.dump(response))
-                    if response:match(targetString) then
-                        findUSBFlg = true
-                        break
-                    end
-                end
-            end
-            if findUSBFlg then
-                break
-            else
-                DutCmdCoreUsbUart.usbPlugin.close()
-            end
-        end
-    end
-
-    return true
-end
-
-
-function DutCmdCoreUsbUart.getDutCommAsyn(timeout, targetString)
-
-    -- local status, responese = xpcall(DutCmdCoreUsbUart.usbPlugin.isOpened, debug.traceback)
-
-    if not DutCmdCoreUsbUart.usbPlugin then 
-        status, responese = xpcall(getUSBPortWithSlot, debug.traceback, timeout, targetString)
-        if not status or not responese then
-            Log.LogError("Can not open USB Interface: ", responese)
-            return false
-        end
-    end
-
-    if DutCmdCoreUsbUart.usbPlugin.isOpened() ~= 1 then 
-        xpcall(DutCmdCoreUsbUart.usbPlugin.open, debug.traceback)
-    end
-    return DutCmdCoreUsbUart.usbPlugin
 end
 
 -- ! @brief Dut Cmd module internal function
@@ -209,12 +77,11 @@ function DutCmdCoreUsbUart.detectCore(targetString, timeout, testName, subsubtes
         return false
     end
 
-    -- local dutChannel = DutCmdCoreUsbUart.getDutComm(20)
-    local dutChannel = DutCmdCoreUsbUart.getDutCommAsyn(20, targetString)
+    local dutChannel = DutCmdCoreUsbUart.getDutComm(20)
     local status = nil
     local response = nil
     
-    if dutChannel and dutChannel.isOpened() == 1 then
+    if dutChannel.isOpened() == 1 then
         Log.LogFlowDebug("Start clear boot buffer...")
         dutChannel.setDelimiter(nil)
         for i = 1, 15 do
@@ -232,7 +99,7 @@ function DutCmdCoreUsbUart.detectCore(targetString, timeout, testName, subsubtes
         return false
     end
 
-    dutChannel.setDelimiter("32mcdc")
+    dutChannel.setDelimiter(targetString)
     status, response = xpcall(dutChannel.send, debug.traceback, "\n", 3)
     dutChannel.setDelimiter("[m")
     -- status, response = xpcall(dutChannel.send, debug.traceback, "detect diags\n", 3)
@@ -240,7 +107,7 @@ function DutCmdCoreUsbUart.detectCore(targetString, timeout, testName, subsubtes
         Log.LogError("Detect Diags Failed: " .. response)
         return false
     else
-        if not response:match("32mcdc") then
+        if not response:match(targetString) then
             Log.LogError("Detect Diags Failed: " .. response)
             return false
         else
@@ -253,7 +120,7 @@ end
 
 function DutCmdCoreUsbUart.readBuffer(timeout, testName, subsubtest)
     local extraName = testName .. "_" .. subsubtest
-    local dutChannel = DutCmdCoreUsbUart.getDutCommAsyn(3)
+    local dutChannel = DutCmdCoreUsbUart.getDutComm(3)
     local status = nil
     local response = nil
     local boot_buffer = ""
@@ -281,7 +148,7 @@ end
 
 local function clearBufferBeforeSend(timeout)
     local event = "cps8200_evt"
-    local dut = DutCmdCoreUsbUart.getDutCommAsyn(3)
+    local dut = PluginsLoader.getPlugin("USBUart")
     
     for i = 1, 3 do
         -- status, response = pcall(dut.read, 0.1, "[m")
@@ -320,7 +187,7 @@ function DutCmdCoreUsbUart.sendCmd(command, timeout, sendAsData, cmdOnly, disabl
     end
     local command = command.."\n"
 
-    local dut = DutCmdCoreUsbUart.getDutCommAsyn(3)
+    local dut = DutCmdCoreUsbUart.getDutComm(3)
     if dut.isOpened() ~= 1 then 
         error("Dut channel closed...")
     end
@@ -509,16 +376,14 @@ function DutCmdCoreUsbUart.sendAndParseCommandCore(command, expect, needParse, a
 
     if not status then
         local errorMsg = "send command failed: " .. tostring(response)
-        Log.LogInfo(errorMsg)
-        return false
+        error(errorMsg)
     end
 
     if expect then
         local start, _ = string.find(response, expect, 1, true)
         if start == nil then
             local errorMsg = "expecting string '" .. expect .. "' is not found"
-            Log.LogInfo(errorMsg)
-            return false
+            error(errorMsg)
         end
     end
 
@@ -527,8 +392,7 @@ function DutCmdCoreUsbUart.sendAndParseCommandCore(command, expect, needParse, a
         local parseStatus, parseResult = xpcall(parser.mdParse, debug.traceback, command, response)
         if not parseStatus then
             local errorMsg = "parse command failed: " .. tostring(parseResult)
-            Log.LogInfo(errorMsg)
-            return false
+            error(errorMsg)
         end
         Log.LogInfo("md parse result:" .. comFunc.dump(parseResult))
 

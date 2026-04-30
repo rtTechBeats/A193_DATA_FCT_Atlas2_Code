@@ -148,6 +148,7 @@ function API.measureCurrentByPSU(params)
     local max_range = params.max_range or 5000
     local disUart = params.disUart
     local disLvs = params.disLvs
+    local special = params.special
     local timeout = params.timeout or 3
     local convertUnit = (params or {}).csvUnit
     local limitTable = (params or {}).limitTable
@@ -174,7 +175,7 @@ function API.measureCurrentByPSU(params)
         error("Error executing RPC command: " .. tostring(result))
     end
 
-    if result >= upperLimit * 0.8 then
+    if result >= upperLimit * 0.95 then
         for i = 1, 2 do 
             xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"DUT_USBUART_EN"}, timeout)
             time.sleep(1)
@@ -185,16 +186,15 @@ function API.measureCurrentByPSU(params)
             xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"I2C_LV_SHIFT_DISABLE"}, timeout)
             time.sleep(1)
             status, result = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.measure_current_with_psu", {module, sample_rate, count, max_range}, timeout)
-            if result <= upperLimit * 0.8 and result >= lowerLimit then
+            if result <= upperLimit * 0.95 and result >= lowerLimit then
                 break
             end
         end
     end
 
-    -- if max_range ~= "5000mA" then
-    --     status, resp = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.measure_current_with_psu", {module, 1000, 1, "5000mA"}, timeout)
-    --     time.sleep(1)
-    -- end
+    if special and (result<=9) then
+        status, result = xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.measure_current_with_psu", {module, sample_rate, count, 10}, timeout)
+    end
 
     if disUart then 
         xpcall(rpcClient.callRPCFunc, debug.traceback, "mixdevice.relay", {"DUT_USBUART_EN"}, timeout)

@@ -469,12 +469,6 @@ return  {
           upperLimit = 1
         },
         {
-          required = true,
-          subsubtestname = "Detect_Diags",
-          subtestname = "NRF_NTC",
-          testname = "System_Info"
-        },
-        {
           lowerLimit = 20,
           required = true,
           subsubtestname = "NTC2_TEMP",
@@ -2210,6 +2204,12 @@ return  {
         {
           required = true,
           subsubtestname = "Detect_Diags",
+          subtestname = "ILIM_HIZ",
+          testname = "HALFDOME"
+        },
+        {
+          required = true,
+          subsubtestname = "Delay_1000ms",
           subtestname = "ILIM_HIZ",
           testname = "HALFDOME"
         },
@@ -4873,12 +4873,6 @@ return  {
           upperLimit = 1
         },
         {
-          required = true,
-          subsubtestname = "Detect_Diags",
-          subtestname = "NRF_NTC",
-          testname = "System_Info"
-        },
-        {
           lowerLimit = 20,
           required = true,
           subsubtestname = "NTC2_TEMP",
@@ -6614,6 +6608,12 @@ return  {
         {
           required = true,
           subsubtestname = "Detect_Diags",
+          subtestname = "ILIM_HIZ",
+          testname = "HALFDOME"
+        },
+        {
+          required = true,
+          subsubtestname = "Delay_1000ms",
           subtestname = "ILIM_HIZ",
           testname = "HALFDOME"
         },

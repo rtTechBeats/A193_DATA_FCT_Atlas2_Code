@@ -304,59 +304,57 @@ local function createComm(device, commMuxURL)
 
     -- create commPlugins
     for channel, config in pairs(constants.COMM_MUX) do
-        if channel ~= "USBUart" then
-            Log.LogInfo("create comm channel", channel)
-            commBuilder.setDelimiter(config.setup_params.delimiter)
-            Log.LogInfo("set delimiter: ", config.setup_params.delimiter)
-            if not constants.DEBUGGING_LOG_DISABLED then
-                local postLogFilePath = deviceUserDir .. config.setup_params.log.PostLogFile
-                local preLogFilePath = deviceUserDir .. config.setup_params.log.PreLogFile
-                commBuilder.setLogFilePath(postLogFilePath, preLogFilePath)
-                -- create DutCommunication Log File Folder
-                for _, file in ipairs({postLogFilePath, preLogFilePath}) do
-                    local dutCommLogFolder = string.match(file, "(%/.*)%/")
-                    if not comFunc.fileExists(dutCommLogFolder) then
-                        fileOperation.createDirectory(dutCommLogFolder)
-                    end
+        Log.LogInfo("create comm channel", channel)
+        commBuilder.setDelimiter(config.setup_params.delimiter)
+        Log.LogInfo("set delimiter: ", config.setup_params.delimiter)
+        if not constants.DEBUGGING_LOG_DISABLED then
+            local postLogFilePath = deviceUserDir .. config.setup_params.log.PostLogFile
+            local preLogFilePath = deviceUserDir .. config.setup_params.log.PreLogFile
+            commBuilder.setLogFilePath(postLogFilePath, preLogFilePath)
+            -- create DutCommunication Log File Folder
+            for _, file in ipairs({postLogFilePath, preLogFilePath}) do
+                local dutCommLogFolder = string.match(file, "(%/.*)%/")
+                if not comFunc.fileExists(dutCommLogFolder) then
+                    fileOperation.createDirectory(dutCommLogFolder)
                 end
             end
+        end
 
-            Log.LogInfo("set active channel: ", config.setup_params.active)
-            if config.setup_params.active then
-                commBuilder.setActiveChannelOnOff(activeChannelOn)
-            end
+        Log.LogInfo("set active channel: ", config.setup_params.active)
+        if config.setup_params.active then
+            commBuilder.setActiveChannelOnOff(activeChannelOn)
+        end
 
-            local baseChannel = commBuilder.createBaseChannel(commMuxURL[channel])
+        local baseChannel = commBuilder.createBaseChannel(commMuxURL[channel])
 
-            -- create SMT Data Channel
-            local SMTDataChannel = Atlas.loadPlugin("SMTDataChannel")
-            local channelPlugin = SMTDataChannel.createChannelPlugin()
+        -- create SMT Data Channel
+        local SMTDataChannel = Atlas.loadPlugin("SMTDataChannel")
+        local channelPlugin = SMTDataChannel.createChannelPlugin()
 
-            -- creater SMT Log
-            local smtLogFilePath = deviceUserDir .. config.setup_params.log.SMTLogFile
-            channelPlugin.setLogFilePath(smtLogFilePath)
-            local folder = string.match(smtLogFilePath, "(%/.*)%/")
-            if not comFunc.fileExists(folder) then
-                fileOperation.createDirectory(folder)
-            end
-            channelPlugin.setLegacyLogMode(legacyLogModeOn)
+        -- creater SMT Log
+        local smtLogFilePath = deviceUserDir .. config.setup_params.log.SMTLogFile
+        channelPlugin.setLogFilePath(smtLogFilePath)
+        local folder = string.match(smtLogFilePath, "(%/.*)%/")
+        if not comFunc.fileExists(folder) then
+            fileOperation.createDirectory(folder)
+        end
+        channelPlugin.setLegacyLogMode(legacyLogModeOn)
 
-            local dataChannel = channelPlugin.createDataChannel(baseChannel)
-            commPlugin = commBuilder.createEFIPlugin(dataChannel)
-            -- BP fixture hub config apple vid/pid with tray board,
-            -- kis dock channel 0 will disappear after resetStation setup
-            if config.need_open then
-                os.execute("sleep 0.5")
-                commPlugin.open()
-                Log.LogInfo("commPlugin is open: ", commPlugin.isOpened())
-            end
+        local dataChannel = channelPlugin.createDataChannel(baseChannel)
+        commPlugin = commBuilder.createEFIPlugin(dataChannel)
+        -- BP fixture hub config apple vid/pid with tray board,
+        -- kis dock channel 0 will disappear after resetStation setup
+        if config.need_open then
+            os.execute("sleep 0.5")
+            commPlugin.open()
+            Log.LogInfo("commPlugin is open: ", commPlugin.isOpened())
+        end
 
-            plugins[channel] = commPlugin
+        plugins[channel] = commPlugin
 
-            -- init commPath
-            if config.primary then
-                runShellCmd.run("echo " .. channel .. " > /tmp/DUTCommPath_" .. device)
-            end
+        -- init commPath
+        if config.primary then
+            runShellCmd.run("echo " .. channel .. " > /tmp/DUTCommPath_" .. device)
         end
     end
 
