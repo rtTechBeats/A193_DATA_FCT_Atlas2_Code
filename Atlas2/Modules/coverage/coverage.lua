@@ -1875,7 +1875,7 @@ return  {
         },
         {
           required = true,
-          subsubtestname = "Delay_6500ms",
+          subsubtestname = "Delay_6000ms",
           subtestname = "WTD_PET",
           testname = "HALFDOME"
         },
@@ -6279,7 +6279,7 @@ return  {
         },
         {
           required = true,
-          subsubtestname = "Delay_6500ms",
+          subsubtestname = "Delay_6000ms",
           subtestname = "WTD_PET",
           testname = "HALFDOME"
         },

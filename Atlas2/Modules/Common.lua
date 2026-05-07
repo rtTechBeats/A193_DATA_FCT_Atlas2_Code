@@ -68,7 +68,7 @@ function StationComm.callRPCFunc(input, additionalParameters)
     -- confirm callRPCFunc rpcFunc success
     if not status or string.find(comFunc.dump(result), "Error") or string.find(comFunc.dump(result), "False") then
         Log.LogError("Error executing RPC command: " .. tostring(result))
-        error("Error executing RPC command: " .. tostring(result))
+        return false
     end
 
     -- parse and return one value with MDParser
@@ -78,7 +78,7 @@ function StationComm.callRPCFunc(input, additionalParameters)
         local bRet, pData = xpcall(MDParser.parse, debug.traceback, rpcFunc, tostring(result))
         if not bRet then
             Log.LogFlowDebug("MDParser response failed: " .. tostring(rpcFunc))
-            error("MDParser response failed: " .. tostring(rpcFunc))
+            return false
         end
         for _, v in pairs(pData) do
             if v ~= nil then
@@ -110,7 +110,7 @@ function StationComm.callRPCFunc(input, additionalParameters)
         local convertStatus, convertedValue = xpcall(unitTool.convertUnit, debug.traceback, result, convertUnit, unit)
         if not convertStatus then
             Log.LogFlowDebug("Failed to convert unit from " .. convertUnit .. " to " .. unit)
-            error("Failed to convert unit from " .. convertUnit .. " to " .. unit)
+            return false
         end
         result = convertedValue
     end

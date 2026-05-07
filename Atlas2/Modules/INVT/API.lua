@@ -1489,6 +1489,11 @@ local function calculate_pulse_time(waveform, sampleRate, highLevel, raiseFlg)
             end
         end
     end
+    
+    if count == 0 then
+        error("No expect pulse detect...")
+    end
+
     if not raiseFlg then
         result = count * (1000.0 / sampleRate)
     else
@@ -1516,7 +1521,7 @@ function API.calculatePulseTime(params)
     local status, retVal = xpcall(calculate_pulse_time, debug.traceback, data, sampleRate, highLevel, raiseFlg)
     if not status then
         Log.LogError("Error: " .. tostring(retVal))
-        error("Error: " .. tostring(retVal))
+        return false
     end
 
     return retVal
